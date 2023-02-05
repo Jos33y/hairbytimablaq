@@ -1,11 +1,25 @@
-<p>
-  "Welcome to StylePlushHair, your one-stop destination for top-quality wigs. We
-  are dedicated to providing you with the latest in wig fashion, designed to
-  help you look and feel your best. Whether you're searching for a classic look
-  or something more contemporary, we've got you covered. Our wig collection is
-  hand-selected to ensure that we only offer the finest quality hair, ensuring
-  that every wig is both stylish and comfortable to wear. We believe that
-  everyone deserves to look and feel their best, and with our wigs, you can
-  achieve just that. Browse our collection today and find your new signature
-  look."
-</p>;
+import React, { useState, useEffect } from "react";
+import HeaderNav from "../components/header";
+import HomeHero from "./hero";
+import './home.css';
+
+const Store = () => {
+
+    const [data, setData] = useState(null);
+    useEffect(() => {
+        fetch("/api")
+            .then((res) => res.json())
+            .then((data) => setData(data.message));
+    }, []);
+    return (
+        <>
+            <HeaderNav />
+            <HomeHero />
+
+            <div className="progress-work">
+                <p>{!data ? "Loading..." : data}</p>
+            </div>
+        </>
+    )
+}
+export default Store;

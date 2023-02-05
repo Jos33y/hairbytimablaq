@@ -1,26 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Store from './store/home'
+import Admin from './admin/auth';
+
 import './App.css';
-import TimaBlaq from "./store/assets/images/timablaq.jpeg";
+
 
 const App = () => {
 
-  const [data, setData] = useState(null);
-
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
-    <div className="App">
-      <img src={TimaBlaq} alt="timablaq logo" className="img-fluid" />
-        <h1>Hair By Tima Blaq</h1>
-        <p>{!data ? "Loading..." : data}</p>
-    
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Store />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
-
 export default App;
