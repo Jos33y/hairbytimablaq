@@ -18,7 +18,7 @@ const HeaderNav = () => {
                                 <option value="1">USD $</option>
                                 <option value="2">GMD D</option>
                             </select>
-                            <p>My Account  <i className="fa-solid fa-user"></i></p>
+                            <p>Track order  <i class="fa-solid fa-truck-fast"></i></p>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ const HeaderNav = () => {
                                 <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/shop" className="nav-link">Shop</Link>
+                                <Link to="/404" className="nav-link">Shop</Link>
                             </li>
 
                             <li className="nav-item">
@@ -55,8 +55,7 @@ const HeaderNav = () => {
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <p><i class="fa-solid fa-magnifying-glass"></i> </p>
-                            <p><i class="fa-solid fa-user"></i> </p>
-                            <p> <i class="fa-solid fa-heart"></i></p>
+                            <p><i class="fa-solid fa-truck-fast"></i> </p>
                             <p><i class="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
                         </form>
                     </div>

@@ -109,10 +109,40 @@ body{
 }
 
 
+/* home products section */
 
+.home-products{
+    margin-top: 5%;
+    padding: 30px 50px;
+}
+.home-products h4.title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
 
+.home-products .home-products-list{
+    margin-top: 50px;
+}
 
+.home-products .home-products-button{
+    margin-top: 20px;
+    text-align: center;
+}
 
+.home-products .home-products-button .btn.btn-primary{
+    background: #000000;
+    color: #e3c678;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 1px;
+    padding: 15px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid #000000;
+    font-family: "Poppins", sans-serif;
+
+}
 
   /* progress section to be removed */
   .progress-work{

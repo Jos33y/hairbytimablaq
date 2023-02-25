@@ -6,6 +6,7 @@ import TestimonySection from "../components/testimony";
 import HomeCategories from "./categories";
 import HomeHero from "./hero";
 import './home.css';
+import HomeProducts from "./products";
 
 const Store = () => {
 
@@ -15,6 +16,7 @@ const Store = () => {
             <HeaderNav />
             <HomeHero />
             <HomeCategories />
+            <HomeProducts />
             <TestimonySection />
             <SubscribeForm />
             <FooterNav />
