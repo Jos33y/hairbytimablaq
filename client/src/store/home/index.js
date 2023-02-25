@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import FooterNav from "../components/footer";
 import HeaderNav from "../components/header";
+import SubscribeForm from "../components/subscribe";
+import TestimonySection from "../components/testimony";
+import HomeCategories from "./categories";
 import HomeHero from "./hero";
 import './home.css';
 
 const Store = () => {
 
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        fetch("/api")
-            .then((res) => res.json())
-            .then((data) => setData(data.message));
-    }, []);
+
     return (
         <>
             <HeaderNav />
             <HomeHero />
-
-            <div className="progress-work">
-                <p>{!data ? "Loading..." : data}</p>
-            </div>
+            <HomeCategories />
+            <TestimonySection />
+            <SubscribeForm />
+            <FooterNav />
         </>
     )
 }

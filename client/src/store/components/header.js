@@ -1,4 +1,5 @@
 import React from "react";
+import "./component.css";
 import { Link } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 

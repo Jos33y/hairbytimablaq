@@ -1,126 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body{
     margin: 0;
-    padding: 0;
+    padding: 0; 
     width: 100%;
     height: 100%;
-    background: #f5f5f5;
+    background: #ffffff;
     color: #000000;
     overflow-x: hidden;
     font-family: 'Open Sans', sans-serif;
   }
 
-
-
-  /* top bar styles  */
-
-.top-bar{
-    padding: 10px 10px 5px;
-    background:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-    border-bottom: 1px solid #000000;
-    color: #000000;
-    font-family: 'Lato', sans-serif;
-}
-.top-bar .tag-line{
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-.top-bar .top-bar-side{
-    display: flex;
-    flex: auto;
-    flex-direction: row;
-
-}
-
-.top-bar .top-bar-side select{
-    font-size: 12px;
-    font-weight: 600;
-    color: #000000;
-    height: 30px;
-    width: 100px;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    padding: 0px;
-    margin-top: 0px;
-}
-.top-bar .top-bar-side select:focus{
-    box-shadow: none;
-    outline: none;
-}
-.top-bar .top-bar-side p{
-    font-size: 13px;
-    font-weight: 600;
-    padding-top: 5px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    cursor: pointer;
-}
-.top-bar .top-bar-side p .fa-solid{
-    margin-left: 5px;
-}
-
-/* header navbar styles */
-.Header-nav{
-    background: #000000;
-}
-.Header-nav .navbar{
-padding: 10px 30px;
-font-family: 'Lato', sans-serif;
-}
-
-.Header-nav .navbar .navbar-brand{
-    color: #e3c678;
-    font-size: 25px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-left: 20px;
-    font-family: 'Itim', cursive;
-}
-.Header-nav .navbar .navbar-brand img{
-    width: 60px;
-    margin-right: 10px;
-    border-radius: 10px;
-}
-
-.Header-nav .navbar .navbar-nav {
-    margin-left: 70px;
-}
-.Header-nav .navbar .navbar-nav .nav-item{
-    margin: 0px 20px
-}
-.Header-nav .navbar .navbar-nav .nav-item .nav-link{
-    color: #e3c678;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: capitalize;
-
-}
-
-.Header-nav .navbar  .form-inline{
-    padding-top: 8px;
-    margin-left: 20%;
-    display: flex;
-    flex: auto;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.Header-nav .navbar  .form-inline p{
-    font-size: 16px;
-    color: #e3c678;
-    cursor: pointer;
-}
-
-.Header-nav .navbar  .form-inline p span.cart-number{
-    color: #D1B000;
-    font-size: 14px;
-    font-weight: 500;
-
-}
 
 
 /* hero styles here */
@@ -169,6 +61,59 @@ font-family: 'Lato', sans-serif;
     border: 1px solid #D1B000;
     text-transform: uppercase;
 }
+
+/* product categories section */
+.home-categories{
+    margin-top: 5%;
+    padding: 30px 50px;
+}
+
+.home-categories h4.title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.home-categories .categories-box{
+    margin-top: 50px;
+}
+
+.home-categories .categories-box .categories-img{
+    margin: 0px 15px;
+}
+
+.home-categories .categories-box .categories-img img{
+   width: 250px;
+   box-shadow: 0px 0px 2px 1px rgba(158,158,158,0.75);
+-webkit-box-shadow: 0px 0px 2px 1px rgba(158,158,158,0.75);
+-moz-box-shadow: 0px 0px 2px 1px rgba(158,158,158,0.75);
+}
+
+.home-categories .categories-box .categories-title {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    top: -20px;
+}
+.home-categories .categories-box .categories-title .btn{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    background: #D1B000;
+    color: #000000;
+    border: 1px solid #D1B000;
+    border-radius: 1px;
+    padding: 10px;
+    width: 60%;
+}
+
+
+
+
+
+
+
   /* progress section to be removed */
   .progress-work{
     text-align: center;
@@ -176,3 +121,4 @@ font-family: 'Lato', sans-serif;
     font-weight: 600;
     margin-top: 20px;
   }
+
