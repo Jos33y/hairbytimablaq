@@ -6,6 +6,7 @@ import Admin from './admin/auth';
 import './App.css';
 import ErrorPage from './store/error/error';
 import Shop from './store/shop';
+import ContactUs from './store/contact';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Store />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/404" element={<ErrorPage />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>

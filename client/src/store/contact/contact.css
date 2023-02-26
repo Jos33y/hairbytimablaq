@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.contact-container {
+    margin-bottom: 5%;
+    font-family: "Poppins", sans-serif;
+}
+
+.contact-section{
+    margin-top: 3%;
+    padding: 20px 50px;
+}
+.contact-section h3.title{
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    color: #333333;
+    text-transform: capitalize;
+}
+
+.contact-section .contact-info .contact-info-text{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 5%;
+}
+
+.contact-section .contact-info .contact-info-text .contact-icon .fa-solid{
+    font-size: 25px;
+    color: #D1B000;
+}
+.contact-section .contact-info .contact-info-text p.contact-desc{
+    font-weight: 400;
+    font-size: 14px;
+    color: #797979;
+}
+
+.contact-section .contact-form{
+    margin-top: 2%;
+}
+.contact-section .contact-form .contact-form-content{
+    margin-top: 30px;
+}
+.contact-section .contact-form .contact-form-content .form-group{
+    margin: 20px 10px;
+}
+
+.contact-section .contact-form .contact-form-content .form-group label{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+.contact-section .contact-form .contact-form-content .form-group input{
+    font-size: 15px;
+    color: #333333;
+    border-radius: 1px;
+    height: 48px;
+    border: 1px solid #b6b6b6;
+}
+
+.contact-section .contact-form .contact-form-content .form-group textarea{
+    font-size: 15px;
+    color: #333333;
+    border-radius: 1px;
+    border: 1px solid #b6b6b6;
+}
+.contact-section .contact-form .contact-form-content .form-group input:focus{
+ outline: none;
+ box-shadow: none;   
+}
+
+.contact-section .contact-form .contact-form-content .form-group textarea:focus{
+    outline: none;
+    box-shadow: none;   
+   }
+
+   .contact-section .contact-form .contact-form-content .form-group .btn{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    background: #D1B000;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 1px;
+    border: 1px solid #D1B000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+   }

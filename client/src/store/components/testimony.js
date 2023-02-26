@@ -9,7 +9,7 @@ const TestimonySection = () => {
     <>
       <div className="Testimony-container">
         <div className="row">
-            <h3> A positive Experience in many ways.</h3>
+          <h3> A positive Experience in many ways.</h3>
           <div className="col-md-4">
             <div className="testimony-box">
               <div className="testimony-image">
@@ -18,10 +18,10 @@ const TestimonySection = () => {
               <div className="testimony-text">
                 <div className="description">
                   <p>
-                    “ Hair by timablaq has exceeded my expectations with their
-                    silky, natural-looking hair extensions. The customer service
-                    is excellent and I highly recommend them to anyone looking
-                    for a new look ”
+                    “ I highly recommend Hair by timablaq to anyone seeking a
+                    new look, as their silky and natural-looking hair extensions
+                    have surpassed my expectations. Their customer service is
+                    exceptional. ”
                   </p>
                 </div>
                 <div className="testifier">
@@ -36,9 +36,6 @@ const TestimonySection = () => {
             </div>
           </div>
 
-          
-
-
           <div className="col-md-4">
             <div className="testimony-box">
               <div className="testimony-image">
@@ -47,7 +44,9 @@ const TestimonySection = () => {
               <div className="testimony-text">
                 <div className="description">
                   <p>
-                    “ Hair by timablaq has given me the confidence to try new styles. Their hair extensions are versatile and I can style them in so many different ways ”
+                    “ Thanks to Hair by timablaq, I have gained the confidence
+                    to experiment with new hairstyles as their hair extensions
+                    are flexible and can be styled in numerous ways. ”
                   </p>
                 </div>
                 <div className="testifier">
@@ -62,9 +61,6 @@ const TestimonySection = () => {
             </div>
           </div>
 
-
-
-
           <div className="col-md-4">
             <div className="testimony-box">
               <div className="testimony-image">
@@ -73,7 +69,10 @@ const TestimonySection = () => {
               <div className="testimony-text">
                 <div className="description">
                   <p>
-                    “  I am in love with Hair by timablaq! The hair extensions are so soft and natural-looking, I get so many compliments. Plus, the customer service is fantastic ”
+                    “ The hair extensions from Hair by timablaq have captured my
+                    heart! They are incredibly soft and have a natural
+                    appearance, which often results in many compliments.
+                    Furthermore, their customer service is exceptional. ”
                   </p>
                 </div>
                 <div className="testifier">
@@ -87,9 +86,6 @@ const TestimonySection = () => {
               </div>
             </div>
           </div>
-
-
-
         </div>
       </div>
     </>

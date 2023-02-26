@@ -1,6 +1,5 @@
 import React from "react";
 import "./shop.css";
-import { Link } from "react-router-dom";
 import ProductCard from "../components/product-card";
 import ProdOne from "../assets/products/prod-1.jpeg";
 import ProdTwo from "../assets/products/prod-2.jpeg";
@@ -10,36 +9,14 @@ import HeaderImg from "../assets/images/african-woman-tp.png";
 import HeaderNav from "../components/header";
 import FooterNav from "../components/footer";
 import SubscribeForm from "../components/subscribe";
+import BreadCrumb from "../components/breadcrumb";
 
 const Shop = () => {
     return (
         <>
-        <HeaderNav />
+            <HeaderNav />
             <div className="shop-container">
-                <div className="shop-header">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-5">
-                            <div className="header-img">
-                                <img src={HeaderImg} alt="header-img" className="img-fluid" />
-                            </div>
-                        </div>
-                        <div className="col-lg-7">
-                            <div className="shop-width">
-                                <div className="shop-header-text">
-                                    <h4> Shop  </h4>
-                                    <div className="breadcrumb">
-                                        <ul>
-                                            <li> <Link to="/" className="breadcrumb-link" >Home <i class="fa-solid fa-angle-right"></i> </Link></li>
-                                            <li> <Link to="/shop" className="breadcrumb-link" >shop </Link></li>
-                                            {/* <li> <Link to="/" className="breadcrumb-link active" >Water Curly </Link></li> */}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <BreadCrumb title="shop" breadImg={HeaderImg} />
 
                 <div className="shop-section">
                     <div className="shop-actions">
