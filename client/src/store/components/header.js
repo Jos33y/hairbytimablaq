@@ -41,11 +41,11 @@ const HeaderNav = () => {
                                 <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/404" className="nav-link">Shop</Link>
+                                <Link to="/shop" className="nav-link">shop</Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to="/about" className="nav-link">About</Link>
+                                <Link to="/404" className="nav-link">About</Link>
                             </li>
 
                             <li className="nav-item">

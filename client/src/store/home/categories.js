@@ -7,7 +7,7 @@ const HomeCategories = () => {
     return (
         <>
         <div className="home-categories">
-            <h4 className="title">Product Collections</h4>
+            <h4 className="title">Hair Collections</h4>
 
             <div className="row">
 

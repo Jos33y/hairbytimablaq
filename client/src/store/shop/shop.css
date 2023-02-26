@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.shop-container {
+    margin-bottom: 5%;
+    font-family: "Poppins", sans-serif;
+}
+
+.shop-container .shop-header {
+    padding: 20px 50px 0px;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    /* background-image: url("../assets/images/african-woman-tp.png");
+    background-size: contain;
+    background-repeat: no-repeat; */
+}
+
+
+.shop-container .shop-header .header-img img{
+    width: 220px;
+}
+.shop-container .shop-header .shop-width {
+    display: flex;
+    
+}
+
+.shop-container .shop-header .shop-header-text {
+    text-align: center;
+    max-width: 500px;
+}
+
+.shop-container .shop-header .shop-header-text h4 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #565656;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb {
+    text-align: center;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb ul {
+    list-style: none;
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb ul li {
+    margin: 5px 5px;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb ul li .breadcrumb-link {
+    text-decoration: none;
+    color: #5c5c5c;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb ul li .breadcrumb-link .fa-solid{
+    font-weight: 600;
+    margin: 0px 10px;
+    font-size: 14px;
+    color: #2c2c2c;
+}
+
+.shop-container .shop-header .shop-header-text .breadcrumb ul li .breadcrumb-link.active {
+    color: #565656;
+    font-weight: 600;
+}
+
+
+.shop-section{
+    padding: 20px 50px;
+}
+
+.shop-section .shop-actions{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+
+.shop-section .shop-actions .shop-one p{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #575757;
+    font-weight: 500;
+}
+
+.shop-section .shop-actions .shop-one .form-group select{
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #565656;
+    border: 1px solid #989898;
+    width: 250px;
+    border-radius: 1px;
+}
+
+.shop-section .shop-actions .shop-one .form-group select:focus{
+    outline: none;
+    box-shadow: none;
+}
