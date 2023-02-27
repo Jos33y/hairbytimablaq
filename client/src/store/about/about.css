@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.about-container {
+    margin-bottom: 5%;
+    font-family: "Poppins", sans-serif;
+}
+
+.about-section {
+    margin-top: 3%;
+    padding: 20px 50px;
+}
+.about-section .about-section-details{
+    margin-top: 10%;
+    margin-right: 20px;
+}
+.about-section .about-section-details .title{
+    font-size: 30px;
+    color: #2e2e2e;
+    font-weight: 600;
+
+}
+
+.about-section .about-section-details .about-story{
+    margin-top: 30px;
+}
+
+
+.about-section .about-section-details .about-story p.p-tag{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #454545;
+    margin-top: 30px;
+}
+
+.about-section .about-img{
+    margin-top: 0px;
+    margin-left: 50px;
+}
+
+.about-section .about-img .img-fluid{
+    width: 450px;
+    object-fit: cover;
+}

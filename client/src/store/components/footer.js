@@ -13,7 +13,7 @@ const FooterNav = () => {
                         <div className="footer-lists">
                             <ul>
                                 <li> <Link className="footer-link" to="/about">About Us </Link></li>
-                                <li> <Link className="footer-link" to="/collections">Hair Collections </Link></li>
+                                <li> <Link className="footer-link" to="/shop">Hair Collections </Link></li>
                                 <li> <Link className="footer-link" to="/contact">Contact </Link></li>
                             </ul>
                         </div>

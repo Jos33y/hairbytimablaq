@@ -7,7 +7,7 @@ import TimaBlaq from "../assets/images/timablaq.jpeg";
 const HeaderNav = () => {
 
     const navigate = useNavigate();
-    
+
     return (
         <>
             <div className="top-bar">
@@ -49,7 +49,7 @@ const HeaderNav = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link to="/404" className="nav-link">About</Link>
+                                <Link to="/about" className="nav-link">About</Link>
                             </li>
 
                             <li className="nav-item">
