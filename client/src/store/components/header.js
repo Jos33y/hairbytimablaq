@@ -1,9 +1,13 @@
 import React from "react";
 import "./component.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 
+
 const HeaderNav = () => {
+
+    const navigate = useNavigate();
+    
     return (
         <>
             <div className="top-bar">
@@ -56,7 +60,7 @@ const HeaderNav = () => {
                         <form className="form-inline my-2 my-lg-0">
                             <p><i class="fa-solid fa-magnifying-glass"></i> </p>
                             <p><i class="fa-solid fa-truck-fast"></i> </p>
-                            <p><i class="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
+                            <p onClick={() => {navigate('/cart')}} ><i class="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
                         </form>
                     </div>
                 </nav>

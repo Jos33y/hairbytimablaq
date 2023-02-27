@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.cart-container {
+    margin-bottom: 5%;
+    font-family: "Poppins", sans-serif;
+}
+
+.cart-section {
+    margin-top: 3%;
+    padding: 20px 50px;
+}
+
+.cart-box .cart-filled .cart-filled-info {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-img {
+    width: 100px;
+    height: 120px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+
+    box-shadow: 0px 0px 5px 3px rgba(173, 173, 173, 0.75);
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(173, 173, 173, 0.75);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(173, 173, 173, 0.75);
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-container {
+    padding: 20px 10px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details{
+    margin-top: 10px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-name {
+    font-size: 13px;
+    color: #333333;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-price {
+    font-size: 14px;
+    color: #454545;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity {
+    margin-top: 5px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    border: 1px solid #9b9b9b;
+    margin-top: 15px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group .btn {
+    color: #252525;
+    border: 0px solid transparent;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group .btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group .btn .fa-solid{
+    font-size: 10px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group input {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 2px;
+    color: #373737;
+    text-align: center;
+    border: 0px solid transparent;
+    border-radius: 1px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-quantity .form-group input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-product .cart-price {
+    margin-top: 20px;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-price p.cart-total-price {
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #252525;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-price .remove {
+    font-size: 13px;
+    font-weight: 400;
+    color: #808080;
+    cursor: pointer;
+}
+
+.cart-box .cart-filled .cart-filled-info .cart-price .remove .fa-solid{
+    margin-right: 10px;
+}
+.cart-box .cart-empty {
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.cart-box .cart-empty h3 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #545454;
+    margin: 40px 0;
+}
+
+.cart-box .cart-buttons {
+    margin-top: 10px;
+}
+
+.cart-box .cart-buttons .btn {
+    border: 2px solid #000000;
+    font-size: 15px;
+    font-weight: 500;
+    color: #252525;
+    padding: 10px 35px;
+    background: #ffffff;
+    border-radius: 1px;
+}
+
+.order-container .coupon-container .form-group {
+    margin-bottom: 20px;
+}
+
+.order-container .coupon-container .form-group label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333333;
+    text-transform: capitalize;
+}
+
+.order-container .coupon-container .form-group .form-inline {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    border: 1px solid #b6b6b6;
+}
+
+.order-container .coupon-container .form-group .form-inline input {
+    font-size: 14px;
+    color: #454545;
+    border-radius: 1px;
+    height: 42px;
+    border: 0px solid #b6b6b6;
+}
+
+.order-container .coupon-container .form-group .form-inline input::placeholder {
+    color: #a0a0a0;
+}
+
+.order-container .coupon-container .form-group .form-inline input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.order-container .coupon-container .form-group .form-inline .btn {
+    font-size: 13px;
+    font-weight: 600;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 1px;
+    border: 1px solid #adadad;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.order-container .order-summary {
+    margin-top: 50px;
+    padding: 20px 30px;
+    background: #ededed;
+}
+
+.order-container .order-summary h4 {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 500;
+    color: #454545;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.order-container .order-summary .order-summary-table .order-summary-list {
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    justify-content: space-between;
+}
+
+.order-container .order-summary .order-summary-table .order-summary-list .sub-total {
+    font-size: 14px;
+    font-weight: 400;
+    color: #454545;
+}
+
+.order-container .order-summary .order-summary-table .order-summary-list .total {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+}
+
+.order-container .order-summary .order-summary-table .order-button {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.order-container .order-summary .order-summary-table .order-button .btn {
+    border-radius: 1px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 30px;
+    background: #000000;
+    color: #ffffff;
+}
