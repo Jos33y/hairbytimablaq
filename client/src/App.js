@@ -9,6 +9,7 @@ import Shop from './store/shop';
 import ContactUs from './store/contact';
 import ShopCart from './store/cart';
 import AboutUs from './store/about';
+import TrackOrder from './store/track';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/cart" element={<ShopCart />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/track" element={<TrackOrder />} />
           <Route path="/404" element={<ErrorPage />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>

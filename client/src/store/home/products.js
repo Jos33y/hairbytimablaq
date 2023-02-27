@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import ProdOne from "../assets/products/prod-1.jpeg";
 import ProdTwo from "../assets/products/prod-2.jpeg";
 import ProdThree from "../assets/products/prod-3.jpeg";
@@ -9,6 +10,9 @@ import ProdEight from "../assets/products/prod-8.jpeg";
 import ProductCard from "../components/product-card";
 
 const HomeProducts = () => {
+
+    const navigate = useNavigate();
+
     return (
         <>
             <div className="home-products">
@@ -66,7 +70,7 @@ const HomeProducts = () => {
                 </div>
 
                 <div className="home-products-button">
-                    <button className="btn btn-md btn-primary">View all products</button>
+                    <button onClick={() => {navigate('/shop')}} className="btn btn-md btn-primary">View all products</button>
                 </div>
             </div>
         </>
