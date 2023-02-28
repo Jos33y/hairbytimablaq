@@ -21,17 +21,17 @@ const ContactUs = () => {
                                 <h3 className="title"> Get in touch</h3>
                                 <div className="contact-info-text">
                                     <div className="contact-info-desc">
-                                        <p className="contact-icon"> <i class="fa-solid fa-location-dot"></i> </p>
+                                        <p className="contact-icon"> <i className="fa-solid fa-location-dot"></i> </p>
                                         <p className="contact-desc"> 203, Envato Labs, Behind Alis Steet</p>
                                     </div>
 
                                     <div className="contact-info-desc">
-                                        <p className="contact-icon"> <i class="fa-solid fa-phone"></i> </p>
+                                        <p className="contact-icon"> <i className="fa-solid fa-phone"></i> </p>
                                         <p className="contact-desc"> +12 345 678 910 / +23 122 345 678 </p>
                                     </div>
 
                                     <div className="contact-info-desc">
-                                        <p className="contact-icon"> <i class="fa-solid fa-envelope"></i> </p>
+                                        <p className="contact-icon"> <i className="fa-solid fa-envelope"></i> </p>
                                         <p className="contact-desc"> Infor.deercreative@gmail.com </p>
                                     </div>
                                 </div>

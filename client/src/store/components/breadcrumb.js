@@ -18,7 +18,7 @@ const BreadCrumb = ({title, breadImg}) => {
                                 <h4> {title}  </h4>
                                 <div className="breadcrumb">
                                     <ul>
-                                        <li> <Link to="/" className="breadcrumb-link" >Home <i class="fa-solid fa-angle-right"></i> </Link></li>
+                                        <li> <Link to="/" className="breadcrumb-link" >Home <i className="fa-solid fa-angle-right"></i> </Link></li>
                                         <li> <span className="breadcrumb-link"> {title} </span> </li>
 
                                     </ul>

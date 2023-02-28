@@ -30,9 +30,9 @@ const ShopCart = () => {
                                                 <p className="prod-price">₦8,000.00 </p>
                                                 <div className="prod-quantity">
                                                     <div className="form-group"> 
-                                                        <button className="btn btn-sm btn-outline"> <i class="fa-solid fa-minus"></i> </button>
+                                                        <button className="btn btn-sm btn-outline"> <i className="fa-solid fa-minus"></i> </button>
                                                         <input className="form-control" type="text" value="1" maxLength="3" />
-                                                        <button className="btn btn-sm btn-outline"> <i class="fa-solid fa-plus"></i> </button>
+                                                        <button className="btn btn-sm btn-outline"> <i className="fa-solid fa-plus"></i> </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -40,7 +40,7 @@ const ShopCart = () => {
                                         </div>
                                         <div className="cart-price">
                                             <p className="cart-total-price"> ₦16,000.00 </p>
-                                            <p className="remove"> <i class="fa-solid fa-xmark"></i>  Remove</p>
+                                            <p className="remove"> <i className="fa-solid fa-xmark"></i>  Remove</p>
                                         </div>
                                     </div>
 
@@ -63,7 +63,7 @@ const ShopCart = () => {
                             <div className="order-container">
                                 <div className="coupon-container">
                                     <div className="form-group">
-                                        <label class="form-label">Coupon Code </label>
+                                        <label className="form-label">Coupon Code </label>
                                         <div className="form-inline">
                                             <input type="text" placeholder="Enter coupon code" className="form-control" />
                                             <button className="btn btn-md btn-primary"> Apply </button>

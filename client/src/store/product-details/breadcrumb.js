@@ -1,5 +1,4 @@
 
-import ProdOne from "../assets/products/prod-1.jpeg";
 import { Link } from "react-router-dom";
 
 const DetailsBreadCrumb = () => {
@@ -14,8 +13,8 @@ const DetailsBreadCrumb = () => {
                                 <h4> Woolen T-Shirt  </h4>
                                 <div className="breadcrumb">
                                     <ul>
-                                        <li> <Link to="/" className="breadcrumb-link" >Home <i class="fa-solid fa-angle-right"></i> </Link></li>
-                                        <li> <Link to="/shop" className="breadcrumb-link" >Shop <i class="fa-solid fa-angle-right"></i> </Link></li>
+                                        <li> <Link to="/" className="breadcrumb-link" >Home <i className="fa-solid fa-angle-right"></i> </Link></li>
+                                        <li> <Link to="/shop" className="breadcrumb-link" >Shop <i className="fa-solid fa-angle-right"></i> </Link></li>
                                         <li> <span className="breadcrumb-link"> Woolen T-Shirt </span> </li>
                                     </ul>
                                 </div>

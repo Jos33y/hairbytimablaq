@@ -28,7 +28,7 @@ const TestimonySection = () => {
                   <p> Stephanie </p>
                   <p>
                     <Link to="https://instagram.com" className="testifier-link">
-                      <i class="fa-brands fa-instagram"></i>
+                      <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </p>
                 </div>
@@ -53,7 +53,7 @@ const TestimonySection = () => {
                   <p> Aryarr Star </p>
                   <p>
                     <Link to="https://instagram.com" className="testifier-link">
-                      <i class="fa-brands fa-instagram"></i>
+                      <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </p>
                 </div>
@@ -79,7 +79,7 @@ const TestimonySection = () => {
                   <p> Tochi deluxe </p>
                   <p>
                     <Link to="https://instagram.com" className="testifier-link">
-                      <i class="fa-brands fa-instagram"></i>
+                      <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </p>
                 </div>

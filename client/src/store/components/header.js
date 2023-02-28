@@ -22,7 +22,7 @@ const HeaderNav = () => {
                                 <option value="1">USD $</option>
                                 <option value="2">GMD D</option>
                             </select>
-                            <p onClick={() => {navigate('/track')}}>Track order  <i class="fa-solid fa-truck-fast"></i></p>
+                            <p onClick={() => {navigate('/track')}}>Track order  <i className="fa-solid fa-truck-fast"></i></p>
                         </div>
                     </div>
                 </div>
@@ -58,9 +58,9 @@ const HeaderNav = () => {
 
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
-                            <p><i class="fa-solid fa-magnifying-glass"></i> </p>
-                            <p onClick={() => {navigate('/track')}} ><i class="fa-solid fa-truck-fast"></i> </p>
-                            <p onClick={() => {navigate('/cart')}} ><i class="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
+                            <p><i className="fa-solid fa-magnifying-glass"></i> </p>
+                            <p onClick={() => {navigate('/track')}} ><i className="fa-solid fa-truck-fast"></i> </p>
+                            <p onClick={() => {navigate('/cart')}} ><i className="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
                         </form>
                     </div>
                 </nav>

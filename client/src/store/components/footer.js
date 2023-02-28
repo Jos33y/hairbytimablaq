@@ -2,6 +2,7 @@ import React from "react";
 import "./component.css";
 import { Link } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
+import GoToTop from "./go-to-top";
 
 const FooterNav = () => {
     return (
@@ -36,7 +37,7 @@ const FooterNav = () => {
                             <h5> Follow us</h5>
                             <ul className="social-icons">
                                 <li> <Link className="footer-icons" to="https://twitter.com/"> <i className="fa-brands fa-twitter"></i> </Link> </li>
-                                <li> <Link className="footer-icons" to="https://instagram.com/"> <i class="fa-brands fa-square-instagram"></i> </Link> </li>
+                                <li> <Link className="footer-icons" to="https://instagram.com/"> <i className="fa-brands fa-square-instagram"></i> </Link> </li>
                             </ul>
                         </div>
 
@@ -62,6 +63,7 @@ const FooterNav = () => {
                     <p> Copyright <i className="fa-regular fa-copyright"></i> 2023  <span className="name">hairbytimablaq </span> | Designed by <Link to="https://instagram.com/" className="name-link"> boy_programmer </Link>  </p>
                 </div>
             </div>
+            <GoToTop />
         </>
     );
 }
