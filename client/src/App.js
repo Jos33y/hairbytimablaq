@@ -12,6 +12,7 @@ import AboutUs from './store/about';
 import TrackOrder from './store/track';
 import PageLoading from './store/components/loading';
 import ProductDetails from './store/product-details';
+import CheckOut from './store/checkout';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/track" element={<TrackOrder />} />
+          <Route path="/checkout" element={<CheckOut />} />
           <Route path="/product/product-name" element={<ProductDetails />} />
           <Route path="/404" element={<ErrorPage />} />
           <Route path="/loading" element={<PageLoading />} />

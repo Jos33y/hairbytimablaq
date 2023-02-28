@@ -1,5 +1,4 @@
 import React from "react";
-import ProdOne from "../assets/products/prod-1.jpeg";
 import "./details.css";
 import RelatedProducts from "./related";
 import DetailsBreadCrumb from "./breadcrumb";

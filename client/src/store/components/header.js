@@ -60,7 +60,7 @@ const HeaderNav = () => {
                         <form className="form-inline my-2 my-lg-0">
                             <p><i className="fa-solid fa-magnifying-glass"></i> </p>
                             <p onClick={() => {navigate('/track')}} ><i className="fa-solid fa-truck-fast"></i> </p>
-                            <p onClick={() => {navigate('/cart')}} ><i className="fa-solid fa-cart-shopping"></i> <span className="cart-number">(0)</span>  </p>
+                            <p onClick={() => {navigate('/cart')}} ><i className="fa-solid fa-cart-shopping"></i> <span className="cart-number">(1)</span>  </p>
                         </form>
                     </div>
                 </nav>

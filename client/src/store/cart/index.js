@@ -5,8 +5,11 @@ import BreadCrumb from "../components/breadcrumb";
 import HeaderNav from "../components/header";
 import SubscribeForm from "../components/subscribe";
 import FooterNav from "../components/footer";
+import { useNavigate } from "react-router-dom";
 
 const ShopCart = () => {
+    const navigate =  useNavigate();
+
     return (
         <>
         <HeaderNav />
@@ -26,7 +29,7 @@ const ShopCart = () => {
                                                 <img src={ProdOne} alt="" className="img-fluid" />
                                             </div>
                                             <div className="cart-product-details">
-                                                <p className="prod-name">Product Name</p>
+                                                <p className="prod-name">Layered raw wig</p>
                                                 <p className="prod-price">₦8,000.00 </p>
                                                 <div className="prod-quantity">
                                                     <div className="form-group"> 
@@ -87,7 +90,7 @@ const ShopCart = () => {
                                         </div>
 
                                         <div className="order-button">
-                                            <button className="btn btn-md btn-secondary"> Proceed to Checkout </button>
+                                            <button onClick={() => { navigate('/checkout') }} className="btn btn-md btn-secondary"> Proceed to Checkout </button>
                                         </div>
                                     </div>
                                 </div>
