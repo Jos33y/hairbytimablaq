@@ -367,8 +367,10 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     border: 1px solid #d7d7d7;
     font-family: "Poppins", sans-serif;
     margin-bottom: 30px;
+}
 
-    
+.product-card .product-link{
+  text-decoration: none;
 }
 .product-card .product-img{
     height: 270px;
@@ -406,13 +408,13 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     letter-spacing: 0.5px;
 }
 
-.product-card .product-desc .product-button{
+.product-card  .product-button{
     margin-top: 10px;
     height: 40px;
     
 }
 
-.product-card .product-desc .product-button .btn{
+.product-card .product-button .btn{
     display: none;
     width: 100%;
     font-size: 13px;
@@ -515,3 +517,21 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     color: #565656;
     font-weight: 600;
 }
+
+
+/* page load styles */
+
+.page-loading {
+    
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+
+
+   
+  }
+  
+ 
+  

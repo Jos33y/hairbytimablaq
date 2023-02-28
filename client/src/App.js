@@ -10,6 +10,8 @@ import ContactUs from './store/contact';
 import ShopCart from './store/cart';
 import AboutUs from './store/about';
 import TrackOrder from './store/track';
+import PageLoading from './store/components/loading';
+import ProductDetails from './store/product-details';
 
 
 const App = () => {
@@ -24,7 +26,9 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/track" element={<TrackOrder />} />
+          <Route path="/product/product-name" element={<ProductDetails />} />
           <Route path="/404" element={<ErrorPage />} />
+          <Route path="/loading" element={<PageLoading />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>

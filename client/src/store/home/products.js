@@ -8,7 +8,7 @@ import ProdSix from "../assets/products/prod-6.jpeg";
 import ProdSeven from "../assets/products/prod-7.jpeg";
 import ProdEight from "../assets/products/prod-8.jpeg";
 import ProductCard from "../components/product-card";
-
+ 
 const HomeProducts = () => {
 
     const navigate = useNavigate();

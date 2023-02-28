@@ -29,7 +29,7 @@ const ShopCart = () => {
                                                 <p className="prod-name">Product Name</p>
                                                 <p className="prod-price">₦8,000.00 </p>
                                                 <div className="prod-quantity">
-                                                    <div className="form-group">
+                                                    <div className="form-group"> 
                                                         <button className="btn btn-sm btn-outline"> <i class="fa-solid fa-minus"></i> </button>
                                                         <input className="form-control" type="text" value="1" maxLength="3" />
                                                         <button className="btn btn-sm btn-outline"> <i class="fa-solid fa-plus"></i> </button>
