@@ -14,7 +14,7 @@ const CheckOut = () => {
         <>
             <HeaderNav />
             <div className="checkout-container">
-                <CheckoutBreadCrumb />
+                <CheckoutBreadCrumb page="checkout" />
 
                 <div className='checkout-section'>
                     <div className='row'>
@@ -154,7 +154,7 @@ const CheckOut = () => {
                             <CheckOutOrderSummary />
 
                             <div className='form-buttons'>
-                                <button className='btn btn-primary' type='submit'> Place Order </button>
+                                <button onClick={() => { navigate('/checkout/payment') }} className='btn btn-primary'> Place Order </button>
                                 <p onClick={() => { navigate('/cart') }} className='return-link'>Return to Cart </p>
                             </div>
                         </div>

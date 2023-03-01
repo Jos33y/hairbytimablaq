@@ -4,6 +4,7 @@ const CheckOutOrderSummary = () => {
     return (
         <>
             <div className="order-container">
+
                 <div className="coupon-container">
                     <div className="form-group">
                         <label className="form-label">Coupon Code </label>
@@ -44,7 +45,7 @@ const CheckOutOrderSummary = () => {
                         <hr />
                         <div className="order-summary-list">
                             <p className="sub-total">Shipping</p>
-                            <p className="sub-total">₦16,000.00</p>
+                            <p className="sub-total">Yet to be calculated</p>
                         </div>
 
                         <hr />
