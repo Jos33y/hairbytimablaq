@@ -3,7 +3,7 @@ import "./checkout.css";
 import CheckoutBreadCrumb from './breadcrumb';
 import { useNavigate } from 'react-router-dom';
 import HeaderNav from '../components/header';
-import FooterNav from '../components/footer';
+import FooterNav from '../components/footer'; 
 
 const CheckOutPayment = () => {
 

@@ -14,6 +14,7 @@ import PageLoading from './store/components/loading';
 import ProductDetails from './store/product-details';
 import CheckOut from './store/checkout';
 import CheckOutPayment from './store/checkout/payment';
+import OrderConfirmation from './store/checkout/order-confirmation';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/track" element={<TrackOrder />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/checkout/payment" element={<CheckOutPayment />} />
+          <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
           <Route path="/product/product-name" element={<ProductDetails />} />
           <Route path="/404" element={<ErrorPage />} />
           <Route path="/loading" element={<PageLoading />} />
