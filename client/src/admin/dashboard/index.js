@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     const navigate = useNavigate()
 
     const [loading, setLoading] = useState(true)
-     // eslint-disable-next-line
+    // eslint-disable-next-line
     const [profileData, setProfileData] = useState(null)
 
 
@@ -68,13 +68,15 @@ const AdminDashboard = () => {
             {loading ?
                 (<DashSpinner />) : (
                     <>
-                        <TopBar />
-                        <div className="main-wrap">
-                            <SideBar />
-                            <div id="main-body" className="main-body">
-                                {pages()}
+                        <div className="admin-wrap">
+                            <TopBar />
+                            <div className="main-wrap">
+                                <SideBar />
+                                <div id="main-body" className="main-body">
+                                    {pages()}
+                                </div>
+
                             </div>
-                            
                         </div>
 
                     </>
