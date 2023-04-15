@@ -42,7 +42,7 @@ const TrackOrder = () => {
       <SubscribeForm />
       <FooterNav />
     </>
-  );
+  ); 
 };
 
 export default TrackOrder;

@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Store from './store/home'
-import Admin from './admin/auth';
+import AdminLogin from './admin/auth';
+import AdminRegister from './admin/auth/register';
+import AdminDashboard from './admin/dashboard';
+import PrivateRoute from './components/private-route';
 
 import './App.css';
 import ErrorPage from './store/error/error';
@@ -16,6 +19,9 @@ import CheckOut from './store/checkout';
 import CheckOutPayment from './store/checkout/payment';
 import OrderConfirmation from './store/checkout/order-confirmation';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
 
@@ -23,6 +29,7 @@ const App = () => {
     <>
       <Router>
         <Routes>
+          <Route path="*" element={<ErrorPage />} />
           <Route path="/" element={<Store />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<ShopCart />} />
@@ -33,13 +40,17 @@ const App = () => {
           <Route path="/checkout/payment" element={<CheckOutPayment />} />
           <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
           <Route path="/product/product-name" element={<ProductDetails />} />
-          <Route path="/404" element={<ErrorPage />} />
           <Route path="/loading" element={<PageLoading />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
+
+          <Route path="/admin/dashboard/:dash_url" element={<PrivateRoute />}>
+            <Route path="/admin/dashboard/:dash_url" element={<AdminDashboard />} />
+          </Route>
         </Routes>
       </Router>
+      <ToastContainer />
     </>
   );
 }
-export default App; 
- 
+export default App;

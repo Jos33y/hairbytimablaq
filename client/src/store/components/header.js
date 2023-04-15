@@ -29,7 +29,7 @@ const HeaderNav = () => {
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <div className="Header-nav">
                 <nav className="navbar navbar-expand-lg navbar-dark">

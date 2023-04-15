@@ -1,47 +1,53 @@
 import React, { useState } from "react";
 import "./auth.css";
 import AuthHeader from "./auth-header";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    updateProfile,
+} from "firebase/auth";
+import {doc, setDoc, serverTimestamp} from "firebase/firestore"
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase.config";
 import { toast } from "react-toastify";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
 
-const AdminLogin = () => {
-    const navigate = useNavigate();
-    const [disable, setDisable] = useState(false);
+const AdminRegister = () => {
+    const[disable, setDisable]= useState(false)
     const [formData, setFormData] = useState({
+        fullName: "",
         email: "",
         password: "",
+        adminRole: "",
     });
-
-    const { email, password } = formData;
+    const { fullName, email, password } = formData;
+    const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         setDisable(true);
         e.preventDefault();
+
         try {
             const auth = getAuth();
-            const userCredential = await signInWithEmailAndPassword(
+            const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 email,
                 password
             );
-            if (userCredential.user) {
-                // check if user exist
-                const docRef = doc(db, "admins", `${userCredential.user.uid}`);
-                const docSnap = await getDoc(docRef);
-                //if user doesnt exist
+            const user = userCredential.user;
+            updateProfile(auth.currentUser, {
+                displayName: fullName,
+            });
+            const formDataCopy = { ...formData };
+            delete formDataCopy.password;
+            formDataCopy.adminRole = "Administrator";
+            formDataCopy.timestamp = serverTimestamp();
 
-                if (docSnap.exists()) {
-                    navigate("/admin/dashboard/home");
-                } else {
-                    toast.error("invalid login details");
-                }
-            }
+            await setDoc(doc(db, 'admins', user.uid), formDataCopy).then(() =>{})
+            navigate("/admin/login");
+
         } catch (error) {
+            toast.error("couldn't sign in admin");
             console.log({ error });
-            toast.error("Can't login user");
         }
         setDisable(false);
     };
@@ -71,8 +77,24 @@ const AdminLogin = () => {
                         <div className="auth-form">
                             <form onSubmit={onSubmit} autoComplete="on">
                                 <div className="form-header">
-                                    <h5 className="title">Login your account </h5>
+                                    <h5 className="title">Create your account </h5>
                                 </div>
+
+                                <div className="form-group">
+                                    <label className="label-primary">Full Name </label>
+                                    <input
+                                        type="text"
+                                        id="fullName"
+                                        value={fullName}
+                                        onChange={onChange}
+                                        required={true}
+                                        maxLength={100}
+                                        className="form-control"
+                                        autoComplete="full-name"
+                                        placeholder="Your Full Name"
+                                    />
+                                </div>
+
                                 <div className="form-group">
                                     <label className="label-primary">Email </label>
                                     <input
@@ -82,8 +104,8 @@ const AdminLogin = () => {
                                         onChange={onChange}
                                         required={true}
                                         className="form-control"
-                                        placeholder="Your Email Address"
                                         autoComplete="email"
+                                        placeholder="Your Email Address"
                                     />
                                 </div>
 
@@ -96,25 +118,24 @@ const AdminLogin = () => {
                                         onChange={onChange}
                                         required={true}
                                         className="form-control"
+                                        autoComplete="new-password"
                                         placeholder="Your Password"
-                                        autoComplete="current-password"
                                     />
                                 </div>
 
                                 <div className="form-group">
                                     <button
-                                        disabled={disable}
                                         type="submit"
-                                        className="btn btn-primary"
+                                        disabled={disable}
+                                        className="btn btn-md btn-primary"
                                     >
-                                        Login
+                                        Create Account
                                     </button>
                                 </div>
 
                                 <p className="p-create">
-
-                                    <Link className="link" to="/admin/register">
-                                        Create Account
+                                    <Link className="link" to="/admin/login">
+                                        Login to account
                                     </Link>
                                 </p>
                             </form>
@@ -126,4 +147,4 @@ const AdminLogin = () => {
     );
 };
 
-export default AdminLogin;
+export default AdminRegister;

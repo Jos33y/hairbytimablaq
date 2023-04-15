@@ -100,7 +100,7 @@ const CheckOut = () => {
                                     </div>
 
 
-                                    {/* row for form group */}
+                                    {/* row for form group */} 
                                     <div className='row'>
                                         <div className='col-md-10'>
                                             <div className='form-group'>

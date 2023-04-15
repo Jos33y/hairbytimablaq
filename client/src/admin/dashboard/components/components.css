@@ -1,0 +1,527 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.top-header{
+    padding: 10px 40px;
+    font-family: "Lato", sans-serif;
+    background: #ffffff;
+    box-shadow: 0px 1px 3px 1px rgba(186,186,186,0.75);
+    -webkit-box-shadow: 0px 1px 3px 1px rgba(186,186,186,0.75);
+    -moz-box-shadow: 0px 1px 3px 1px rgba(186,186,186,0.75);
+}
+
+.navbar-header{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-header .navbar-logo{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn{
+    margin-right: 30px;
+    padding: 8px 12px;
+    color: #000000;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn:hover{
+    background: #dedede;
+    border: 1px solid #dedede;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn .fa-solid{
+    font-size: 18px;
+}
+
+.navbar-header .navbar-logo .logo-name .logo-text{
+    color: #aa771c;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+    background-image: linear-gradient(
+     to right,
+     #bf953f 0,
+            #cb9b51 22%, 
+     #b38728 45%,
+     #d0bf6a 55%,
+     #cb9b51 78%,
+     #aa771c 100%
+     );
+    color:transparent;
+    background-clip: text;
+    -webkit-background-clip:text;
+}
+
+.navbar-others ul{
+    list-style: none;
+    padding: 0 ;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.navbar-others ul li .btn{
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 15px;
+    margin-right: 10px;
+    color: #727272;
+}
+.navbar-others ul li .fa-solid{
+    font-size: 18px;
+}
+
+.navbar-others ul li .nav-profile{
+   margin-left: 20px;
+}
+
+.navbar-others ul li .nav-profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid #9f9f9f;
+}
+
+.Spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+
+/* http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_js_sidenav.asp.html#gsc.tab=0 */
+
+.side-bar{
+    display: block; 
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: -1;
+    top: auto;
+    left: 0;
+    transition: 0.5s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none; 
+    background: #ffffff;
+  scrollbar-width: none;
+
+
+
+  box-shadow: 1px 0px 3px 1px rgba(186,186,186,0.75);
+-webkit-box-shadow: 1px 0px 3px 1px rgba(186,186,186,0.75);
+-moz-box-shadow: 1px 0px 3px 1px rgba(186,186,186,0.75);
+
+}
+
+.side-bar::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+
+.sidebar-container{
+    padding: 10px 5px;
+    margin-bottom: 50px;
+    font-family: "Poppins", sans-serif;
+}
+
+.sidebar-profile{
+    /* display: none; */
+    display: block;
+}
+
+.sidebar-profile .sidebar-admin{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    padding: 30px 20px 10px;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-image img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 1px solid #464646;
+}
+.sidebar-profile .sidebar-admin .sidebar-admin-info{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.sidebar-profile .sidebar-admin .sidebar-admin-info p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .name{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .role{
+    font-size: 13px;
+    font-weight: 400;
+    color: #727272;
+}
+
+.sidebar-mini{
+    padding: 5px 20px;
+}
+
+.sidebar-mini ul{
+    list-style: none;
+    padding: 0 ;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.sidebar-mini ul li .btn{
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 15px;
+    margin-right: 15px;
+    color: #727272;
+}
+.sidebar-mini ul li .fa-solid{
+    font-size: 16px;
+}
+
+
+
+
+
+.sidebar-nav nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-nav nav ul .menu-item{
+    margin: 10px 0;
+    padding: 9px 15px;
+    border-radius: 5px;
+}
+
+.sidebar-nav nav ul .menu-item.active{
+    background:  #ebecec;
+    
+}
+.sidebar-nav nav ul .menu-item.active .menu-link{
+    color: #b38728;
+}
+
+
+.sidebar-nav nav ul .menu-item .menu-link{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #464646;
+}
+.sidebar-nav nav ul .menu-item .menu-link .fa-solid{
+    font-size: 18px;
+}
+.sidebar-nav nav ul .menu-item .menu-link .sidebar-text{
+    margin-left: 10px;
+    /* display: none; */
+}
+
+@media only screen and (max-width: 900px) {
+
+    
+.top-header{
+    padding: 10px 20px;
+}
+
+.navbar-header{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar-header .navbar-logo{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn{
+    margin-right: 20px;
+    padding: 8px 12px;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn .fa-solid{
+    font-size: 17px;
+}
+
+.navbar-header .navbar-logo .logo-name .logo-text{
+    font-size: 24px;
+}
+
+.navbar-others ul{
+    list-style: none;
+    padding: 0 ;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.navbar-others ul li .btn{
+    padding: 8px 15px;
+    margin-right: 10px;
+    color: #727272;
+}
+.navbar-others ul li .fa-solid{
+    font-size: 16px;
+}
+
+.navbar-others ul li .nav-profile{
+   margin-left: 20px;
+}
+
+.navbar-others ul li .nav-profile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #9f9f9f;
+}
+
+
+
+/* http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_js_sidenav.asp.html#gsc.tab=0 */
+
+.side-bar{
+    display: block; 
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    z-index: 1;
+    background: #ffffff;
+}
+
+.sidebar-container{
+    padding: 10px 5px;
+    margin-bottom: 50px;
+}
+
+.sidebar-profile{
+    display: none;
+    /* display: block; */
+}
+
+.sidebar-profile .sidebar-admin{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    padding: 30px 20px 10px;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-image img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 1px solid #464646;
+}
+.sidebar-profile .sidebar-admin .sidebar-admin-info{
+    margin-top: 3px;
+    margin-left: 10px;
+}
+.sidebar-profile .sidebar-admin .sidebar-admin-info p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .name{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .role{
+    font-size: 13px;
+    font-weight: 400;
+    color: #727272;
+}
+
+.sidebar-mini{
+    padding: 5px 10px;
+}
+
+
+
+.sidebar-mini ul li .btn{
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 15px;
+    margin-right: 10px;
+    color: #727272;
+}
+.sidebar-mini ul li .fa-solid{
+    font-size: 16px;
+}
+
+
+.sidebar-nav nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-nav nav ul .menu-item{
+    margin: 15px 0;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.sidebar-nav nav ul .menu-item.active{
+    background:  #ebecec;
+    
+}
+.sidebar-nav nav ul .menu-item.active .menu-link{
+    color: #b38728;
+}
+
+
+.sidebar-nav nav ul .menu-item .menu-link{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #464646;
+}
+.sidebar-nav nav ul .menu-item .menu-link .fa-solid{
+    font-size: 18px;
+}
+.sidebar-nav nav ul .menu-item .menu-link .sidebar-text{
+    margin-left: 10px;
+    display: none;
+}
+
+}
+
+@media only screen and (max-width: 720px) {
+
+.top-header{
+    padding: 10px 15px;
+}
+
+
+.navbar-header .navbar-logo .hamburger-menu .btn{
+    margin-right: 20px;
+    padding: 8px 12px;
+}
+
+.navbar-header .navbar-logo .hamburger-menu .btn .fa-solid{
+    font-size: 17px;
+}
+
+.navbar-header .navbar-logo .logo-name .logo-text{
+    margin-top: 5px;
+    font-size: 21px;
+}
+
+.navbar-others{
+    display: none;
+}
+
+
+.side-bar{
+    display: block; 
+    height: 100%;
+    width: 60px;
+    position: fixed;
+    z-index: 1;
+    background: #ffffff;
+}
+
+.sidebar-container{
+    padding: 10px 5px;
+    margin-bottom: 30px;
+}
+
+
+
+.sidebar-profile .sidebar-admin{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    padding: 20px 20px 10px;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-image img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info{
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .name{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.sidebar-profile .sidebar-admin .sidebar-admin-info .role{
+    font-size: 13px;
+    font-weight: 400;
+    color: #727272;
+}
+
+.sidebar-mini{
+    padding: 5px 10px;
+}
+
+
+.sidebar-mini ul li .btn{
+    padding: 8px 14px;
+}
+
+
+.sidebar-nav nav ul .menu-item{
+    margin: 15px 0;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.sidebar-nav nav ul .menu-item .menu-link{
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #464646;
+}
+.sidebar-nav nav ul .menu-item .menu-link .fa-solid{
+    font-size: 18px;
+}
+.sidebar-nav nav ul .menu-item .menu-link .sidebar-text{
+    margin-left: 10px;
+    display: none;
+}
+
+
+}

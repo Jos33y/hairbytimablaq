@@ -16,6 +16,7 @@ const FooterNav = () => {
                                 <li> <Link className="footer-link" to="/about">About Us </Link></li>
                                 <li> <Link className="footer-link" to="/shop">Hair Collections </Link></li>
                                 <li> <Link className="footer-link" to="/contact">Contact </Link></li>
+                                <li> <Link className="footer-link" to="/admin/login">Admin </Link></li>
                             </ul>
                         </div>
                     </div>
