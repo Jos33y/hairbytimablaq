@@ -9,6 +9,22 @@ import DashSpinner from "./components/dash-spinner";
 import DashboardHome from "./pages/home";
 import TopBar from "./components/top-bar";
 import SideBar from "./components/side-bar";
+import CategoriesPage from "./pages/categories";
+import DeliveryPage from "./pages/deliveries";
+import AddProductPage from "./pages/products/add-product";
+import ProductListPage from "./pages/products";
+import EditProductPage from "./pages/products/edit-product";
+import ProductDetailsPage from "./pages/products/product-details";
+import OrderListPage from "./pages/orders";
+import OrderDetailsPage from "./pages/orders/order-details";
+import CustomersListPage from "./pages/customers";
+import TransactionListPage from "./pages/transactions";
+import TransactionDetailsPage from "./pages/transactions/tansaction-details";
+import WalletPage from "./pages/wallet";
+import ProfileSettings from "./pages/settings/profile-settings";
+import PaymentAccount from "./pages/settings/payment-account";
+import AccountModerators from "./pages/settings/account-moderators";
+import StoreSettings from "./pages/settings";
 
 const AdminDashboard = () => {
 
@@ -23,7 +39,7 @@ const AdminDashboard = () => {
 
 
 
-    // get user function
+    // get user function 
     const getUser = async () => {
         setLoading(true)
         const profileRef = doc(db, 'admins', auth.currentUser.uid)
@@ -47,6 +63,65 @@ const AdminDashboard = () => {
         if (params.dash_url === "home") {
             return <DashboardHome userId={auth.currentUser.uid} />
         }
+        else if (params.dash_url === "categories") {
+            return <CategoriesPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "deliveries") {
+            return <DeliveryPage userId={auth.currentUser.uid} />
+        }
+        else if (params.dash_url === "add-product") {
+            return <AddProductPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "products") {
+            return <ProductListPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "edit-product") {
+            return <EditProductPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "product-details") {
+            return <ProductDetailsPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "orders") {
+            return <OrderListPage userId={auth.currentUser.uid} />
+        }
+        else if (params.dash_url === "order-details") {
+            return <OrderDetailsPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "customers") {
+            return <CustomersListPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "transactions") {
+            return <TransactionListPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "transaction-details") {
+            return <TransactionDetailsPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "wallet") {
+            return <WalletPage userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "profile-settings") {
+            return <ProfileSettings userId={auth.currentUser.uid} />
+        }
+
+        else if (params.dash_url === "payment-account") {
+            return <PaymentAccount userId={auth.currentUser.uid} />
+        }
+        else if (params.dash_url === "moderators") {
+            return <AccountModerators userId={auth.currentUser.uid} />
+        }
+        else if (params.dash_url === "store-settings") {
+            return <StoreSettings userId={auth.currentUser.uid} />
+        }
 
     }
 
@@ -54,6 +129,8 @@ const AdminDashboard = () => {
     useEffect(() => {
         if (isMounted) {
             getUser().then()
+
+            window.scrollTo(0, 0);
         }
         return () => {
             isMounted.current = false;
@@ -69,13 +146,13 @@ const AdminDashboard = () => {
                 (<DashSpinner />) : (
                     <>
                         <div className="admin-wrap">
+
                             <TopBar />
                             <div className="main-wrap">
-                                <SideBar />
+                                <SideBar pageName={params.dash_url} />
                                 <div id="main-body" className="main-body">
                                     {pages()}
                                 </div>
-
                             </div>
                         </div>
 

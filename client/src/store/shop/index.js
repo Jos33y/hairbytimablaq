@@ -11,7 +11,7 @@ import FooterNav from "../components/footer";
 import SubscribeForm from "../components/subscribe";
 import BreadCrumb from "../components/breadcrumb";
 
-const Shop = () => {
+const Shop = () => { 
     return (
         <>
             <HeaderNav />

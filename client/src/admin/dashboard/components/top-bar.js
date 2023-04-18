@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./components.css";
-import TimaBlaq from "../../../store/assets/images/timablaq.jpeg";
+import TimaBlaq from "../assets/images/timablaq.jpeg";
 
 const TopBar = () => {
 
@@ -89,7 +89,8 @@ const TopBar = () => {
 
     return (
         <>
-            <div className="top-header">
+       
+            <div id="top-header" className="top-header">
                 <div className="navbar-header">
                     <div className="navbar-logo">
                         <div className="hamburger-menu">

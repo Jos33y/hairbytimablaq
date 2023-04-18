@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
                 <DetailsBreadCrumb />
 
-                {/* product details section */}
+                {/* product details section */} 
                 <div className="details-section">
                     <div className="row">
                         <div className="col-md-6">

@@ -245,7 +245,7 @@
 }
 
 .details-section .details-sect-info .share-icons ul {
-  display: flex;
+  display: flex; 
   flex: auto;
   flex-direction: row;
   padding-left: 0px;

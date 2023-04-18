@@ -7,7 +7,7 @@ import GoToTop from "./go-to-top";
 const FooterNav = () => {
     return (
         <>
-            <div className="Footer-nav">
+            <div className="Footer-nav"> 
                 <div className="row">
                     {/* column section */}
                     <div className="col-lg-3 col-md-6 col-sm-12">
