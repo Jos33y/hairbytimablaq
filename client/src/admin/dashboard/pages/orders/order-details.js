@@ -18,7 +18,7 @@ const OrderDetailsPage = () => {
                                 <hr />
 
                                 <div className="order-header">
-                                    <p className="date"><i class="fa-solid fa-calendar-day"></i> 3/4/2023, 6:31:08 AM </p>
+                                    <p className="date"><i className="fa-solid fa-calendar-day"></i> 3/4/2023, 6:31:08 AM </p>
                                     <p className="order-id"> Order ID: 50523438</p>
                                 </div>
 
@@ -48,7 +48,7 @@ const OrderDetailsPage = () => {
                                         <div className="col-md-4">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                    <i class="fa-solid fa-user"></i>
+                                                    <i className="fa-solid fa-user"></i>
                                                 </div>
                                                 <div className="info-box-inner">
                                                     <p className="info-title">Customer Info</p>
@@ -63,7 +63,7 @@ const OrderDetailsPage = () => {
                                         <div className="col-md-4">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                    <i class="fa-solid fa-truck-fast"></i>
+                                                    <i className="fa-solid fa-truck-fast"></i>
                                                 </div>
                                                 <div className="info-box-inner">
                                                     <p className="info-title">Order info</p>
@@ -80,7 +80,7 @@ const OrderDetailsPage = () => {
                                         <div className="col-md-4">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                    <i class="fa-solid fa-location-dot"></i>
+                                                    <i className="fa-solid fa-location-dot"></i>
                                                 </div>
                                                 <div className="info-box-inner">
                                                     <p className="info-title">Deliver to</p>

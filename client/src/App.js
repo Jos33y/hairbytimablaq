@@ -22,7 +22,7 @@ import OrderConfirmation from './store/checkout/order-confirmation';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
+ 
 const App = () => {
 
   return (
@@ -46,6 +46,9 @@ const App = () => {
 
           <Route path="/admin/dashboard/:dash_url" element={<PrivateRoute />}>
             <Route path="/admin/dashboard/:dash_url" element={<AdminDashboard />} />
+          </Route>
+          <Route path="/admin/dashboard/settings/:settings_url" element={<PrivateRoute />}>
+            <Route path="/admin/dashboard/settings/:settings_url" element={<AdminDashboard />} />
           </Route>
         </Routes>
       </Router>

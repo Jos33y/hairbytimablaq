@@ -46,12 +46,12 @@ const AdminDashboard = () => {
         const profileSnap = await getDoc(profileRef)
 
         if (profileSnap.exists()) {
-            console.log("profile data", profileSnap.data())
-            console.log("Params Name:", params.dash_url)
+            // console.log("profile data", profileSnap.data())
+            // console.log("Params Name:", params.dash_url)
             setProfileData(profileSnap.data())
         }
         else {
-            navigate("/admin/login")
+            navigate("/admin/login") 
         }
 
         setLoading(false)
@@ -109,18 +109,19 @@ const AdminDashboard = () => {
             return <WalletPage userId={auth.currentUser.uid} />
         }
 
-        else if (params.dash_url === "profile-settings") {
-            return <ProfileSettings userId={auth.currentUser.uid} />
+      
+        else if (params.settings_url === "profile") {
+            return <ProfileSettings userId={auth.currentUser.uid} profileData={profileData} />
         }
 
-        else if (params.dash_url === "payment-account") {
-            return <PaymentAccount userId={auth.currentUser.uid} />
-        }
-        else if (params.dash_url === "moderators") {
+        else if (params.settings_url === "moderators") {
             return <AccountModerators userId={auth.currentUser.uid} />
         }
-        else if (params.dash_url === "store-settings") {
+        else if (params.settings_url === "store") {
             return <StoreSettings userId={auth.currentUser.uid} />
+        }
+        else if (params.settings_url === "payment-account") {
+            return <PaymentAccount userId={auth.currentUser.uid} />
         }
 
     }
@@ -149,7 +150,7 @@ const AdminDashboard = () => {
 
                             <TopBar />
                             <div className="main-wrap">
-                                <SideBar pageName={params.dash_url} />
+                                <SideBar pageName={params.dash_url || params.settings_url} profileData = {profileData} />
                                 <div id="main-body" className="main-body">
                                     {pages()}
                                 </div>

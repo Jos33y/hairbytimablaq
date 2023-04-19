@@ -1,12 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./components.css";
+import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 
 const TopBar = () => {
 
 
     const isMounted = useRef()
+    const navigate = useNavigate()
+    const auth = getAuth()
     const [sideBar, setSidebar] = useState(true);
+
+    const darkMode = () => {
+        console.log("Dark Mode Loading...")
+    }
+
+    const logOut = () => {
+        auth.signOut().then(
+            navigate('/admin/login')
+        )
+    }
+
+    const goToSettings = () => {
+        navigate('/admin/dashboard/settings/profile')
+    }
+
 
     const handleSidebar = () => {
 
@@ -89,7 +108,7 @@ const TopBar = () => {
 
     return (
         <>
-       
+
             <div id="top-header" className="top-header">
                 <div className="navbar-header">
                     <div className="navbar-logo">
@@ -104,14 +123,15 @@ const TopBar = () => {
                     <div className="navbar-others">
                         <ul>
                             <li>
-                                <button className="btn btn-secondary"> <i className="fa-solid fa-moon"></i> </button>
+                                <button className="btn btn-secondary" onClick={darkMode} title="Dark Mode"> <i className="fa-solid fa-moon"></i> </button>
                             </li>
 
                             <li>
-                                <button className="btn btn-secondary"> <i className="fa-solid fa-bell"></i> </button>
+                                <button className="btn btn-secondary" onClick={logOut} title="Log out"> <i className="fa-solid fa-power-off"></i> </button>
                             </li>
 
-                            <li>  <button className="btn btn-secondary"> <i className="fa-solid fa-gear"></i> </button> </li>
+                            <li>  <button className="btn btn-secondary" onClick={goToSettings} title="Profile Settings" > <i className="fa-solid fa-gear"></i> </button> </li>
+
                             <li> <div className="nav-profile"> <img src={TimaBlaq} alt="nav-profile" className="img-fluid" /> </div> </li>
                         </ul>
                     </div>

@@ -18,7 +18,7 @@ const TransactionDetailsPage = () => {
                                 <hr />
 
                                 <div className="order-header">
-                                    <p className="date"><i class="fa-solid fa-calendar-day"></i> 3/4/2023, 6:31:08 AM </p>
+                                    <p className="date"><i className="fa-solid fa-calendar-day"></i> 3/4/2023, 6:31:08 AM </p>
                                     <p className="order-id"> Trans ID: 50523438</p>
                                     <p className="order-id"> Order ID: 50523438</p>
                                 </div>
@@ -49,7 +49,7 @@ const TransactionDetailsPage = () => {
                                         <div className="col-lg-4 col-md-6">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                <i class="fa-solid fa-circle-user"></i>
+                                                <i className="fa-solid fa-circle-user"></i>
                                                 </div>
                                                 <div className="info-box-inner">
                                                     <p className="info-title">Account Paid From</p>
@@ -64,7 +64,7 @@ const TransactionDetailsPage = () => {
                                         <div className="col-lg-4 col-md-6">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                <i class="fa-solid fa-building-columns"></i>
+                                                <i className="fa-solid fa-building-columns"></i>
                                                 </div>
                                                 <div className="info-box-inner">
                                                     <p className="info-title">Bank Transfer To</p>
@@ -79,7 +79,7 @@ const TransactionDetailsPage = () => {
                                         <div className="col-lg-4 col-md-6">
                                             <div className="info-box">
                                                 <div className="info-box-icon">
-                                                <i class="fa-solid fa-file-invoice"></i>
+                                                <i className="fa-solid fa-file-invoice"></i>
                                                 </div>
                                                 <div className="info-box-inner info-box-img">
                                                 <p className="info-title">Payment Receipt</p>

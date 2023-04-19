@@ -4,7 +4,7 @@ const DashSpinner = () => {
 
     return(
         <>
-            <div className="Spinner">
+            <div className="dash-spinner">
                 <h5>Loading ...</h5>
             </div>
 

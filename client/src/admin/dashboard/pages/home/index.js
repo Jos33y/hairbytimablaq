@@ -13,7 +13,7 @@ const DashboardHome = () => {
                             <div className="col-md-4">
                                 <div className="dashboard-card">
                                     <div className="dashboard-icon blue-one">
-                                        <i class="fa-solid fa-money-bills"></i>
+                                        <i className="fa-solid fa-money-bills"></i>
                                     </div>
                                     <div className="dashboard-text">
                                         <p className="title">Total Sales</p>
@@ -25,7 +25,7 @@ const DashboardHome = () => {
                             <div className="col-md-4">
                                 <div className="dashboard-card">
                                     <div className="dashboard-icon green-one">
-                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <i className="fa-solid fa-truck-fast"></i>
                                     </div>
                                     <div className="dashboard-text">
                                         <p className="title">Total Orders</p>
@@ -38,7 +38,7 @@ const DashboardHome = () => {
                             <div className="col-md-4">
                                 <div className="dashboard-card">
                                     <div className="dashboard-icon peach-one">
-                                        <i class="fa-solid fa-cubes-stacked"></i>
+                                        <i className="fa-solid fa-cubes-stacked"></i>
                                     </div>
                                     <div className="dashboard-text">
                                         <p className="title">Total Produts</p>

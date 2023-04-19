@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+
+.dash-spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #ffffff;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
 .top-header{
     position: sticky;
   top: 0;
@@ -98,13 +108,7 @@
     border: 1px solid #9f9f9f;
 }
 
-.Spinner{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-}
+
 
 
 /* http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_js_sidenav.asp.html#gsc.tab=0 */
@@ -170,7 +174,7 @@ box-shadow: 1px 3px 3px 1px rgba(186,186,186,0.75);
 }
 
 .sidebar-profile .sidebar-admin .sidebar-admin-info .name{
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: #000000;
 }

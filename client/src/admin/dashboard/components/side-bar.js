@@ -1,7 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 
-const SideBar = ({ pageName }) => {
+const SideBar = ({ pageName, profileData }) => {
+
+    const navigate = useNavigate()
+    const auth = getAuth()
+    
+
+    const darkMode = () => {
+        console.log("Dark Mode Loading...")
+    }
+
+    const logOut = () => {
+        auth.signOut().then(
+            navigate('/admin/login')
+        )
+    }
+
+    const goToSettings = () => {
+        navigate('/admin/dashboard/settings/profile')
+    }
+
+
     return (
         <>
             <div id="side-bar" className="side-bar">
@@ -12,22 +33,25 @@ const SideBar = ({ pageName }) => {
                                 <img src={TimaBlaq} alt="sidebar profile" className="img-fluid" />
                             </div>
                             <div className="sidebar-admin-info">
-                                <p className="name">Lagbalu </p>
-                                <p className="role">Administrator </p>
-                            </div>
+                                <p className="name">{profileData.fullName} </p>
+                                <p className="role">{profileData.adminRole} </p>
+                            </div> 
                         </div>
 
                         <div className="sidebar-mini">
                             <ul>
                                 <li>
-                                    <button className="btn btn-secondary"> <i className="fa-solid fa-moon"></i> </button>
+                                    <button className="btn btn-secondary" onClick={darkMode} title="Dark Mode" > <i className="fa-solid fa-moon"></i> </button>
                                 </li>
 
+
+                                <li>  <button className="btn btn-secondary" onClick={goToSettings} title="Profile Settings"> <i className="fa-solid fa-gear"></i> </button> </li>
                                 <li>
-                                    <button className="btn btn-secondary"> <i className="fa-solid fa-bell"></i> </button>
+                                    <button className="btn btn-secondary" onClick={logOut} title="Log Out"><i className="fa-solid fa-power-off"></i> </button>
                                 </li>
 
-                                <li>  <button className="btn btn-secondary"> <i className="fa-solid fa-gear"></i> </button> </li>                    </ul>
+
+                            </ul>
                         </div>
                         <hr />
                     </div>
@@ -112,17 +136,17 @@ const SideBar = ({ pageName }) => {
                                 </li>
 
                                 {/* wallet menu */}
-                                <li className={`menu-item ${pageName === 'profile-settings' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/profile-settings" className="menu-link">
-                                    <i class="fa-solid fa-user-gear"></i>
+                                <li className={`menu-item ${pageName === 'profile' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/settings/profile" className="menu-link">
+                                        <i className="fa-solid fa-user-gear"></i>
                                         <span className="sidebar-text">Profile Settings </span>
                                     </Link>
                                 </li>
 
                                 {/* wallet menu */}
                                 <li className={`menu-item ${pageName === 'payment-account' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/payment-account" className="menu-link">
-                                    <i class="fa-solid fa-money-check"></i>
+                                    <Link to="/admin/dashboard/settings/payment-account" className="menu-link">
+                                        <i className="fa-solid fa-money-check"></i>
                                         <span className="sidebar-text">Payment Account </span>
                                     </Link>
                                 </li>
@@ -130,16 +154,16 @@ const SideBar = ({ pageName }) => {
 
                                 {/* wallet menu */}
                                 <li className={`menu-item ${pageName === 'moderators' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/moderators" className="menu-link">
-                                    <i class="fa-solid fa-user-pen"></i>
+                                    <Link to="/admin/dashboard/settings/moderators" className="menu-link">
+                                        <i className="fa-solid fa-user-pen"></i>
                                         <span className="sidebar-text">Moderators </span>
                                     </Link>
                                 </li>
 
                                 {/* wallet menu */}
-                                <li className={`menu-item ${pageName === 'store-settings' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/store-settings" className="menu-link">
-                                    <i class="fa-solid fa-toolbox"></i>
+                                <li className={`menu-item ${pageName === 'store' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/settings/store" className="menu-link">
+                                        <i className="fa-solid fa-toolbox"></i>
                                         <span className="sidebar-text">Store Settings </span>
                                     </Link>
                                 </li>

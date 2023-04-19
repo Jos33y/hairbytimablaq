@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase.config";
 import { toast } from "react-toastify";
 
-const AdminRegister = () => {
+const AdminRegister = () => { 
     const[disable, setDisable]= useState(false)
     const [formData, setFormData] = useState({
         fullName: "",
