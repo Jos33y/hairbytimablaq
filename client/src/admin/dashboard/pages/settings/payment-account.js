@@ -121,7 +121,7 @@ const PaymentAccount = () => {
                 })
             })
             setPaymentInfo(paymentInfo)
-            console.log("payment info: ", paymentInfo)
+            // console.log("payment info: ", paymentInfo)
 
         }
         catch (error) {
