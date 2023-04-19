@@ -1,10 +1,12 @@
+import HandleScroll from "../../components/go-top";
 import DashStatistics from "./dash-statistics";
 import LatestOrders from "./latest-orders";
 
 const DashboardHome = () => {
     return (
         <>
-            <div className="main-container">
+        <HandleScroll />
+            <div id="category-container" className="main-container">
                 <div className="dashboard-home">
                     <div className="dashboard-box">
                         <div className="row">

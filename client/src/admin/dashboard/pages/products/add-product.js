@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddImages from "../../assets/images/add-image.png";
+import HandleScroll from "../../components/go-top";
 
 const AddProductPage = () => {
 
@@ -85,7 +86,8 @@ const AddProductPage = () => {
 
     return (
         <>
-            <div className="category-container">
+        <HandleScroll />
+            <div id="category-container" className="category-container">
                 <div className="row justify-content-center">
                     <div className="col-md-10">
                         <div className="add-category">

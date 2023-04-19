@@ -1,8 +1,10 @@
+import HandleScroll from "../../components/go-top";
 
 const AccountModerators = () => {
     return (
         <>
-            <div className="category-container">
+        <HandleScroll />
+            <div id="category-container" className="category-container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="add-category">
@@ -31,7 +33,7 @@ const AccountModerators = () => {
                                     <div className="Account Role">
                                         <select className="form-control">
                                             <option disabled={true} selected value="status">Moderators</option>
-                                            <option value="uncategorized">All moderaors</option>
+                                            <option value="uncategorized">All Moderators</option>
                                             <option value="null">Not Confirmed</option>
                                             <option value="null">Confirmed</option>
                                         </select>

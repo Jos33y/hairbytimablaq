@@ -17,7 +17,7 @@ const Store = () => {
             <HomeHero />
             <HomeCategories />
             <HomeProducts />
-            <TestimonySection />
+            <TestimonySection /> 
             <SubscribeForm />
             <FooterNav />
         </>

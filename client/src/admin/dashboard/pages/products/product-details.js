@@ -1,11 +1,13 @@
 
 import "./details.css";
 import ProdOne from "../../../../store/assets/products/prod-1.jpeg";
+import HandleScroll from "../../components/go-top";
 
 const ProductDetailsPage = () => {
     return (
         <>
-            <div className="category-container">
+        <HandleScroll />
+            <div id="category-container" className="category-container">
 
                 <div className="manage-product">
                     <div className="details-container">

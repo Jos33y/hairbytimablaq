@@ -1,29 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TransactionBox from "./transaction-box";
+import HandleScroll from "../../components/go-top";
 
 const TransactionListPage = () => {
 
-
-    const handleClickScroll = () => {
-        const element = document.getElementById('category-container');
-        if (element) {
-          // 👇 Will scroll smoothly to the top of the next section
-          element.scrollTo(0, 1000);
-        }
-      };
-
-    
-    useEffect(() => {
-        
-        handleClickScroll();
-        window.scrollTo(0, 1000);
-      
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
     
     return (
         <>
-            <div id="category-container" className="category-container">
+        <HandleScroll />
+            <div id="category-container"  className="category-container" >
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                         <div className="manage-product">

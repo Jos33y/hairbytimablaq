@@ -1,8 +1,10 @@
+import HandleScroll from "../../components/go-top";
 
 const WalletPage = () => {
     return (
         <>
-            <div className="category-container">
+        <HandleScroll />
+            <div id="category-container" className="category-container">
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                         <div className="wallet-dashboard">

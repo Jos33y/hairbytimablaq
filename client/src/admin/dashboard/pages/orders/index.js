@@ -1,10 +1,12 @@
+import HandleScroll from "../../components/go-top";
 import OrderBox from "./order-box";
 
 const OrderListPage = () => {
     return (
         <>
        
-            <div className="category-container">
+            <HandleScroll />
+            <div id="category-container" className="category-container">
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                         <div className="manage-product">

@@ -1,9 +1,11 @@
 import ProdOne from "../../../../store/assets/products/prod-1.jpeg";
+import HandleScroll from "../../components/go-top";
 
 const OrderDetailsPage = () => {
     return (
         <>
-            <div className="category-container">
+        <HandleScroll />
+            <div id="category-container" className="category-container">
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                         <div className="manage-product">

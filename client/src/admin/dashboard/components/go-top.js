@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useEffect} from "react";
 
-export default function ScrollToTopOnMount() {
+export default function HandleScroll() {
+
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    document.getElementById('category-container').scrollIntoView({ behavior: 'smooth', block: "start"});
+    document.getElementById('category-container').style.paddingTop = "90px";
+
   }, []);
 
   return null;

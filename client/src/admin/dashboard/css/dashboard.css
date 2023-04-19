@@ -10,7 +10,7 @@
 
 .main-wrap{
     height: 100%;
-    overflow: hidden;
+    overflow: hidden; 
 }
 .main-body {
     transition: margin-left .5s;
