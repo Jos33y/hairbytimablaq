@@ -1,10 +1,10 @@
 import React from 'react';
 import './component.css'
-const PageLoading = () => {
+const ProductLoading = () => {
 
     return(
         <>
-            <div className="Spinner">
+            <div className="prod-spinner">
                 <h5>Loading ...</h5> 
             </div>
 
@@ -12,4 +12,4 @@ const PageLoading = () => {
     )
 
 }
-export default PageLoading
+export default ProductLoading

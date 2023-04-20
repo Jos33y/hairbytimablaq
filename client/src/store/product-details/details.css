@@ -131,6 +131,15 @@
   padding-bottom: 0px;
 }
 
+.details-section .details-sect-info .discount-price {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: line-through;
+  padding-left: 15px;
+  color: #686868;
+
+}
+
 .details-section .details-sect-info .prod-stock {
   font-size: 15px;
   font-weight: 400;
@@ -295,8 +304,8 @@
 
 .details-section .product-images .prod-main-img {
   margin-left: 15px;
-  height: 500px;
-  max-width: 400px;
+  height: 550px;
+  max-width: 450px;
 
   box-shadow: 0px 0px 3px 1px rgba(130, 130, 130, 0.75);
   -webkit-box-shadow: 0px 0px 3px 1px rgba(130, 130, 130, 0.75);

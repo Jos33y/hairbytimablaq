@@ -13,7 +13,6 @@ import ContactUs from './store/contact';
 import ShopCart from './store/cart';
 import AboutUs from './store/about';
 import TrackOrder from './store/track';
-import PageLoading from './store/components/loading';
 import ProductDetails from './store/product-details';
 import CheckOut from './store/checkout';
 import CheckOutPayment from './store/checkout/payment';
@@ -21,26 +20,28 @@ import OrderConfirmation from './store/checkout/order-confirmation';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CartProvider } from './store/components/cart-context';
 
- 
+
 const App = () => {
 
   return (
     <>
+    <CartProvider>
       <Router>
         <Routes>
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/" element={<Store />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/cart" element={<ShopCart />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/track" element={<TrackOrder />} />
-          <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/checkout/payment" element={<CheckOutPayment />} />
-          <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
-          <Route path="/product/product-name" element={<ProductDetails />} />
-          <Route path="/loading" element={<PageLoading />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/" element={<Store />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<ShopCart />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/track" element={<TrackOrder />} />
+            <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/checkout/payment" element={<CheckOutPayment />} />
+            <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
+            <Route path="/shop/product/:prod_id" element={<ProductDetails />} />
+        
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/register" element={<AdminRegister />} />
 
@@ -55,6 +56,7 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+      </CartProvider>
       <ToastContainer />
     </>
   );

@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+
+#shop-container .prod-spinner{
+  position: relative;
+  text-align: center;
+  background: #ffffff;
+  height: 100%;
+  width: 100%;
+  margin: 5% auto;
+ 
+
+}
+
+.Spinner{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+   /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
 /* colors used */
 
 /* 
@@ -333,6 +354,9 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
   font-size: 14px;
   margin: 5px;
 }
+.Footer-nav .footer-address .phone-one{
+  padding-right: 10px;
+}
 
 .Footer-nav .footer-copy {
   text-align: center;
@@ -406,6 +430,13 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     color: #bb9338;
     margin-top: 0px;
     letter-spacing: 0.5px;
+}
+
+
+.product-card .product-desc .desc-text .discount-price{
+    text-decoration: line-through;
+    padding-left: 10px;
+    color: #7e7e7e;
 }
 
 .product-card  .product-button{

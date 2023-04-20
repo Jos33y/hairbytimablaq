@@ -1,8 +1,6 @@
 import "./component.css";
 import { Link } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
-import TestOne from "../assets/images/img-test-1.jpg";
-import TestTwo from "../assets/images/img-test-2.jpg";
 
 const TestimonySection = () => {
   return (
@@ -39,7 +37,7 @@ const TestimonySection = () => {
           <div className="col-md-4">
             <div className="testimony-box">
               <div className="testimony-image">
-                <img src={TestOne} alt="" className="img-responsive" />
+                <img src={TimaBlaq} alt="" className="img-responsive" />
               </div>
               <div className="testimony-text">
                 <div className="description">
@@ -50,7 +48,7 @@ const TestimonySection = () => {
                   </p>
                 </div>
                 <div className="testifier">
-                  <p> Aryarr Star </p>
+                  <p> Oyindamola </p>
                   <p>
                     <Link to="https://instagram.com" className="testifier-link">
                       <i className="fa-brands fa-instagram"></i>
@@ -64,7 +62,7 @@ const TestimonySection = () => {
           <div className="col-md-4">
             <div className="testimony-box">
               <div className="testimony-image">
-                <img src={TestTwo} alt="" className="img-responsive" />
+                <img src={TimaBlaq} alt="" className="img-responsive" />
               </div>
               <div className="testimony-text">
                 <div className="description">
@@ -76,7 +74,7 @@ const TestimonySection = () => {
                   </p>
                 </div>
                 <div className="testifier">
-                  <p> Tochi deluxe </p>
+                  <p> Halimat  </p>
                   <p>
                     <Link to="https://instagram.com" className="testifier-link">
                       <i className="fa-brands fa-instagram"></i>

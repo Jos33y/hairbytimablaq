@@ -23,7 +23,7 @@ const AddProductPage = () => {
     let fileObj = [];
     const [formData, setFormData] = useState({
         productName: '',
-        productCategory: '',
+        productCategory: 'uncategorized-b80c98e',
         productPrice: '',
         productDiscountPrice: '',
         discountOffer: false,

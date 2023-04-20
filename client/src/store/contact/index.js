@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase.config"
 import "./contact.css";
 import BreadCrumb from "../components/breadcrumb";
 import ContactImg from "../assets/images/cheerful-young-phone-tp.png";
@@ -8,6 +10,40 @@ import FooterNav from "../components/footer";
 
 
 const ContactUs = () => {
+
+    const store_unique_id = 'hair-by-timablaq';
+    const isMounted = useRef()
+    const [storeData, setStoreData] = useState(null)
+
+    const getStoreInfo = async () => {
+
+        try {
+            const storeRef = doc(db, 'store_info', store_unique_id)
+            const storeSnap = await getDoc(storeRef)
+
+            if (storeSnap.exists()) {
+                setStoreData(storeSnap.data())
+            }
+        }
+        catch (error) {
+            console.log({ error })
+        }
+
+    }
+
+
+    useEffect(() => {
+
+        if (isMounted) {
+
+            getStoreInfo().then();
+        }
+        return () => {
+            isMounted.current = false
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
+
     return (
         <>
             <HeaderNav />
@@ -22,17 +58,17 @@ const ContactUs = () => {
                                 <div className="contact-info-text">
                                     <div className="contact-info-desc">
                                         <p className="contact-icon"> <i className="fa-solid fa-location-dot"></i> </p>
-                                        <p className="contact-desc"> 203, Envato Labs, Behind Alis Steet</p>
+                                        <p className="contact-desc"> {storeData ? (`${storeData.storeAddress}`) : ('')}</p>
                                     </div>
 
                                     <div className="contact-info-desc">
                                         <p className="contact-icon"> <i className="fa-solid fa-phone"></i> </p>
-                                        <p className="contact-desc"> +12 345 678 910 / +23 122 345 678 </p>
+                                        <p className="contact-desc"> {storeData ? (`+${storeData.businessPhoneOne}`) : ('')} / {storeData ? (`+${storeData.businessPhoneTwo}`) : ('')} </p>
                                     </div>
 
                                     <div className="contact-info-desc">
                                         <p className="contact-icon"> <i className="fa-solid fa-envelope"></i> </p>
-                                        <p className="contact-desc"> Infor.deercreative@gmail.com </p>
+                                        <p className="contact-desc"> {storeData ? (`${storeData.businessEmail}`) : ('')}</p>
                                     </div>
                                 </div>
                             </div>

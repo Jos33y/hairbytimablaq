@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase.config";
 import "./component.css";
 import { Link } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 import GoToTop from "./go-to-top";
 
 const FooterNav = () => {
+
+    const store_unique_id = 'hair-by-timablaq';
+    const isMounted = useRef()
+    const [storeData, setStoreData] = useState(null)
+
+    const getStoreInfo = async () => {
+
+        try {
+            const storeRef = doc(db, 'store_info', store_unique_id)
+            const storeSnap = await getDoc(storeRef)
+
+            if (storeSnap.exists()) {
+                setStoreData(storeSnap.data())
+            }
+        }
+        catch (error) {
+            console.log({ error }) 
+        }
+
+    }
+
+
+    useEffect(() => {
+
+        if (isMounted) {
+
+            getStoreInfo().then();
+        }
+        return () => {
+            isMounted.current = false
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
+
     return (
         <>
-            <div className="Footer-nav"> 
+            <div className="Footer-nav">
                 <div className="row">
                     {/* column section */}
                     <div className="col-lg-3 col-md-6 col-sm-12">
@@ -37,8 +73,8 @@ const FooterNav = () => {
                         <div className="social-lists">
                             <h5> Follow us</h5>
                             <ul className="social-icons">
-                                <li> <Link className="footer-icons" to="https://twitter.com/"> <i className="fa-brands fa-twitter"></i> </Link> </li>
-                                <li> <Link className="footer-icons" to="https://instagram.com/"> <i className="fa-brands fa-square-instagram"></i> </Link> </li>
+                                <li> <Link className="footer-icons" to={storeData ? (`${storeData.twitterLink}`) : ('')}> <i className="fa-brands fa-twitter"></i> </Link> </li>
+                                <li> <Link className="footer-icons" to={storeData ? (`${storeData.instagramLink}`) : ('')}> <i className="fa-brands fa-square-instagram"></i> </Link> </li>
                             </ul>
                         </div>
 
@@ -52,14 +88,14 @@ const FooterNav = () => {
                                 <img src={TimaBlaq} alt="footer logo" className="img-fluid" />
                             </div>
                             <div className="footer-address">
-                                <p> 112 Kingdom, NA 12, New York</p>
-                                <p> +12 345 678 910</p>
-                                <p> infor.deercreative@gmail.com</p>
+                                <p> {storeData ? (`${storeData.storeAddress}`) : ('')}</p>
+                                <p> <span className="phone-one">{storeData ? (`+${storeData.businessPhoneOne}`) : ('')}</span> {storeData ? (`+${storeData.businessPhoneTwo}`) : ('')} </p>
+                                <p> {storeData ? (`${storeData.businessEmail}`) : ('')}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr/>
+                <hr />
                 <div className="footer-copy">
                     <p> Copyright <i className="fa-regular fa-copyright"></i> 2023  <span className="name">hairbytimablaq </span> | Designed by <Link to="https://instagram.com/" className="name-link"> boy_programmer </Link>  </p>
                 </div>

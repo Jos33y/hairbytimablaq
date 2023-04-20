@@ -74,7 +74,7 @@ const ProductListPage = () => {
                     id: doc.id,
                     data: doc.data(),
                 })
-            })
+            }) 
             setCategories(categories)
             // setLoading(false)
         }
@@ -106,7 +106,7 @@ const ProductListPage = () => {
                     // console.log("Product ID here:", prod_id);
                     Swal.fire(
                         'Deleted!',
-                        'Category has been deleted.',
+                        'Product has been deleted.',
                         'success'
                     )
                 }

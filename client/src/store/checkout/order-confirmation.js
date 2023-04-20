@@ -31,7 +31,7 @@ const OrderConfirmation = () => {
                                 </div>
                                 <div className='order-confirmed'>
                                     <div className='order-icon'>
-                                        <i class="fa-regular fa-circle-check"></i>
+                                        <i className="fa-regular fa-circle-check"></i>
                                     </div>
                                     <div className='confirmed-info'>
                                         <p className='order-id'>Order ID: <span className='id-no'>#2343434 </span> </p>

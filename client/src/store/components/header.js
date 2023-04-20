@@ -2,9 +2,13 @@ import React from "react";
 import "./component.css";
 import { Link, useNavigate } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
+import { useCart } from "./cart-context";
 
 const HeaderNav = () => {
     const navigate = useNavigate();
+    
+    const [cart] = useCart();
+
 
     return (
         <>
@@ -40,7 +44,7 @@ const HeaderNav = () => {
 
 
                     <button
-                        class="navbar-toggler"
+                        className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
@@ -48,7 +52,7 @@ const HeaderNav = () => {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
 
 
@@ -79,22 +83,22 @@ const HeaderNav = () => {
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <p>
-                                <i className="fa-solid fa-magnifying-glass"></i>{" "}
+                                <i className="fa-solid fa-magnifying-glass"></i>
                             </p>
                             <p
                                 onClick={() => {
                                     navigate("/track");
                                 }}
                             >
-                                <i className="fa-solid fa-truck-fast"></i>{" "}
+                                <i className="fa-solid fa-truck-fast"></i>
                             </p>
                             <p
                                 onClick={() => {
                                     navigate("/cart");
                                 }}
                             >
-                                <i className="fa-solid fa-cart-shopping"></i>{" "}
-                                <span className="cart-number">(1)</span>{" "}
+                                <i className="fa-solid fa-cart-shopping"></i>
+                                <span className="cart-number">({ cart.length > 0 ? ( cart.length ) : '0' })</span>
                             </p>
                         </form>
                     </div>

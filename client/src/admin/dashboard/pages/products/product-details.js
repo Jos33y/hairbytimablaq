@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { collection, doc, getDoc, getDocs, query, } from "firebase/firestore";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
 import "./details.css";
-import ProdOne from "../../../../store/assets/products/prod-1.jpeg";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import DashSpinner from "../../components/dash-spinner";
 import HandleScroll from "../../components/go-top";
 
@@ -12,6 +13,7 @@ const ProductDetailsPage = () => {
     const location = useLocation();
     const isMounted = useRef()
     const navigate = useNavigate()
+    const MySwal = withReactContent(Swal)
     const [loading, setLoading] = useState(true)
     const [product, setProduct] = useState(null)
     const [category, setCategory] = useState(null)
@@ -19,8 +21,51 @@ const ProductDetailsPage = () => {
 
     const newProduct = () => {
 
-        navigate("/admin/dashboard/product/add")
+        navigate("/admin/dashboard/product/add") 
     }
+
+    const editProduct = () => {
+        
+        navigate("/admin/dashboard/product/edit", {state: {prod_id: location.state.prod_id}})
+    }
+
+
+    const onDelete = async (prod_id) => {
+
+        try {
+            MySwal.fire({
+                title: 'Do you want to delete this product?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+
+                    const prodRef = doc(db, 'products', prod_id)
+                    await deleteDoc(prodRef)
+                    // console.log("Product ID here:", prod_id);
+                    Swal.fire(
+                        'Deleted!',
+                        'Product has been deleted.',
+                        'success'
+                    )
+                }
+
+            }).then(() => {
+
+                navigate("/admin/dashboard/product/manage")
+            })
+
+        }
+        catch (error) {
+            console.log({ error })
+        }
+
+    }
+
 
 
     //Fetch Product Details
@@ -166,7 +211,7 @@ const ProductDetailsPage = () => {
 
                                                     <div className="details-prod-tags">
                                                         <p className="prod-tags">
-                                                            Categories: <span className="tag-list">
+                                                            Category: <span className="tag-list">
                                                                 {category ? category.categoryName : ''}
                                                             </span>
                                                         </p>
@@ -183,8 +228,8 @@ const ProductDetailsPage = () => {
                                                     </div>
 
                                                     <div className="action-buttons">
-                                                        <button className="btn btn-md btn-primary">Edit </button>
-                                                        <button className="btn btn-md btn-danger">Delete </button>
+                                                        <button onClick={editProduct} className="btn btn-md btn-primary">Edit </button>
+                                                        <button onClick={() => {onDelete(product.product_id).then()}} className="btn btn-md btn-danger">Delete </button>
                                                     </div>
                                                 </div>
                                             </div>

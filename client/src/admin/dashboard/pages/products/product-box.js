@@ -4,8 +4,8 @@ const ProductBox = ({ product, id, onDelete }) => {
 
     const navigate = useNavigate()
 
-    const editProduct = () => {
-
+    const editProduct = () => { 
+        
         navigate("/admin/dashboard/product/edit", {state: {prod_id: id}})
     }
 

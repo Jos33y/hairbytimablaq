@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import AddImages from "../../assets/images/add-image.png";
 import { toast } from "react-toastify";
 import DashSpinner from "../../components/dash-spinner";
-import HandleScroll from "../../components/go-top";
+import HandleScroll from "../../components/go-top"; 
 
 const EditProductPage = () => {
 
@@ -114,7 +114,7 @@ const EditProductPage = () => {
 
             const storageRef = ref(storage, `products/` + fileName)
             const uploadTask = uploadBytesResumable(storageRef, image)
-
+ 
             uploadTask.on(
                 'state_changed',
                 (snapshot) => {

@@ -1,68 +1,189 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { useLocation } from "react-router-dom";
+import { db } from "../../firebase.config";
+import { toast } from "react-toastify";
 import "./shop.css";
 import ProductCard from "../components/product-card";
-import ProdOne from "../assets/products/prod-1.jpeg";
-import ProdTwo from "../assets/products/prod-2.jpeg";
-import ProdThree from "../assets/products/prod-3.jpeg";
-import ProdFour from "../assets/products/prod-4.jpeg";
 import HeaderImg from "../assets/images/african-woman-tp.png";
 import HeaderNav from "../components/header";
 import FooterNav from "../components/footer";
 import SubscribeForm from "../components/subscribe";
 import BreadCrumb from "../components/breadcrumb";
+import PageLoading from "../components/loading";
+import ProductLoading from "../components/prod-loading";
 
-const Shop = () => { 
+const Shop = () => {
+
+    const isMounted = useRef()
+    const location = useLocation();
+    const [products, setProducts] = useState([])
+    const [categories, setCategories] = useState([])
+    const [catValue, setCatValue] = useState('all');
+    const [loading, setLoading] = useState(true)
+    const [prodLoading, setProdLoading] = useState(false)
+
+
+    //Fetch Product
+    const fetchProducts = async (changeCat) => {
+
+        setProdLoading(true)
+        let catChange = changeCat ? changeCat : catValue; 
+        try {
+            const prodRef = collection(db, 'products')
+            let q;
+            if (catChange === 'all') {
+                q = query(prodRef, orderBy('timeStamp', 'desc'),)
+            }
+            else {
+                q = query(prodRef, where("productCategory", "==", `${catChange}`))
+
+            }
+            const querySnap = await getDocs(q)
+            let products = []
+
+            querySnap.forEach((doc) => {
+                return products.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            setProducts(products)
+        }
+        catch (error) {
+            console.log({ error })
+            toast.error("Unable to retrieve products")
+
+        }
+        setLoading(false);
+        setProdLoading(false);
+
+
+    }
+
+    const fetchCategories = async () => {
+
+        try {
+            // const auth = getAuth()
+            const catRef = collection(db, 'categories')
+            const q = query(catRef, orderBy('timeStamp', 'asc'))
+            const querySnap = await getDocs(q)
+
+            let categories = [];
+
+            querySnap.forEach((doc) => {
+                return categories.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            setCategories(categories)
+            // setLoading(false)
+        }
+        catch (error) {
+            toast.error("could not fetch categories")
+            console.log({ error })
+        }
+        setLoading(false)
+
+    }
+
+
+    const onChange = (e) => {
+
+        fetchProducts(e.target.value).then()
+        setCatValue(e.target.value);
+
+    }
+
+    useEffect(() => {
+        if (isMounted) {
+
+            fetchCategories().then();
+
+
+            if (location.state) {
+
+                setCatValue(location.state.category_id)
+                fetchProducts(location.state.category_id).then();
+
+            } else {
+
+                fetchProducts().then();
+                setCatValue('all');
+            }
+
+        }
+        return () => {
+            isMounted.current = false;
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
+
+
+
     return (
         <>
-            <HeaderNav />
-            <div className="shop-container">
-                <BreadCrumb title="shop" breadImg={HeaderImg} />
+            {loading ?
+                (<PageLoading />) : (
+                    <>
+                        <HeaderNav />
 
-                <div className="shop-section">
-                    <div className="shop-actions">
-                        <div className="shop-one">
-                            <p>Showing 1–12 of 56 Products</p>
-                        </div>
 
-                        <div className="shop-one">
-                            <div className="form-group">
-                                <select className="form-control" id="shop-categories">
-                                    <option value="all"> All products </option>
-                                    <option value="uncategorized"> Uncategorized </option>
-                                    <option value="water-curly"> Water Curly </option>
-                                </select>
+                        <div id="shop-container" className="shop-container">
+                            <BreadCrumb title="shop" breadImg={HeaderImg} />
+
+                            <div className="shop-section">
+                                <div className="shop-actions">
+                                    <div className="shop-one">
+                                        <p>Showing {products ? products.length : '0'} Products</p>
+                                    </div>
+
+                                    <div className="shop-one">
+                                        <div className="form-group">
+                                            <select className="form-control"
+                                                id="shopCategories"
+                                                defaultValue={catValue}
+                                                onChange={onChange}>
+                                                <option value='all'>All Products</option>
+                                                {categories.map((category) => (
+                                                    <option key={category.id}
+                                                        value={category.data.category_id}>{category.data.categoryName}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div className="product-shop">
+                                    {prodLoading ? (<ProductLoading />) : products && products.length > 0 ? (
+                                        <div className="row">
+
+                                            {products.map((product) => (
+                                                <div key={product.id} className="col-lg-3 col-md-4 col-6">
+                                                    <ProductCard product={product.data} prod_id={product.id} />
+                                                </div>
+
+                                            ))}
+
+                                        </div>
+                                    ) :
+                                        (
+                                            <div className="empty-box">
+                                                <h6>No product available</h6>
+                                            </div>
+                                        )
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                        <SubscribeForm />
 
-                    <div className="product-shop">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-4 col-6">
-                                <ProductCard name="Raw Layered hd frontal wig" price="650,000.00" prodImg={ProdTwo} />
-                            </div>
-
-
-                            <div className="col-lg-3 col-md-4 col-6">
-                                <ProductCard name="Layered raw wig" price="220,000.00" prodImg={ProdOne} />
-                            </div>
-
-
-                            <div className="col-lg-3 col-md-4 col-6">
-                                <ProductCard name="360 wig/ full lace wig" price="440,000.00" prodImg={ProdThree} />
-                            </div>
-
-
-                            <div className="col-lg-3 col-md-4 col-6">
-                                <ProductCard name="Layered wig 5*5" price="450,000.00" prodImg={ProdFour} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <SubscribeForm />
-            <FooterNav />
+                        <FooterNav />
+                    </>)}
         </>
     )
 }

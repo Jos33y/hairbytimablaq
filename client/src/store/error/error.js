@@ -18,7 +18,7 @@ const ErrorPage = () => {
 
         <SubscribeForm />
         <FooterNav />
-        </>
+        </> 
     )
 }
 export default ErrorPage;

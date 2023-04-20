@@ -48,7 +48,7 @@ const StoreSettings = () => {
 
 
     const getStoreInfo = async () => {
-        setLoading(true);
+        setLoading(true); 
 
         try {
             const storeRef = doc(db, 'store_info', store_unique_id)
