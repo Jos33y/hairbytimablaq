@@ -70,19 +70,19 @@ const AdminDashboard = () => {
         else if (params.dash_url === "deliveries") {
             return <DeliveryPage userId={auth.currentUser.uid} />
         }
-        else if (params.dash_url === "add-product") {
+        else if (params.product_url === "add") {
             return <AddProductPage userId={auth.currentUser.uid} />
         }
 
-        else if (params.dash_url === "products") {
+        else if (params.product_url === "manage") {
             return <ProductListPage userId={auth.currentUser.uid} />
         }
 
-        else if (params.dash_url === "edit-product") {
+        else if (params.product_url === "edit") {
             return <EditProductPage userId={auth.currentUser.uid} />
         }
 
-        else if (params.dash_url === "product-details") {
+        else if (params.product_url === "details") {
             return <ProductDetailsPage userId={auth.currentUser.uid} />
         }
 
@@ -120,7 +120,7 @@ const AdminDashboard = () => {
         else if (params.settings_url === "store") {
             return <StoreSettings userId={auth.currentUser.uid} />
         }
-        else if (params.settings_url === "payment-account") {
+        else if (params.settings_url === "account") {
             return <PaymentAccount userId={auth.currentUser.uid} />
         }
 
@@ -150,7 +150,7 @@ const AdminDashboard = () => {
 
                             <TopBar />
                             <div className="main-wrap">
-                                <SideBar pageName={params.dash_url || params.settings_url} profileData = {profileData} />
+                                <SideBar pageName={params.dash_url || params.settings_url || params.product_url} profileData = {profileData} />
                                 <div id="main-body" className="main-body">
                                     {pages()}
                                 </div>

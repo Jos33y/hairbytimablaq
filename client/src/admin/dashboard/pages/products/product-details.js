@@ -1,91 +1,202 @@
-
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { collection, doc, getDoc, getDocs, query, } from "firebase/firestore";
+import { db } from "../../../../firebase.config";
 import "./details.css";
 import ProdOne from "../../../../store/assets/products/prod-1.jpeg";
+import DashSpinner from "../../components/dash-spinner";
 import HandleScroll from "../../components/go-top";
 
 const ProductDetailsPage = () => {
+
+    const location = useLocation();
+    const isMounted = useRef()
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(true)
+    const [product, setProduct] = useState(null)
+    const [category, setCategory] = useState(null)
+    const [mainImage, setMainImage] = useState(null);
+
+    const newProduct = () => {
+
+        navigate("/admin/dashboard/product/add")
+    }
+
+
+    //Fetch Product Details
+    const fetchProductDetails = async () => {
+        setLoading(true)
+        try {
+            const docRef = doc(db, 'products', location.state.prod_id)
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setProduct(docSnap.data())
+                setMainImage(docSnap.data().imgUrls[0])
+
+            } else {
+                console.log("No Product here");
+                //setLoading(false)
+            }
+        }
+        catch (error) {
+            console.log({ error })
+        }
+
+        setLoading(false)
+    }
+
+    //Fetch Product Details
+    const fetchCategory = async () => {
+        setLoading(true)
+        try {
+            const docRef = doc(db, 'categories', location.state.category_id)
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setCategory(docSnap.data())
+
+            } else {
+                console.log("No Category Found");
+                //setLoading(false)
+            }
+        }
+        catch (error) {
+            console.log({ error })
+        }
+
+        setLoading(false)
+    }
+
+
+    useEffect(() => {
+        if (isMounted) {
+
+            fetchProductDetails().then()
+            fetchCategory().then()
+
+        }
+        return () => {
+            isMounted.current = false
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
+
     return (
         <>
-        <HandleScroll />
-            <div id="category-container" className="category-container">
+            {loading ?
+                (<DashSpinner />) : (
+                    <>
 
-                <div className="manage-product">
-                    <div className="details-container">
-                        <div className="form-header">
-                            <p className="title">Product Details</p>
-                            <button className="btn btn-primary">New Product</button>
-                        </div>
-                        {/* product details section */}
-                        <div className="product-details">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="product-images">
+                        <HandleScroll />
+                        <div id="category-container" className="category-container">
 
-                                        <div className="prod-main-img">
-                                            {/* link to enlarge image on click => https://stackblitz.com/edit/lightgallery-react?file=index.tsx */}
-                                            <img src={ProdOne} alt="prod main img" />
-                                        </div>
-
-                                        <div className="prod-img-list">
-                                            <div className="img-thumb active">
-                                                <img src={ProdOne} alt="prod thumbnail" />
-                                            </div>
-
-                                            <div className="img-thumb">
-                                                <img src={ProdOne} alt="prod thumbnail" />
-                                            </div>
-
-                                            <div className="img-thumb">
-                                                <img src={ProdOne} alt="prod thumbnail" />
-                                            </div>
-                                        </div>
+                            <div className="manage-product">
+                                <div className="details-container">
+                                    <div className="form-header">
+                                        <p className="title">Product Details</p>
+                                        <button onClick={newProduct} className="btn btn-primary">New Product</button>
                                     </div>
+                                    {/* product details section */}
+                                    <div className="product-details">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="product-images">
 
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="details-sect-info">
-                                        <p className="prod-name">Layered raw wig</p>
-                                        <p className="prod-price">₦220,000.00</p>
-                                        <p className="prod-stock">5 in stock</p>
+                                                    <div className="prod-main-img">
+                                                        {/* link to enlarge image on click => https://stackblitz.com/edit/lightgallery-react?file=index.tsx */}
+
+                                                        <img src={`${mainImage}`} alt="prod main" className="img-fluid" />
+                                                    </div>
+
+                                                    <div className="prod-img-list">
+                                                        <div onClick={() => { setMainImage(product.imgUrls[0]) }} className={`img-thumb ${mainImage === product.imgUrls[0] ? 'active' : ''}`}>
+                                                            <img src={product.imgUrls[0] ? product.imgUrls[0] : product.imgUrls[0]} alt="prod thumbnail" className="img-fluid" />
+                                                        </div>
+
+                                                        {product.imgUrls[1] ? (
+                                                            <div onClick={() => { setMainImage(product.imgUrls[1]) }} 
+                                                            className={`img-thumb ${mainImage === product.imgUrls[1] ? 'active' : ''}`}>
+                                                                <img src={product.imgUrls[1]} alt="prod thumbnail" className="img-fluid" />
+                                                            </div>
+                                                        ) : ('')}
 
 
-                                        <div className="prod-description">
-                                            <p className="p-title">Description</p>
-                                            <p className="p-desc">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                                Duis aute irure dolor in reprehenderit in voluptate velit
-                                                esse cillum dolore eu fugiat nulla pariatur.
-                                            </p>
-                                        </div>
+                                                        {product.imgUrls[2] ? (
+                                                            <div onClick={() => { setMainImage(product.imgUrls[2]) }} 
+                                                            className={`img-thumb ${mainImage === product.imgUrls[2] ? 'active' : ''}`}>
+                                                                <img src={product.imgUrls[2]} alt="prod thumbnail" className="img-fluid" />
+                                                            </div>
+                                                        ) : ('')}
 
-                                        <div className="details-prod-tags">
-                                            <p className="prod-tags">
-                                                Categories: <span className="tag-list">
-                                                    Woolen T-shirt
-                                                </span>
-                                            </p>
-                                            <p className="prod-tags">
-                                                Tag: <span className="tag-list">
-                                                    shirt, top, t-shirt
-                                                </span>
-                                            </p>
-                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div className="action-buttons">
-                                            <button className="btn btn-md btn-primary">Edit </button>
-                                            <button className="btn btn-md btn-danger">Delete </button>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="details-sect-info">
+                                                    <p className="prod-name">{product.productName}</p>
+
+                                                    {product.discountOffer ? (
+                                                        <p className="prod-price"> &#8358; {product.productDiscountPrice.toString()
+                                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                            <span className="discount-price">
+                                                                &#8358; {product.productPrice.toString()
+                                                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                            </span>
+                                                        </p>
+
+                                                    )
+                                                        :
+                                                        (
+                                                            <p className="prod-price"> &#8358; {product.productPrice.toString()
+                                                                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                                                        )}
+
+
+                                                    <p className="prod-stock">{product.productStocks} in stock</p>
+
+
+                                                    <div className="prod-description">
+                                                        <p className="p-title">Description</p>
+                                                        <p className="p-desc">
+                                                            {product.productDescription}
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="details-prod-tags">
+                                                        <p className="prod-tags">
+                                                            Categories: <span className="tag-list">
+                                                                {category ? category.categoryName : ''}
+                                                            </span>
+                                                        </p>
+                                                        <p className="prod-tags">
+                                                            Tag:
+                                                            {product.productTags.map((tag) => (
+                                                                <span className="tag-list">
+                                                                    {tag}
+                                                                </span>
+                                                            ))}
+
+
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="action-buttons">
+                                                        <button className="btn btn-md btn-primary">Edit </button>
+                                                        <button className="btn btn-md btn-danger">Delete </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
+                        </div>
+                    </>
+                )
+            }
         </>
     )
 }

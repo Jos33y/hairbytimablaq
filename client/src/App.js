@@ -47,6 +47,9 @@ const App = () => {
           <Route path="/admin/dashboard/:dash_url" element={<PrivateRoute />}>
             <Route path="/admin/dashboard/:dash_url" element={<AdminDashboard />} />
           </Route>
+          <Route path="/admin/dashboard/product/:product_url" element={<PrivateRoute />}>
+            <Route path="/admin/dashboard/product/:product_url" element={<AdminDashboard />} />
+          </Route>
           <Route path="/admin/dashboard/settings/:settings_url" element={<PrivateRoute />}>
             <Route path="/admin/dashboard/settings/:settings_url" element={<AdminDashboard />} />
           </Route>

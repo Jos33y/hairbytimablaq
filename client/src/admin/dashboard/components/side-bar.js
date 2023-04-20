@@ -87,16 +87,16 @@ const SideBar = ({ pageName, profileData }) => {
 
 
                                 {/* add product menu */}
-                                <li className={`menu-item ${pageName === 'add-product' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/add-product" className="menu-link">
+                                <li className={`menu-item ${pageName === 'add' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/product/add" className="menu-link">
                                         <i className="fa-solid fa-square-plus"></i>
                                         <span className="sidebar-text">Add Product</span>
                                     </Link>
                                 </li>
 
                                 {/* view product menu */}
-                                <li className={`menu-item ${pageName === 'products' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/products" className="menu-link">
+                                <li className={`menu-item ${pageName === 'manage' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/product/manage" className="menu-link">
                                         <i className="fa-solid fa-boxes-stacked"></i>
                                         <span className="sidebar-text">Products</span>
                                     </Link>
@@ -116,7 +116,7 @@ const SideBar = ({ pageName, profileData }) => {
                                         <i className="fa-solid fa-users-line"></i>
                                         <span className="sidebar-text">Customers </span>
                                     </Link>
-                                </li>
+                                </li> 
 
 
                                 {/* transactions menu */}
@@ -144,8 +144,8 @@ const SideBar = ({ pageName, profileData }) => {
                                 </li>
 
                                 {/* wallet menu */}
-                                <li className={`menu-item ${pageName === 'payment-account' ? 'active' : ''}`}>
-                                    <Link to="/admin/dashboard/settings/payment-account" className="menu-link">
+                                <li className={`menu-item ${pageName === 'account' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/settings/account" className="menu-link">
                                         <i className="fa-solid fa-money-check"></i>
                                         <span className="sidebar-text">Payment Account </span>
                                     </Link>

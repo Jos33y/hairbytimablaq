@@ -76,6 +76,13 @@
     padding-bottom: 0px;
 }
 
+.product-details .details-sect-info .discount-price {
+    text-decoration: line-through;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 30px;
+}
+
 .product-details .details-sect-info .prod-stock {
     font-size: 15px;
     font-weight: 400;

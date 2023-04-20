@@ -198,7 +198,7 @@ const CategoriesPage = () => {
     const fetchCategories = async () => {
 
         setLoading(true);
-        try {
+        try { 
             // const auth = getAuth()
             const catRef = collection(db, 'categories')
             const q = query(catRef, orderBy('timeStamp', 'desc'), limit(10))
