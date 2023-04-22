@@ -27,9 +27,9 @@ const App = () => {
 
   return (
     <>
-    <CartProvider>
-      <Router>
-        <Routes>
+      <CartProvider>
+        <Router>
+          <Routes>
             <Route path="*" element={<ErrorPage />} />
             <Route path="/" element={<Store />} />
             <Route path="/shop" element={<Shop />} />
@@ -41,21 +41,21 @@ const App = () => {
             <Route path="/checkout/payment" element={<CheckOutPayment />} />
             <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
             <Route path="/shop/product/:prod_id" element={<ProductDetails />} />
-        
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/register" element={<AdminRegister />} />
 
-          <Route path="/admin/dashboard/:dash_url" element={<PrivateRoute />}>
-            <Route path="/admin/dashboard/:dash_url" element={<AdminDashboard />} />
-          </Route>
-          <Route path="/admin/dashboard/product/:product_url" element={<PrivateRoute />}>
-            <Route path="/admin/dashboard/product/:product_url" element={<AdminDashboard />} />
-          </Route>
-          <Route path="/admin/dashboard/settings/:settings_url" element={<PrivateRoute />}>
-            <Route path="/admin/dashboard/settings/:settings_url" element={<AdminDashboard />} />
-          </Route>
-        </Routes>
-      </Router>
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/register" element={<AdminRegister />} />
+
+            <Route path="/admin/dashboard/:dash_url" element={<PrivateRoute />}>
+              <Route path="/admin/dashboard/:dash_url" element={<AdminDashboard />} />
+            </Route>
+            <Route path="/admin/dashboard/product/:product_url" element={<PrivateRoute />}>
+              <Route path="/admin/dashboard/product/:product_url" element={<AdminDashboard />} />
+            </Route>
+            <Route path="/admin/dashboard/settings/:settings_url" element={<PrivateRoute />}>
+              <Route path="/admin/dashboard/settings/:settings_url" element={<AdminDashboard />} />
+            </Route>
+          </Routes>
+        </Router>
       </CartProvider>
       <ToastContainer />
     </>

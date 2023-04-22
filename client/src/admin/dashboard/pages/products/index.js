@@ -17,7 +17,7 @@ const ProductListPage = () => {
     const [loading, setLoading] = useState(false)
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
-    const [catValue, setCatValue] = useState('all');
+    const [catValue, setCatValue] = useState('all'); 
 
     const newProduct = () => {
 
@@ -201,7 +201,7 @@ const ProductListPage = () => {
                                                                 <div key={product.id} className="col-md-6">
                                                                     <ProductBox product={product.data} id={product.id} onDelete={() => {onDelete(product.id).then()}} />
                                                                 </div>
-                                                            ))}
+                                                            ))} 
 
 
                                                         </>

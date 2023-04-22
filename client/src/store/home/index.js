@@ -14,16 +14,14 @@ import PageLoading from "../components/loading";
 
 const Store = () => {
 
-
     const isMounted = useRef()
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
 
 
-
     //Fetch Product
-    const fetchProducts = async () => {
+    const fetchProducts = async () => { 
         setLoading(true)
         try {
             const prodRef = collection(db, 'products')

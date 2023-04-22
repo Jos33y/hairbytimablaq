@@ -5,7 +5,7 @@ const HomeProducts = ({ products }) => {
 
     const navigate = useNavigate();
 
-    return (
+    return ( 
         <>
             <div className="home-products">
                 <h4 className="title"> Products </h4>

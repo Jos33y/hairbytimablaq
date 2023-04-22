@@ -39,6 +39,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .order-container {
@@ -54,6 +55,7 @@
     color: #333333;
     font-weight: 400;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .cart-box .cart-filled .cart-filled-info .cart-product .cart-product-details .prod-price {
@@ -141,9 +143,12 @@
 
 .cart-box .cart-buttons {
     margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.cart-box .cart-buttons .btn {
+.cart-box .cart-buttons .btn.btn-primary {
     border: 2px solid #000000;
     font-size: 15px;
     font-weight: 500;
@@ -151,6 +156,17 @@
     padding: 10px 35px;
     background: #ffffff;
     border-radius: 1px;
+}
+
+
+.cart-box .cart-buttons .btn.btn-secondary {
+    font-size: 15px;
+    font-weight: 500;
+    background: #D1B000;
+    color: #000000;
+    padding: 10px 35px;
+    border-radius: 1px;
+    border: 1px solid #D1B000;
 }
 
 .order-container .coupon-container .form-group {

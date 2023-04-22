@@ -45,7 +45,7 @@ const ProductBox = ({ product, id, onDelete }) => {
                     <p> <button onClick={editProduct} className="btn btn-md btn-primary">Edit </button> </p>
                     <p> <button onClick={onDelete} className="btn btn-md btn-danger">Delete </button> </p>
                 </div>
-            </div>
+            </div> 
         </>
     )
 }

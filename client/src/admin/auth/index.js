@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./auth.css";
 import AuthHeader from "./auth-header";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { db } from "../../firebase.config";
 import { toast } from "react-toastify";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import FooterNav from "../../store/components/footer";
 
 const AdminLogin = () => {
     const navigate = useNavigate();
@@ -113,15 +114,16 @@ const AdminLogin = () => {
 
                                 <p className="p-create">
 
-                                    <Link className="link" to="/admin/register">
+                                    {/* <Link className="link" to="/admin/register">
                                         Create Account
-                                    </Link>
+                                    </Link> */}
                                 </p>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <FooterNav />
         </>
     );
 };
