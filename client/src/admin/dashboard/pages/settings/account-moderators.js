@@ -26,7 +26,7 @@ const AccountModerators = ({ userId }) => {
         email: "",
         phoneNumber: "",
         adminRole: "Manager",
-    });
+    }); 
 
     const { fullName, email, phoneNumber, adminRole } = formData;
 
@@ -45,10 +45,11 @@ const AccountModerators = ({ userId }) => {
         e.preventDefault();
 
         try {
+
             let split_full_name = formData.fullName.split(' ')
             let first_name = split_full_name[0];
             let gen_password = 'hairbytimablaq@' + first_name;
-            let password = gen_password.toLowerCase();
+            let password = gen_password.toLowerCase(); 
 
 
             const auth = getAuth();

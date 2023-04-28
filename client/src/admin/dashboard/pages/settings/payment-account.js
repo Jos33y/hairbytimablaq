@@ -11,7 +11,7 @@ import {
     updateDoc
 } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid"; 
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -87,7 +87,7 @@ const PaymentAccount = () => {
                         accountName: '',
                         accountNumber: '',
                         bankName: '',
-                    }))
+                    })) 
                 })
 
                 toast.success("bank account added");

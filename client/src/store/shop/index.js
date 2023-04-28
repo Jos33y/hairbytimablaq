@@ -37,7 +37,7 @@ const Shop = () => {
             }
             else {
                 q = query(prodRef, where("productCategory", "==", `${catChange}`))
-
+ 
             }
             const querySnap = await getDocs(q)
             let products = []

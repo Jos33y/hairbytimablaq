@@ -1,0 +1,58 @@
+ const saveEmailCode = async (emailCode) => {
+
+        const rand_id = uuidv4().slice(0, 5)
+
+        try {
+
+            const emailRef = collection(db, 'email_list')
+            let q = query(emailRef, where("contact_email", "==", `${contactEmail}`))
+
+            const querySnap = await getDocs(q)
+            let emailsList = []
+
+            querySnap.forEach((doc) => {
+                return emailsList.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+
+            if (emailsList.length > 0) {
+                let contact_email_id = emailsList[0].data.contact_email_id;
+
+                const contactEmailData = {
+                    verification_code: emailCode,
+                    timeStamp: serverTimestamp(),
+                }
+                const emailUpdateRef = doc(db, 'email_list', contact_email_id)
+                await updateDoc(emailUpdateRef, contactEmailData).then(() => {
+                    setContactEmailId(contact_email_id)
+                })
+
+
+            } else {
+
+                let split_email = contactEmail.split('@')
+                let contact_email = split_email[0];
+                let gen_contact_email_id = `${(contact_email).replace(/,?\s+/g, '-')}-${rand_id}`
+                let contact_email_id = gen_contact_email_id.toLowerCase();
+
+                const contactEmailData = {
+                    contact_email_id: contact_email_id,
+                    contact_email: contactEmail,
+                    verification_code: emailCode,
+                    timeStamp: serverTimestamp(),
+                }
+                const accountRef = doc(db, 'email_list', contact_email_id)
+                await setDoc(accountRef, contactEmailData).then(() => {
+                    setContactEmailId(contact_email_id)
+                })
+
+            }
+
+        } catch (error) {
+            toast.error("error verifying contact");
+        }
+
+
+    }

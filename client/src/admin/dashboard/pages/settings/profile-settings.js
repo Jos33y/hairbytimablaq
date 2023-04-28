@@ -14,7 +14,7 @@ const ProfileSettings = ({ userId, profileData }) => {
         adminRole: '',
         email: '',
         phoneNumber: '',
-        updateTime: '',
+        updateTime: '', 
     })
 
     const { fullName, adminRole, email, phoneNumber } = formData;

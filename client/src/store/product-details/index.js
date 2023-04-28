@@ -77,7 +77,7 @@ const ProductDetails = () => {
 
     //Fetch Product Catgory
     const fetchCategory = async (prod_cat) => {
-
+ 
         try {
             const docRef = doc(db, 'categories', prod_cat)
             const docSnap = await getDoc(docRef);
@@ -96,7 +96,7 @@ const ProductDetails = () => {
 
     }
 
-
+ 
     //Fetch Product Details
     const fetchProductDetails = async () => {
 

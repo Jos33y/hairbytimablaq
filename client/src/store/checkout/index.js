@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import {collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from "../../firebase.config";
 import "./checkout.css";
 import CheckoutBreadCrumb from './breadcrumb';
 import { useNavigate } from 'react-router-dom';
@@ -8,22 +10,28 @@ import FooterNav from '../components/footer';
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { toast } from 'react-toastify';
-import nodemailer from "nodemailer";
-import ejs from "ejs";
+import formatPrice from "../components/format-price";
 
 
 const CheckOut = () => {
+
+    const isMounted = useRef()
+    const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(true)
     const [isActive, setIsActive] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [deliveries, setDeliveries] = useState([]) 
+    const [shippingMethod, setShippingMethod] = useState("within-gambia-3dad2");
     const [contactEmail, setContactEmail] = useState("");
     const [contactPhone, setContactPhone] = useState();
     const [isCode, setCode] = useState('');
     const [isCodeSent, setIsCodeSent] = useState(false);
-    // eslint-disable-next-line
     const [isCodeValid, setIsCodeValid] = useState(false);
     const [getCode, setGetCode] = useState('');
+    // eslint-disable-next-line
+    const [getPinId, setPinId] = useState('');
 
-
-    const navigate = useNavigate();
 
     const onContactChange = (contact_status) => {
 
@@ -41,71 +49,135 @@ const CheckOut = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsDisabled(true)
 
         if (isCodeSent) {
-            toast.success('verifying code');
-        }
-        else {
 
+            if (isCode === getCode) {
+                toast.success('verification successful');
+                setIsCodeValid(true);
+
+                if (isActive) {
+                    navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
+                } else {
+                    navigate('/checkout/shipping', { state: { contact_mode: 'email', contact_info: contactEmail, delivery_method: shippingMethod } })
+                }
+
+            }
+            else {
+                toast.error('invalid code');
+                setCode('');
+            }
+
+        } else {
             const theCode = Math.floor(100000 + Math.random() * 900000);
 
             if (isActive) {
-                console.log("Phone ", contactPhone, "code", theCode);
-                setIsCodeSent(true)
+
+                const pattern = /^[\d+]+$/; // Match numbers and the + symbol
+                let phoneValid = pattern.test(contactPhone);
+                if (phoneValid) {
+                    sendSms();
+                }
+                else {
+                    toast.error('invalid phone number')
+                }
 
             } else {
-
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 let emailValid = emailRegex.test(contactEmail);
                 if (emailValid) {
-
-                    sendEmail(theCode).then(() => {
-                        toast.success('verification code sent successfully');
-                        setGetCode(theCode);
-                        setIsCodeSent(true)
-                    })
-
-                    console.log("Email", contactEmail, "code", theCode);
+                    sendEmail(theCode);
 
                 } else {
-
                     toast.error('invalid email address')
                 }
             }
         }
+        setIsDisabled(false)
+
     }
 
+    const sendSms = async () => {
+
+        fetch('/send-code-phone', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                phone_number: contactPhone,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                   
+                    toast.success('Code sent successfully');
+                    setIsCodeSent(true)
+                } else {
+                    toast.error('something went wrong')
+                }
+                console.log(response);
+                console.log("pin ID", response.pinId)
+                console.log("pin ID", response.smsStatus)
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    }
 
     const sendEmail = async (theCode) => {
-        // Create a nodemailer transporter
-        let transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
-            auth: {
-                user: "youremail@gmail.com",
-                pass: "yourpassword",
-            },
-        });
 
-        // Render the email template with the data
-        let html = await ejs.renderFile("./verification-email.ejs", {
-            verificationCode: theCode,
-        });
-
-        // Define the email message
-        let message = {
-            from: "support@hairbytimablaq.com",
-            to: contactEmail,
-            subject: "Email Verification!",
-            html: html,
-        };
-
-        // Send the email
-        await transporter.sendMail(message);
+        fetch('/send-code-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                to: contactEmail,
+                from: 'support@hairbytimablaq.com',
+                subject: 'Email Verification!',
+                verification_code: theCode,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    toast.success('Code sent successfully');
+                    setGetCode(`${theCode}`);
+                    setIsCodeSent(true)
+                } else {
+                    toast.error('something went wrong')
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
 
+    const fetchDeliveries = async () => {
+
+        try {
+            // const auth = getAuth()
+            const deliveryRef = collection(db, 'delivery_locations')
+            const q = query(deliveryRef, orderBy('timeStamp', 'asc'))
+            const querySnap = await getDocs(q)
+
+            let deliveries = [];
+
+            querySnap.forEach((doc) => {
+                return deliveries.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            setDeliveries(deliveries)
+            // setLoading(false)
+        }
+        catch (error) {
+            toast.error("could not fetch delivery list")
+            console.log({ error })
+        }
+        setLoading(false)
+
+    }
 
 
 
@@ -144,16 +216,33 @@ const CheckOut = () => {
         }
     };
 
+    const onLocationChange = (e) => {
+        setShippingMethod(e.target.value);
+    }
+
     const goToShipping = () => {
-        if (isCodeValid === false) {
-            navigate('/checkout/shipping')
+        if (isCodeValid === true) {
+            if (isActive) {
+                navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
+            } else {
+                navigate('/checkout/shipping', { state: { contact_mode: 'email', contact_info: contactEmail, delivery_method: shippingMethod } })
+            }
         } else {
             toast.error('validate contact info')
         }
     }
 
+    useEffect(() => {
+        if (isMounted) {
 
-
+            fetchDeliveries().then();
+    
+        }
+        return () => {
+            isMounted.current = false;
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
 
     return (
         <>
@@ -165,6 +254,36 @@ const CheckOut = () => {
                     <div className='row'>
                         <div className='col-md-7'>
                             <div className='checkout-form'>
+
+                                {/* check out form content here */}
+                                <div className='checkout-form-content'>
+                                    <p className='form-title'>Delivery Method </p>
+
+                                    {/* row for form group */}
+                                    <div className='row'>
+                                        <div className='col-md-10'>
+                                            <div className='form-group'>
+
+                                                <label className='form-label'>Select Delivery <span className='required'><i className="fa-solid fa-star-of-life"></i></span> </label>
+                                                <select
+                                                    value={shippingMethod}
+                                                    onChange={onLocationChange}
+                                                    name='delivery_method'
+                                                    id='delivery_method'
+                                                    className='form-control'>
+                                                    <option value="null">-- Select Delivery--</option>
+                                                    {deliveries.map((delivery) => (
+                                                        <option key={delivery.id}
+                                                            value={delivery.data.delivery_id}>
+                                                            {delivery.data.deliveryLocation} - &#8358;{formatPrice(Number(delivery.data.deliveryPrice))}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {/* check out form content here */}
                                 <div className='checkout-form-content'>
@@ -234,7 +353,7 @@ const CheckOut = () => {
                                             <div className='col-md-6'>
                                                 <div className='form-button'>
 
-                                                    <button className='btn btn-primary btn-submit'> {isCodeSent ? ('Continue to Shipping') : ('Send Code')} </button>
+                                                    <button disabled={isDisabled} className='btn btn-primary btn-submit'> {isCodeSent ? ('Continue to Shipping') : ('Send Code')} </button>
                                                 </div>
                                             </div>
                                         </div>

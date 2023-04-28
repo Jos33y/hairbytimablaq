@@ -10,8 +10,8 @@ import HandleScroll from "../../components/go-top";
 
 const ProductDetailsPage = () => {
 
-    const location = useLocation();
-    const isMounted = useRef()
+    const location = useLocation(); 
+    const isMounted = useRef() 
     const navigate = useNavigate()
     const MySwal = withReactContent(Swal)
     const [loading, setLoading] = useState(true)
@@ -67,7 +67,7 @@ const ProductDetailsPage = () => {
     }
 
 
-
+ 
     //Fetch Product Details
     const fetchProductDetails = async () => {
         setLoading(true)

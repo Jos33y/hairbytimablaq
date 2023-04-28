@@ -49,13 +49,13 @@ const AdminDashboard = () => {
             // console.log("profile data", profileSnap.data())
             // console.log("Params Name:", params.dash_url)
             setProfileData(profileSnap.data())
-        }
+        } 
         else {
             navigate("/admin/login") 
         }
 
         setLoading(false)
-    }
+    } 
 
 
     const pages = () => {

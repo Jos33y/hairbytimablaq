@@ -1,11 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase.config";
 import formatPrice from "../components/format-price";
 
 const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
 
     const isMounted = useRef()
     const [carts, setCarts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [shippingPrice, setShippingPrice] = useState(null)
     const itemsPrice = carts.reduce((a, c) => a + c.productPrice * c.qty, 0);
+
+    const fetchDelivery = async () => {
+
+        setLoading(true)
+        const deliveryRef = doc(db, 'delivery_locations', shippingMethod)
+        const deliverySnap = await getDoc(deliveryRef)
+
+        if (deliverySnap.exists()) {
+            setShippingPrice(deliverySnap.data().deliveryPrice)
+        }
+        else {
+            console.log('no delivery data')
+        }
+
+        setLoading(false)
+
+    }
 
     useEffect(() => {
         if (isMounted) {
@@ -17,6 +38,9 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
             //load persisted cart into state if it exists
             if (localCart) {
                 setCarts(localCart)
+            }
+            if (shippingMethod) {
+                fetchDelivery();
             }
 
         }
@@ -47,7 +71,7 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
                 <div className="order-summary">
                     <div className="prod-summary">
                         {carts.map((cart) => (
-                            <div key={cart.id} className="prod-summary-details">
+                            <div key={cart.product_id} className="prod-summary-details">
                                 <div className="prod-details">
                                     <div className="prod-image">
                                         <img src={cart.imgUrls[0]} alt="mini product" className="img-fluid" />
@@ -75,19 +99,19 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
                         <hr />
                         <div className="order-summary-list">
                             <p className="sub-total">Shipping</p>
-                            <p className="sub-total">
-                                {shippingMethod ? ('&#8358;' + formatPrice(shippingMethod.amount)) : ('Yet to be calculated')}
-
-                            </p>
-
+                            {shippingPrice ? (
+                                <p className="sub-total"> &#8358;{formatPrice(Number(shippingPrice))} </p>
+                            ) : (
+                                <p className="sub-total">Yet to be calculated</p>
+                            )}
 
                         </div>
 
                         <hr />
                         <div className="order-summary-list">
                             <p className="total">Total</p>
-                            <p className="total">&#8358;{shippingMethod ?
-                                formatPrice(Number(shippingMethod.amount) + Number(itemsPrice)) :
+                            <p className="total">&#8358;{shippingPrice ?
+                                formatPrice(Number(shippingPrice) + Number(itemsPrice)) :
                                 formatPrice(itemsPrice)}</p>
                         </div>
                     </div>

@@ -1,0 +1,97 @@
+// api/index.js
+const express = require("express");
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const ejs = require('ejs');
+const path = require('path');
+const cors = require('cors');
+const PORT = process.env.PORT || 3001;
+const API_KEY = '';
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://hairbytimablaq.com'],
+}));
+
+
+
+app.post('/send-code-phone', async (req, res) => {
+    
+    const data = {
+        api_key: API_KEY,
+        message_type: 'NUMERIC',
+        to: req.body.phone_number,
+        from: 'fastbeep',
+        channel: 'generic',
+        pin_attempts: 10,
+        pin_time_to_live: 30,
+        pin_length: 6,
+        pin_placeholder: '< 1234 >',
+        message_text: 'Your hairbytimablaq confirmation code is < 1234 >. It expires in 30 minutes',
+        pin_type: 'NUMERIC'
+      };
+    
+      axios.post('https://api.ng.termii.com/api/sms/otp/send', data)
+      .then(response => {
+        console.log(response.data);
+        res.json({pinId: response.data.pinId, data: response.data});
+      })
+      .catch(error => {
+        console.log(error.response.status);
+        res.json(response);
+      });
+});
+
+
+
+// Handle email verification requests
+app.post('/send-code-email', async (req, res) => {
+    const { to, from, subject, verification_code } = req.body;
+
+    // Create a nodemailer transporter
+    let transporter = nodemailer.createTransport({
+        host: "smtp.elasticemail.com",
+        port: 2525,
+        auth: {
+           
+        },
+    });
+
+    // Render the email template with the data
+    let html = await ejs.renderFile(path.join(__dirname, 'verification-email.ejs'), {
+        verificationCode: verification_code,
+    });
+
+    // Define the email message
+    let message = {
+        from: from,
+        to: to,
+        subject: subject,
+        html: html,
+    };
+
+    try {
+        // Send email
+        await transporter.sendMail(message);
+        res.status(200).json({ message: 'Email sent successfully' });
+        console.log("email sent");
+    } catch (error) {
+        console.error(error);
+        console.log(error);
+        res.status(500).json({ message: 'Failed to send email' });
+    }
+
+});
+
+
+
+
+app.get("/api", (req, res) => {
+    res.json({ message: "Hello from server!" });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+});
