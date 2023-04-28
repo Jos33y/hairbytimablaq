@@ -14,7 +14,7 @@ const OrderConfirmation = () => {
     const navigate = useNavigate();
 
     return (
-        <>
+        <> 
 
             <HeaderNav />
             <div className="checkout-container">

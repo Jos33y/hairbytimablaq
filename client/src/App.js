@@ -15,6 +15,7 @@ import AboutUs from './store/about';
 import TrackOrder from './store/track';
 import ProductDetails from './store/product-details';
 import CheckOut from './store/checkout';
+import CheckOutShipping from './store/checkout/shipping';
 import CheckOutPayment from './store/checkout/payment';
 import OrderConfirmation from './store/checkout/order-confirmation';
 
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/track" element={<TrackOrder />} />
             <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/checkout/shipping" element={<CheckOutShipping />} />
             <Route path="/checkout/payment" element={<CheckOutPayment />} />
             <Route path="/checkout/confirmation" element={<OrderConfirmation />} />
             <Route path="/shop/product/:prod_id" element={<ProductDetails />} />

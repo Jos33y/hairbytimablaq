@@ -4,6 +4,58 @@
     margin-bottom: 5%;
     font-family: "Poppins", sans-serif;
 }
+.checkout-container .form-header-container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.checkout-container .form-header-container .btn{
+    margin-right: 30px;
+    width: 30%;
+    text-align: center;
+    padding: 7px 20px;
+    border-radius: 1px;
+    border: 1px solid #a0a0a0;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: #ffffff;
+    color: #000000;
+}
+
+.checkout-container .form-header-container .btn.btn-active{
+    background:#565656;
+    color: #ffffff;
+}
+.checkout-container .form-button{
+    
+    text-align: right;
+}
+
+.checkout-container .form-button .btn-submit{
+    width: 70%;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 600;
+    background-image: linear-gradient(to right, #b98a09 0%, #EDDE5D  51%, #b98a09  100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    transition: 0.5s;
+}
+
+.checkout-container .form-button .btn-submit:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
 
 /* bread crumbs styles */
 
@@ -32,7 +84,7 @@
 
 .checkout-container .bread-header .bread-header-text {
     text-align: center;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .checkout-container .bread-header .bread-header-text h4 {
@@ -219,6 +271,10 @@
     padding: 20px 20px;
 }
 
+.checkout-section .order-container .coupon-container{
+    margin-bottom: 50px;
+}
+
 .checkout-section .order-container .coupon-container .form-group {
     margin-bottom: 20px;
 }
@@ -268,7 +324,6 @@
 }
 
 .checkout-section .order-container .order-summary {
-    margin-top: 50px;
     padding: 20px 30px;
     background: #ededed;
 }
@@ -385,7 +440,7 @@
 
 /* check out table section for payment page */
 .checkout-table .checkout-table-info {
-    padding: 10px;
+    padding: 10px 20px;
     border: 1px solid #bababa;
     border-radius: 8px;
     margin-bottom: 10%;

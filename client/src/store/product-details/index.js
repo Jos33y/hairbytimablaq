@@ -60,7 +60,7 @@ const ProductDetails = () => {
                     qty: quantity,
                 };
                 cartData.push(cartItem);
-                //  setCart(cartData);
+                //  setCart(cartData); 
                 setCart(cartData);
                 localStorage.setItem('cart', JSON.stringify(cartData));
                 toast.success('Product added to cart');

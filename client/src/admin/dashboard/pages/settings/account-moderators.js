@@ -16,7 +16,7 @@ import { DashFormatDate } from "../../components/format-date";
 const AccountModerators = ({ userId }) => {
 
     const isMounted = useRef()
-    const MySwal = withReactContent(Swal)
+    const MySwal = withReactContent(Swal) 
     const [loading, setLoading] = useState(false)
     const [isDisabled, setIsDisabled] = useState(false)
     const [formContainer, setFormContainer] = useState(false)

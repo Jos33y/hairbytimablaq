@@ -8,6 +8,7 @@ import SubscribeForm from "../components/subscribe";
 import FooterNav from "../components/footer";
 import PageLoading from "../components/loading";
 import { toast } from "react-toastify";
+import { useCart } from "../components/cart-context";
 import CartProducts from "./cart-product";
 
 
@@ -16,10 +17,10 @@ const ShopCart = () => {
     const isMounted = useRef()
     const [loading, setLoading] = useState(true)
     const [isDisabled, setDisabled] = useState(false)
-    const [carts, setCarts] = useState([])
-    const [cartItems, setCartItems] = useState([...carts]);
+    const [cart, setCart] = useCart();
+    const [cartItems, setCartItems] = useState([...cart]);
 
-    const itemsPrice = carts.reduce((a, c) => a + c.productPrice * c.qty, 0);
+    const itemsPrice = cart.reduce((a, c) => a + c.productPrice * c.qty, 0);
 
 
     // checkout cart codes  
@@ -42,15 +43,15 @@ const ShopCart = () => {
 
 
     // delete cart codes
-    const onDelete = (cart) => {
+    const onDelete = (cartDelete) => {
         try {
-            let cartData = [...carts]
+            let cartData = [...cart]
 
-            const existingItem = cartData.find(cartItem => cartItem.product_id === cart.product_id);
+            const existingItem = cartData.find(cartItem => cartItem.product_id === cartDelete.product_id);
             if (existingItem) {
-                cartData = cartData.filter(cartItem => cartItem.product_id !== cart.product_id);
+                cartData = cartData.filter(cartItem => cartItem.product_id !== cartDelete.product_id);
 
-                setCarts(cartData);
+                setCart(cartData);
 
                 let cartString = JSON.stringify(cartData)
                 localStorage.setItem('cart', cartString)
@@ -73,7 +74,7 @@ const ShopCart = () => {
 
     const onUpdateCartItemQuantity = (updatedCartItem) => {
 
-        const updatedCartItems = carts.map((cartItem) => {
+        const updatedCartItems = cart.map((cartItem) => {
             if (cartItem.product_id === updatedCartItem.product_id) {
                 return updatedCartItem;
             } else {
@@ -85,7 +86,7 @@ const ShopCart = () => {
     };
 
     const onUpdateCartItems = (updatedCartItems) => {
-        setCarts(updatedCartItems);
+        setCart(updatedCartItems);
     };
 
     const handleUpdateCartItems = () => {
@@ -102,7 +103,7 @@ const ShopCart = () => {
         //turn it into js
         localCart = JSON.parse(localCart);
         //load persisted cart into state if it exists
-        if (localCart) setCarts(localCart)
+        if (localCart) setCart(localCart)
         setLoading(false)
         //turn it into js
     }
@@ -135,12 +136,12 @@ const ShopCart = () => {
                                     <div className="col-md-8">
 
                                         <div className="cart-box">
-                                            {carts && carts.length > 0 ?
+                                            {cart && cart.length > 0 ?
                                                 (
                                                     <div className="cart-filled">
                                                         <hr />
 
-                                                        {carts.map((cartItem) => (
+                                                        {cart.map((cartItem) => (
                                                             <CartProducts key={cartItem.product_id} cartItem={cartItem} onUpdateCartItemQuantity={onUpdateCartItemQuantity} onDelete={() => { onDelete(cartItem) }} />
                                                         ))}
 
@@ -154,7 +155,7 @@ const ShopCart = () => {
                                             <div className="cart-buttons">
                                                 <button onClick={continueShopping} className="btn btn-md btn-primary"> Continue Shopping</button>
 
-                                                {carts.length > 0 && (<button onClick={handleUpdateCartItems} className="btn btn-md btn-secondary"> Update Cart</button>)}
+                                                {cart.length > 0 && (<button onClick={handleUpdateCartItems} className="btn btn-md btn-secondary"> Update Cart</button>)}
                                             </div>
                                         </div>
                                     </div>

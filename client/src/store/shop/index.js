@@ -18,7 +18,7 @@ const Shop = () => {
     const isMounted = useRef()
     const location = useLocation();
     const [products, setProducts] = useState([])
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]) 
     const [catValue, setCatValue] = useState('all');
     const [loading, setLoading] = useState(true)
     const [prodLoading, setProdLoading] = useState(false)

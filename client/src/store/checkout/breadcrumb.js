@@ -13,7 +13,8 @@ const CheckoutBreadCrumb = ({page}) => {
                                 <div className="breadcrumb">
                                     <ul>
                                         <li> <span className="breadcrumb-link" >Cart <i className="fa-solid fa-angle-right"></i> </span></li>
-                                        <li className={`${page === 'checkout' ? ('active') : ('')}`} > <span className="breadcrumb-link"> Information <i className="fa-solid fa-angle-right"></i> </span>  </li>
+                                        <li className={`${page === 'checkout' ? ('active') : ('')}`} > <span className="breadcrumb-link"> Contact<i className="fa-solid fa-angle-right"></i> </span>  </li>
+                                        <li className={`${page === 'shipping' ? ('active') : ('')}`} > <span className="breadcrumb-link"> Shipping <i className="fa-solid fa-angle-right"></i> </span>  </li>
                                         <li className={`${page === 'payment' ? ('active') : ('')}`} > <span className="breadcrumb-link"> Payment  <i className="fa-solid fa-angle-right"></i> </span> </li>
                                         <li className={`${page === 'order confirmation' ? ('active') : ('')}`} > <span className="breadcrumb-link"> Order confirmation <i className="fa-solid fa-angle-right"></i>  </span></li>
                                     </ul>

@@ -17,7 +17,7 @@ const CartProducts = ({ cartItem, onDelete, onUpdateCartItemQuantity }) => {
             onUpdateCartItemQuantity({ ...cartItem, qty: quantity - 1 });
         }
     };
-
+ 
     return (
         <>
             <div className="cart-filled-info">

@@ -3,7 +3,8 @@ import "./checkout.css";
 import CheckoutBreadCrumb from './breadcrumb';
 import { useNavigate } from 'react-router-dom';
 import HeaderNav from '../components/header';
-import FooterNav from '../components/footer'; 
+import FooterNav from '../components/footer';
+import CheckOutOrderSummary from './order-summary';
 
 const CheckOutPayment = () => {
 
@@ -22,7 +23,7 @@ const CheckOutPayment = () => {
     }
 
     const cancelOrder = () => {
-        navigate('/cart');
+        navigate('/checkout/shipping');
     }
 
     return (
@@ -32,8 +33,8 @@ const CheckOutPayment = () => {
                 <CheckoutBreadCrumb page="payment" />
 
                 <div className='checkout-section'>
-                    <div className='row justify-content-center'>
-                        <div className='col-md-8'>
+                    <div className='row'>
+                        <div className='col-md-7'>
                             <div className='checkout-table'>
                                 <div className='checkout-table-info'>
                                     <div className='checkout-info'>
@@ -62,7 +63,7 @@ const CheckOutPayment = () => {
                                     </div>
                                     <hr />
                                     <div className='return-info'>
-                                        <p onClick={() => { navigate('/checkout') }} className='return-link'>Change Info </p>
+                                        <p onClick={() => { navigate('/checkout/shipping') }} className='return-link'>Change Info </p>
                                     </div>
                                 </div>
 
@@ -145,6 +146,10 @@ const CheckOutPayment = () => {
 
                             </div>
 
+                        </div>
+
+                        <div className='col-md-5'>
+                            <CheckOutOrderSummary paymentPage={true} />
                         </div>
 
                     </div>
