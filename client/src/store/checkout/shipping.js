@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
-import { toast } from "react-toastify";
 import "./checkout.css";
-import formatPrice from "../components/format-price";
 import CheckoutBreadCrumb from './breadcrumb';
 import { useNavigate, useLocation } from 'react-router-dom';
 import CheckOutOrderSummary from './order-summary';
@@ -26,7 +24,7 @@ const CheckOutShipping = () => {
         contact_mode: '',
         city: '',
         delivery_state: '',
-        postal_code: '',
+        postal_code: '', 
         country: 'Gambia',
         delivery_phone: '',
         shipping_id: '',

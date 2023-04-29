@@ -17,8 +17,7 @@ const CheckOut = () => {
 
     const isMounted = useRef()
     const navigate = useNavigate();
-
-    const [loading, setLoading] = useState(true)
+    
     const [isActive, setIsActive] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [deliveries, setDeliveries] = useState([]) 
@@ -175,7 +174,6 @@ const CheckOut = () => {
             toast.error("could not fetch delivery list")
             console.log({ error })
         }
-        setLoading(false)
 
     }
 

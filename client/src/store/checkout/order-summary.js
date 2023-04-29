@@ -7,13 +7,10 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
 
     const isMounted = useRef()
     const [carts, setCarts] = useState([])
-    const [loading, setLoading] = useState(true)
     const [shippingPrice, setShippingPrice] = useState(null)
     const itemsPrice = carts.reduce((a, c) => a + c.productPrice * c.qty, 0);
 
     const fetchDelivery = async () => {
-
-        setLoading(true)
         const deliveryRef = doc(db, 'delivery_locations', shippingMethod)
         const deliverySnap = await getDoc(deliveryRef)
 
@@ -23,8 +20,6 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
         else {
             console.log('no delivery data')
         }
-
-        setLoading(false)
 
     }
 
