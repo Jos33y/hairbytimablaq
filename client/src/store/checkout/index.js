@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import {collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, setDoc, where, serverTimestamp, doc } from "firebase/firestore";
 import { db } from "../../firebase.config";
+import { v4 as uuidv4 } from "uuid";
 import "./checkout.css";
 import CheckoutBreadCrumb from './breadcrumb';
 import { useNavigate } from 'react-router-dom';
@@ -17,16 +18,15 @@ const CheckOut = () => {
 
     const isMounted = useRef()
     const navigate = useNavigate();
-    
+
     const [isActive, setIsActive] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
-    const [deliveries, setDeliveries] = useState([]) 
+    const [deliveries, setDeliveries] = useState([])
     const [shippingMethod, setShippingMethod] = useState("within-gambia-3dad2");
     const [contactEmail, setContactEmail] = useState("");
     const [contactPhone, setContactPhone] = useState();
     const [isCode, setCode] = useState('');
     const [isCodeSent, setIsCodeSent] = useState(false);
-    const [isCodeValid, setIsCodeValid] = useState(false);
     const [getCode, setGetCode] = useState('');
     // eslint-disable-next-line
     const [getPinId, setPinId] = useState('');
@@ -50,22 +50,24 @@ const CheckOut = () => {
         e.preventDefault();
         setIsDisabled(true)
 
+
         if (isCodeSent) {
 
-            if (isCode === getCode) {
-                toast.success('verification successful');
-                setIsCodeValid(true);
+            if (isActive) {
+                navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
 
-                if (isActive) {
-                    navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
-                } else {
-                    navigate('/checkout/shipping', { state: { contact_mode: 'email', contact_info: contactEmail, delivery_method: shippingMethod } })
+            } else {
+                if (`${isCode}` === `${getCode}`) {
+                    toast.success('verification successful');
+                    let contact_mode = 'email';
+                    let contact_info = contactEmail;
+                    createCustomer(contact_mode, contact_info);
+                }
+                else {
+                    toast.error('invalid code');
+                    setCode('');
                 }
 
-            }
-            else {
-                toast.error('invalid code');
-                setCode('');
             }
 
         } else {
@@ -97,6 +99,45 @@ const CheckOut = () => {
 
     }
 
+
+    const createCustomer = async (contact_mode, contact_info) => {
+        const rand_Id = uuidv4().slice(0, 20)
+
+        const customerRef = collection(db, 'customers')
+        let q;
+        q = query(customerRef, where("contact_info", "==", `${contact_info}`))
+
+        const querySnap = await getDocs(q)
+        let customers = []
+        querySnap.forEach((doc) => {
+            return customers.push({
+                id: doc.id,
+                data: doc.data(),
+            })
+        })
+
+        if (customers.length > 0) {
+            navigate('/checkout/shipping', { state: { customer_id: customers[0].data.customer_id, delivery_method: shippingMethod } })
+        }
+        else {
+
+            console.log('will create customers:', customers)
+            let customer_id = rand_Id.toLowerCase();
+            const customerData = {}
+            customerData.customer_id = customer_id;
+            customerData.contact_mode = contact_mode;
+            customerData.contact_info = contact_info;
+            customerData.timeStamp = serverTimestamp();
+            const customerRef = doc(db, 'customers', customer_id)
+            await setDoc(customerRef, customerData).then(() => {
+                navigate('/checkout/shipping', { state: { customer_id: customer_id, delivery_method: shippingMethod } })
+
+            })
+
+        }
+
+    }
+
     const sendSms = async () => {
 
         fetch('/send-code-phone', {
@@ -108,7 +149,7 @@ const CheckOut = () => {
         })
             .then((response) => {
                 if (response.ok) {
-                   
+
                     toast.success('Code sent successfully');
                     setIsCodeSent(true)
                 } else {
@@ -139,7 +180,7 @@ const CheckOut = () => {
             .then((response) => {
                 if (response.ok) {
                     toast.success('Code sent successfully');
-                    setGetCode(`${theCode}`);
+                    setGetCode(theCode);
                     setIsCodeSent(true)
                 } else {
                     toast.error('something went wrong')
@@ -218,23 +259,11 @@ const CheckOut = () => {
         setShippingMethod(e.target.value);
     }
 
-    const goToShipping = () => {
-        if (isCodeValid === true) {
-            if (isActive) {
-                navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
-            } else {
-                navigate('/checkout/shipping', { state: { contact_mode: 'email', contact_info: contactEmail, delivery_method: shippingMethod } })
-            }
-        } else {
-            toast.error('validate contact info')
-        }
-    }
+
 
     useEffect(() => {
         if (isMounted) {
-
             fetchDeliveries().then();
-    
         }
         return () => {
             isMounted.current = false;
@@ -365,7 +394,7 @@ const CheckOut = () => {
                             <CheckOutOrderSummary />
 
                             <div className='form-buttons'>
-                                <button onClick={goToShipping} className='btn btn-primary'> Place Order </button>
+                                <p> &nbsp; </p>
                                 <p onClick={() => { navigate('/cart') }} className='return-link'>Return to Cart </p>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ import formatPrice from "../components/format-price";
 const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
 
     const isMounted = useRef()
-    const [carts, setCarts] = useState([])
+    const [carts, setCarts] = useState([]) 
     const [shippingPrice, setShippingPrice] = useState(null)
     const itemsPrice = carts.reduce((a, c) => a + c.productPrice * c.qty, 0);
 

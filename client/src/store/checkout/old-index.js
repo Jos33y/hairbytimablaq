@@ -10,6 +10,18 @@ const CheckOut = () => {
 
     const navigate = useNavigate();
 
+        // const goToShipping = () => {
+    //     if (isCodeValid === true) {
+    //         if (isActive) {
+    //             navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
+    //         } else {
+    //             navigate('/checkout/shipping', { state: { contact_mode: 'email', contact_info: contactEmail, delivery_method: shippingMethod } })
+    //         }
+    //     } else {
+    //         toast.error('validate contact info')
+    //     }
+    // }
+
     return (
         <>
             <HeaderNav /> 
@@ -154,6 +166,7 @@ const CheckOut = () => {
                             <CheckOutOrderSummary />
 
                             <div className='form-buttons'>
+                                {/* <button onClick={goToShipping} className='btn btn-primary'> Place Order </button> */}
                                 <button onClick={() => { navigate('/checkout/payment') }} className='btn btn-primary'> Place Order </button>
                                 <p onClick={() => { navigate('/cart') }} className='return-link'>Return to Cart </p>
                             </div>
