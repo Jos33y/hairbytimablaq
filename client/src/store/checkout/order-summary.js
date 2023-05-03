@@ -65,7 +65,7 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
 
                 <div className="order-summary">
                     <div className="prod-summary">
-                        {carts.map((cart) => (
+                        {carts.map((cart) => ( 
                             <div key={cart.product_id} className="prod-summary-details">
                                 <div className="prod-details">
                                     <div className="prod-image">

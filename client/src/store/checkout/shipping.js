@@ -49,9 +49,9 @@ const CheckOutShipping = () => {
         shipping_id: '',
         shipping_method: '',
         payment_id: '',
-        payment_status: 'pending',
+        payment_status: 'processing',
         delivery_status: 'pending',
-        order_status: 'pending',
+        order_status: 'processing',
         order_total: '',
         product_ordered: [],
         order_note: '',
@@ -115,8 +115,9 @@ const CheckOutShipping = () => {
             orderCopy.order_id = orderId;
             const orderRef = doc(db, 'orders', orderId)
             await updateDoc(orderRef, orderCopy).then(() => {
-                navigate('/checkout/payment', { state: { customer_id: customerId, order_id: orderId, delivery_method: shippingMethod, payment_method: paymentMethod } })
                 toast.success("order placed successfully")
+                navigate('/checkout/payment', { state: { customer_id: customerId, order_id: orderId, delivery_method: shippingMethod, payment_method: paymentMethod } })
+               
             })
 
         } else {
@@ -127,8 +128,9 @@ const CheckOutShipping = () => {
 
             const orderRef = doc(db, 'orders', order_id)
             await setDoc(orderRef, orderCopy).then(() => {
-                navigate('/checkout/payment', { state: { customer_id: customerId, order_id: order_id, delivery_method: shippingMethod, payment_method: paymentMethod } })
                 toast.success("order placed successfully")
+                navigate('/checkout/payment', { state: { customer_id: customerId, order_id: order_id, delivery_method: shippingMethod, payment_method: paymentMethod } })
+                
             })
         }
 
@@ -190,7 +192,6 @@ const CheckOutShipping = () => {
             }))
         }
 
-
     }
 
 
@@ -202,6 +203,8 @@ const CheckOutShipping = () => {
             localCart = JSON.parse(localCart);
             if (localCart) {
                 setCarts(localCart)
+            } else {
+                navigate('/cart')
             }
 
             let local_order_id = localStorage.getItem("order_id");
@@ -394,7 +397,7 @@ const CheckOutShipping = () => {
                                                             <div className='form-group'>
                                                                 <label className='form-label'>Select Payment Method <span className='required'><i className="fa-solid fa-star-of-life"></i></span> </label>
                                                                 <select
-                                                                    value={paymentMethod}
+                                                                    defaultValue={paymentMethod}
                                                                     name='payment_method'
                                                                     id='payment_method'
                                                                     className='form-control'>

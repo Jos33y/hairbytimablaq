@@ -16,7 +16,7 @@ import { DashFormatDate } from "../../components/format-date";
 const AccountModerators = ({ userId }) => {
 
     const isMounted = useRef()
-    const MySwal = withReactContent(Swal) 
+    const MySwal = withReactContent(Swal)
     const [loading, setLoading] = useState(false)
     const [isDisabled, setIsDisabled] = useState(false)
     const [formContainer, setFormContainer] = useState(false)
@@ -26,7 +26,7 @@ const AccountModerators = ({ userId }) => {
         email: "",
         phoneNumber: "",
         adminRole: "Manager",
-    }); 
+    });
 
     const { fullName, email, phoneNumber, adminRole } = formData;
 
@@ -46,27 +46,39 @@ const AccountModerators = ({ userId }) => {
 
         try {
 
-            let split_full_name = formData.fullName.split(' ')
-            let first_name = split_full_name[0];
-            let gen_password = 'hairbytimablaq@' + first_name;
-            let password = gen_password.toLowerCase(); 
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let emailValid = emailRegex.test(email);
+            if (emailValid) {
 
 
-            const auth = getAuth();
-            const userCredential = await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-            const user = userCredential.user;
-            updateProfile(auth.currentUser, {
-                displayName: fullName,
-            });
-            const formDataCopy = { ...formData };
-            formDataCopy.timestamp = serverTimestamp();
 
-            await setDoc(doc(db, 'admins', user.uid), formDataCopy).then(() => { })
-            toast.success("moderator added successfully");
+                let split_full_name = formData.fullName.split(' ')
+                let first_name = split_full_name[0];
+                let gen_password = 'hairbytimablaq@' + first_name;
+                let password = gen_password.toLowerCase();
+
+
+                const auth = getAuth();
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+                const user = userCredential.user;
+                updateProfile(auth.currentUser, {
+                    displayName: fullName,
+                });
+                const formDataCopy = { ...formData };
+                formDataCopy.timestamp = serverTimestamp();
+
+                await setDoc(doc(db, 'admins', user.uid), formDataCopy).then(() => {
+                    newModeratorEmail(password)
+                })
+                toast.success("moderator added successfully");
+
+            } else {
+                toast.error('invalid email address')
+            }
 
         } catch (error) {
             toast.error("couldn't add moderator");
@@ -74,6 +86,31 @@ const AccountModerators = ({ userId }) => {
         }
         setIsDisabled(false);
     };
+
+    const newModeratorEmail = async (password) => {
+
+        fetch('/new-moderator', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                to: email,
+                from: 'support@hairbytimablaq.com',
+                subject: 'Welcome to Hairbytimablaq!',
+                user_email: email,
+                user_password: password,
+                admin_role: adminRole,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    }
 
 
     const fetchModerators = async () => {
@@ -233,7 +270,7 @@ const AccountModerators = ({ userId }) => {
                                             <div className="form-container">
                                                 <div className="form-header">
                                                     <p className="title">Add Moderators</p>
-                                                    <button onClick={() => { handleFormContainer('view-list') }}  className="btn btn-primary">View Moderators</button>
+                                                    <button onClick={() => { handleFormContainer('view-list') }} className="btn btn-primary">View Moderators</button>
                                                 </div>
 
                                                 <form onSubmit={onSubmit}>
@@ -305,7 +342,7 @@ const AccountModerators = ({ userId }) => {
                                             <div className="form-container">
                                                 <div className="form-header">
                                                     <p className="title">Account Moderators</p>
-                                                    <button onClick={() => { handleFormContainer('form-container') }}  className="btn btn-primary">Add Moderators</button>
+                                                    <button onClick={() => { handleFormContainer('form-container') }} className="btn btn-primary">Add Moderators</button>
                                                 </div>
 
                                                 <div className="payment-list">

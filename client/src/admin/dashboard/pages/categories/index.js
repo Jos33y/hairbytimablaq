@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
     collection,
-    deleteDoc,
+    deleteDoc, 
     doc, getDoc,
     getDocs,
     limit,
@@ -20,7 +20,7 @@ import DashSpinner from "../../components/dash-spinner";
 import HandleScroll from "../../components/go-top";
 
 
-const CategoriesPage = () => {
+const CategoriesPage = () => { 
 
     const isMounted = useRef()
     let fileArray;
@@ -93,7 +93,7 @@ const CategoriesPage = () => {
                     // console.log('image changed', categoryImage[0].name)
                 }
 
-                console.log('image update', imgUrl)
+                // console.log('image update', imgUrl)
                 const categoryDataCopy = { ...categoryData }
                 categoryDataCopy.categoryImage = `${imgUrl}`;;
                 const categoryUpdateRef = doc(db, 'categories', categoryEditId)
@@ -104,7 +104,7 @@ const CategoriesPage = () => {
 
                 if (image === null || image === undefined) {
                     imgUrl = "";
-                    console.log('image not selected', imgUrl)
+                    // console.log('image not selected', imgUrl)
                 }
                 else {
                     const categoryImgUrl = await Promise.all(
@@ -115,13 +115,13 @@ const CategoriesPage = () => {
                         return
                     })
                     imgUrl = categoryImgUrl;
-                    console.log('image new', `${imgUrl}`);
+                    // console.log('image new', `${imgUrl}`);
                 }
 
 
                 let gen_category_unique_id = `${(categoryName).replace(/,?\s+/g, '-')}-${rand_id}`
                 let cat_unique_id = gen_category_unique_id.toLowerCase();
-
+ 
                 const categoryDataCopy = { ...categoryData }
                 categoryDataCopy.category_id = cat_unique_id;
                 categoryDataCopy.categoryImage = `${imgUrl}`;
@@ -153,6 +153,7 @@ const CategoriesPage = () => {
 
 
     //store image in firebase storage
+    
     const storeImage = async (image) => {
         return new Promise((resolve, reject) => {
             const storage = getStorage()

@@ -1,0 +1,73 @@
+ <!-- for more templates below
+https://app.mailersend.com/start -->
+<!DOCTYPE html>
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<head>
+    <style type="text/css">
+        .email-body {
+            padding: 10px 100px 20px;
+            font-family: "Open Sans", sans-serif;
+        }
+        .email-body .btn{
+            margin: 15px 0 10px;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 17px 30px;
+            background: #b98a09;
+            border-radius: 5px;
+            border: 0 solid transparent;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .closing{
+            margin-top: 20px;
+        }
+        .closing p{
+           padding: 0;
+           margin-bottom: 5px;
+           margin-top: 0;
+           font-weight: 600;
+        }
+
+        @media only screen and (max-width: 540px) {
+            .email-body {
+                padding: 20px 10px;
+                font-family: "Open Sans", sans-serif;
+            }
+        }
+    </style>
+</head>
+
+<meta charset="UTF-8" />
+<title>Order Shipped</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+
+<body>
+    <div class="email-body">
+        <h2>Your order has been shipped!</h2>
+        <h3>Use this number to track your order:</h3>
+        <p>2332329991202093</p>
+        <p>Order ID <%= orderId %> has been shipped.</p>
+    
+        <button class="btn btn-primary">Track my Order</button>
+
+        <div class="closing">
+            <p>Best, </p>
+            <p>Hairbytimablaq</p>
+        </div>
+        
+        <hr>
+
+        <h3>Need help?</h3>
+        <p>If you have any questions, please contact us by email at support@hairbytimablaq.com </p>
+    </div>
+</body>
+
+</html>

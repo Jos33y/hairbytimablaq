@@ -8,7 +8,7 @@ const ProductCard = ({ product, prod_id }) => {
     const goToDetails = () => {
         navigate(`/shop/product/${prod_id}`);
     }
-
+ 
     return (
         <>
             <div className="product-card">

@@ -62,7 +62,7 @@ const ProductDetailsPage = () => {
         }
         catch (error) {
             console.log({ error })
-        }
+        } 
 
     }
 

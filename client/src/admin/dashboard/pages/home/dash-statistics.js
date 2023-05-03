@@ -8,7 +8,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { Link } from "react-router-dom";
+import PieChart from '../../assets/images/pie-chart.png';
 
 ChartJS.register(
     CategoryScale,
@@ -61,14 +61,17 @@ const DashStatistics = () => {
 
                     </div>
                     <div className="col-md-4">
-                        <div className="to-do-list">
-                            <ul>
-                                <li> 1. <Link className="to-do-link" to="/" > Set up store look </Link>  </li>
-                                <li> 2. <Link className="to-do-link" to="/" > Create product categories </Link>  </li>
-                                <li> 3. <Link className="to-do-link" to="/" > Add different products </Link>  </li>
-                                <li> 4. <Link className="to-do-link" to="/" > Add delivery locations fees </Link>  </li>
-                                <li> 5. <Link className="to-do-link" to="/" > Profile Settings </Link>  </li>
-                            </ul>
+                        <div className="count-box">
+                            <div className="count-container">
+                                <h3>Users</h3>
+                                <div className="visitors-count">
+                                    <p className="today">Today</p>
+                                    <p className="count">001</p>
+                                </div>
+                                <div className="chart-box">
+                                    <img src={PieChart} alt="" className="img-fluid"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

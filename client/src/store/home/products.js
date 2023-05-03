@@ -4,7 +4,7 @@ import ProductCard from "../components/product-card";
 const HomeProducts = ({ products }) => {
 
     const navigate = useNavigate();
-
+ 
     return ( 
         <>
             <div className="home-products">

@@ -19,7 +19,7 @@ import OrderListPage from "./pages/orders";
 import OrderDetailsPage from "./pages/orders/order-details";
 import CustomersListPage from "./pages/customers";
 import TransactionListPage from "./pages/transactions";
-import TransactionDetailsPage from "./pages/transactions/tansaction-details";
+import TransactionDetailsPage from "./pages/transactions/transaction-details";
 import WalletPage from "./pages/wallet";
 import ProfileSettings from "./pages/settings/profile-settings";
 import PaymentAccount from "./pages/settings/payment-account";
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
             navigate("/admin/login") 
         }
 
-        setLoading(false)
+        setLoading(false) 
     } 
 
 
@@ -140,7 +140,7 @@ const AdminDashboard = () => {
     }, [isMounted, auth.currentUser.uid])
 
 
-
+ 
     return (
         <>
             {loading ?

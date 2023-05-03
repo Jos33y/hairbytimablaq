@@ -1,0 +1,100 @@
+<!-- for more templates below
+https://app.mailersend.com/start -->
+<!DOCTYPE html>
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<head>
+    <style type="text/css">
+        .email-body {
+            padding: 10px 100px 20px;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .email-body p.bold-text {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .email-body .light-text {
+            font-weight: 400;
+            color: #333333;
+        }
+
+        .email-body a {
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .email-body a.btn {
+            margin: 20px 0 20px;
+            font-size: 15px;
+            padding: 17px 30px;
+            background: #b98a09;
+            border-radius: 5px;
+            border: 0 solid transparent;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .closing {
+            margin-top: 20px;
+        }
+
+        .closing p {
+            padding: 0;
+            margin-bottom: 5px;
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        @media only screen and (max-width: 540px) {
+            .email-body {
+                padding: 20px 10px;
+                font-family: "Open Sans", sans-serif;
+            }
+        }
+    </style>
+</head>
+
+<meta charset="UTF-8" />
+<title>New Moderator</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+
+<body>
+    <div class="email-body">
+        <h2>Welcome to Hairbytimablaq!</h2>
+        <h3>Use the information below to access your account</h3>
+        <p class="bold-text">Email: <span class="light-text"> <%= userEmail %> </span></p>
+        <p class="bold-text">Password: <span class="light-text"> <%= userPassword %> </span></p>
+        <p class="bold-text">Role: <span class="light-text"> <%= adminRole %> </span></p>
+
+        <br />
+
+        <a href="https://hairbytimablaq.com/admin/login" class="btn btn-primary">Login </a>
+
+        <br>
+        <br>
+
+        <p>please don't share your admin access information</p>
+
+        <br />
+
+        <div class="closing">
+            <p>Best regard, </p>
+            <p>Hairbytimablaq</p>
+        </div>
+
+        <hr>
+
+        <h3>Need help?</h3>
+        <p>If you have any questions, please contact us by email at support@hairbytimablaq.com </p>
+    </div>
+</body>
+
+</html>

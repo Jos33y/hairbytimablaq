@@ -745,7 +745,7 @@
     border: 1px solid #b3b3b3;
     padding: 20px 10px;
     border-radius: 8px;
-}
+} 
 
 .c-product-order {
     display: flex;
@@ -895,22 +895,30 @@
     border: 1px solid #656565;
     color: #656565;
 }
-.customer-info{
+
+.confirmation-box .customer-info{
     padding: 10px;
 }
-.customer-info .info-box{
+.confirmation-box .customer-info .info-box{
     margin-top: 20px;
-}
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+} 
 
-.info-box .heading{
+.confirmation-box .info-box .heading{
     font-size: 16px;
     font-weight: 600;
     color: #454545;
 }
 
-.info-box .sub-heading{
+.confirmation-box .info-box .sub-heading{
     font-size: 14px;
     font-weight: 500;
     color: #656565;
     margin-bottom: 5px;
+}
+
+.confirmation-box .info-box .sub-heading.payment {
+    text-transform: capitalize;
 }

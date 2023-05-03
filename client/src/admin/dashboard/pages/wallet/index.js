@@ -5,17 +5,101 @@ import {
     limit,
     orderBy,
     query,
+    where
 } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
 import DashSpinner from "../../components/dash-spinner";
 import HandleScroll from "../../components/go-top";
 import { toast } from "react-toastify";
+import formatPrice from "../../components/format-price";
 
 const WalletPage = () => {
 
     const isMounted = useRef()
     const [loading, setLoading] = useState(true);
     const [paymentInfo, setPaymentInfo] = useState(null)
+    const [confirmedBalance, setConfirmedBalance] = useState("");
+    const [notConfirmedBalance, setNotConfirmedBalance] = useState("");
+    const [invalidedBalance, setInvalidedBalance] = useState("");
+
+
+    const getConfirmedBalance = async () => {
+        setLoading(true)
+        try {
+            const getTotalRef = collection(db, 'transactions')
+            const q = query(getTotalRef, where("paymentStatus", "==", 'success'))
+            const querySnap = await getDocs(q)
+
+            let salesTotal = []
+            querySnap.forEach((doc) => {
+                return salesTotal.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            const sales = salesTotal.reduce((a, c) => a + c.data.amountPaid++, 0);
+            setConfirmedBalance(sales)
+
+        }
+        catch (error) {
+            console.log({ error })
+            toast.error("currently can't get confirmed balance")
+            setConfirmedBalance("")
+        }
+        setLoading(false)
+    }
+
+    const getNotConfirmedBalance = async () => {
+        setLoading(true)
+        try {
+            const getTotalRef = collection(db, 'transactions')
+            const q = query(getTotalRef, where("paymentStatus", "==", 'processing'))
+            const querySnap = await getDocs(q)
+
+            let salesTotal = []
+            querySnap.forEach((doc) => {
+                return salesTotal.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            const sales = salesTotal.reduce((a, c) => a + c.data.amountPaid++, 0);
+            setNotConfirmedBalance(sales)
+
+        }
+        catch (error) {
+            console.log({ error })
+            toast.error("currently can't get not confirmed balance")
+            setNotConfirmedBalance("")
+        }
+        setLoading(false)
+    }
+
+
+    const getInvalidBalance = async () => {
+        setLoading(true)
+        try {
+            const getTotalRef = collection(db, 'transactions')
+            const q = query(getTotalRef, where("paymentStatus", "==", 'failed'))
+            const querySnap = await getDocs(q)
+
+            let salesTotal = []
+            querySnap.forEach((doc) => {
+                return salesTotal.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            const sales = salesTotal.reduce((a, c) => a + c.data.amountPaid++, 0);
+            setInvalidedBalance(sales);
+        }
+        catch (error) {
+            console.log({ error })
+            toast.error("currently can't get invalid balance")
+            setInvalidedBalance("");
+        }
+        setLoading(false)
+    }
 
 
     const fetchPaymentAccounts = async () => {
@@ -50,8 +134,11 @@ const WalletPage = () => {
     useEffect(() => {
 
         if (isMounted) {
-
             fetchPaymentAccounts().then();
+            getConfirmedBalance().then();
+            getNotConfirmedBalance().then();
+            getInvalidBalance().then();
+
         }
         return () => {
             isMounted.current = false
@@ -79,7 +166,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Confirmed Balance </p>
-                                                            <p className="balance">&#8358; 21,900,000</p>
+                                                            <p className="balance">&#8358;{confirmedBalance ? formatPrice(confirmedBalance) : '0'}</p>
 
                                                         </div>
 
@@ -93,7 +180,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Not Confirmed Balance </p>
-                                                            <p className="balance">&#8358; 900,000</p>
+                                                            <p className="balance">&#8358;{notConfirmedBalance ? formatPrice(notConfirmedBalance) : '0'}</p>
 
                                                         </div>
 
@@ -108,7 +195,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Inavlid Balance </p>
-                                                            <p className="balance">&#8358; 10,000</p>
+                                                            <p className="balance">&#8358;{invalidedBalance ? formatPrice(invalidedBalance) : '0'}</p>
 
                                                         </div>
 

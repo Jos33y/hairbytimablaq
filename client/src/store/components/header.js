@@ -23,9 +23,10 @@ const HeaderNav = () => {
                             <select className="form-control" id="currencry">
                                 <option value="1">USD $</option>
                                 <option value="2">GMD D</option>
+                                <option selected value="3">NGN &#8358;</option>
                             </select>
                             <p
-                                onClick={() => {
+                                onClick={() => { 
                                     navigate("/track");
                                 }}
                             >

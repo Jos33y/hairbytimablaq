@@ -14,13 +14,13 @@ const ProductBox = ({ product, id, onDelete }) => {
         navigate("/admin/dashboard/product/details", {state: {prod_id: id, category_id: product.productCategory}})
     }
 
-
+ 
     return (
         <>
             <div className="prod-list-box">
                 <div className="prod-list-info">
                     <div className="prod-list-img">
-                        <img src={product.imgUrls[0]} alt="products" className="img-fluid" />
+                        <img onClick={productDetails} src={product.imgUrls[0]} alt="products" className="img-fluid" />
                     </div>
                     <div className="prod-list-details">
                         <p onClick={productDetails} className="name">{product.productName}</p>

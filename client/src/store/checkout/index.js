@@ -121,7 +121,7 @@ const CheckOut = () => {
         }
         else {
 
-            console.log('will create customers:', customers)
+            // console.log('will create customers:', customers)
             let customer_id = rand_Id.toLowerCase();
             const customerData = {}
             customerData.customer_id = customer_id;

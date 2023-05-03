@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import TimaBlaq from "../assets/images/timablaq.jpeg";
+import TimaBlaq from "../assets/images/timablaq.jpeg"; 
 
 const SideBar = ({ pageName, profileData }) => {
 

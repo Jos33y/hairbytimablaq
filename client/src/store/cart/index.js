@@ -17,7 +17,7 @@ const ShopCart = () => {
     const isMounted = useRef()
     const [loading, setLoading] = useState(true)
     const [isDisabled, setDisabled] = useState(false)
-    const [cart, setCart] = useCart();
+    const [cart, setCart] = useCart(); 
     const [cartItems, setCartItems] = useState([...cart]);
 
     const itemsPrice = cart.reduce((a, c) => a + c.productPrice * c.qty, 0);
@@ -103,7 +103,11 @@ const ShopCart = () => {
         //turn it into js
         localCart = JSON.parse(localCart);
         //load persisted cart into state if it exists
-        if (localCart) setCart(localCart)
+        if (localCart) {
+            setCart(localCart)
+        } else {
+            setDisabled(true);
+        }
         setLoading(false)
         //turn it into js
     }
@@ -111,7 +115,6 @@ const ShopCart = () => {
     useEffect(() => {
         if (isMounted) {
             fetchCart();
-
 
         }
         return () => {
