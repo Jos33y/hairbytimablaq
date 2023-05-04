@@ -43,9 +43,6 @@
   @keyframes s4{ 
     100%{transform: rotate(1turn)}
   }
-  
-
-
 
   #main-body #dash-spinner{
     position: relative;
