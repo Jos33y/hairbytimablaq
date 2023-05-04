@@ -4,20 +4,37 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
+const router = express.Router();
 const path = require('path');
 const cors = require('cors');
 const PORT = process.env.PORT || 3001;
 const API_KEY = process.env.REACT_APP_TERMI_API_KEY;
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({
     origin: ['http://localhost:3000', 'https://hairbytimablaq.com'],
 }));
 
+  
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("/", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "../client/build/index.html"),
+        function (err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    );
+});
+
+
  
 
-app.post('/send-code-phone', async (req, res) => {
+router.post('/send-code-phone', async (req, res) => {
 
     const data = {
         api_key: API_KEY,
@@ -47,7 +64,7 @@ app.post('/send-code-phone', async (req, res) => {
 
 
 // Handle email verification requests
-app.post('/send-code-email', async (req, res) => {
+router.post('/send-code-email', async (req, res) => {
     const { to, from, subject, verification_code } = req.body;
 
     // Create a nodemailer transporter
@@ -90,7 +107,7 @@ app.post('/send-code-email', async (req, res) => {
 
 
 // Handle order placed confirmation
-app.post('/order-placed', async (req, res) => {
+router.post('/order-placed', async (req, res) => {
     const { to, from, subject, order_id } = req.body;
 
     // Create a nodemailer transporter
@@ -98,8 +115,8 @@ app.post('/order-placed', async (req, res) => {
         host: "smtp.elasticemail.com",
         port: 2525,
         auth: {
-            user: process.env.REACT_APP_ELASTIC_EMAIL_USERNAME,
-            pass: process.env.REACT_APP_ELASTIC_EMAIL_PASSWORD,
+            user: process.env.REACT_router_ELASTIC_EMAIL_USERNAME,
+            pass: process.env.REACT_router_ELASTIC_EMAIL_PASSWORD,
         },
     });
 
@@ -131,7 +148,7 @@ app.post('/order-placed', async (req, res) => {
 
 
 // Handle order placed confirmation
-app.post('/order-confirmed', async (req, res) => {
+router.post('/order-confirmed', async (req, res) => {
     const { to, from, subject, order_id } = req.body;
 
     // Create a nodemailer transporter
@@ -172,7 +189,7 @@ app.post('/order-confirmed', async (req, res) => {
 
 
 // Handle order placed confirmation
-app.post('/order-shipped', async (req, res) => {
+router.post('/order-shipped', async (req, res) => {
     const { to, from, subject, order_id } = req.body;
 
     // Create a nodemailer transporter
@@ -213,7 +230,7 @@ app.post('/order-shipped', async (req, res) => {
 
 
 // Handle order placed confirmation
-app.post('/order-delivered', async (req, res) => {
+router.post('/order-delivered', async (req, res) => {
     const { to, from, subject, order_id, delivery_method } = req.body;
 
     // Create a nodemailer transporter
@@ -257,7 +274,7 @@ app.post('/order-delivered', async (req, res) => {
 
 
 // Handle new moderators
-app.post('/new-moderator', async (req, res) => {
+router.post('/new-moderator', async (req, res) => {
     const { to, from, subject, user_email, user_password, admin_role } = req.body;
 
     // Create a nodemailer transporter
@@ -300,10 +317,7 @@ app.post('/new-moderator', async (req, res) => {
 
 
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
-
+app.use("/", router);
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
