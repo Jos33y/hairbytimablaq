@@ -5,7 +5,6 @@ import "./css/dashboard.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
 import { getAuth } from "firebase/auth";
-import DashSpinner from "./components/dash-spinner";
 import DashboardHome from "./pages/home";
 import TopBar from "./components/top-bar";
 import SideBar from "./components/side-bar";
@@ -25,6 +24,7 @@ import ProfileSettings from "./pages/settings/profile-settings";
 import PaymentAccount from "./pages/settings/payment-account";
 import AccountModerators from "./pages/settings/account-moderators";
 import StoreSettings from "./pages/settings";
+import HomeSpinner from "./components/home-spinner";
 
 const AdminDashboard = () => {
 
@@ -144,7 +144,7 @@ const AdminDashboard = () => {
     return (
         <>
             {loading ?
-                (<DashSpinner />) : (
+                (<HomeSpinner />) : (
                     <>
                         <div className="admin-wrap">
 

@@ -4,12 +4,13 @@ const PageLoading = () => {
 
     return(
         <>
-            <div className="Spinner">
-                <h5>Loading ...</h5> 
+            <div id="page-spinner" className='loading'>
+            <div class="custom-loader"></div>
+               
             </div>
 
         </>
-    )
+    ) 
 
 }
 export default PageLoading

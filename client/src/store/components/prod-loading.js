@@ -4,8 +4,8 @@ const ProductLoading = () => {
 
     return(
         <>
-            <div className="prod-spinner">
-                <h5>Loading ...</h5> 
+            <div id="prod-spinner" className='prod-loading'>
+            <div class="custom-loader"></div>
             </div>
 
         </>

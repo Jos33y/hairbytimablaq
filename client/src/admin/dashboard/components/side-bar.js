@@ -172,7 +172,7 @@ const SideBar = ({ pageName, profileData }) => {
 
                                 {/* view store menu */}
                                 <li className="menu-item">
-                                    <Link to="/" className="menu-link">
+                                    <Link target="_blank" to="https://hairbytimablaq.com" className="menu-link">
                                         <i className="fa-solid fa-shop"></i>
                                         <span className="sidebar-text">View Store</span>
                                     </Link>

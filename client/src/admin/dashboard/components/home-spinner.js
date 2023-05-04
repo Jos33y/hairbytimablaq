@@ -1,10 +1,10 @@
 import React from 'react';
 import './components.css'
-const DashSpinner = () => {
+const HomeSpinner = () => {
 
     return(
         <>
-            <div id="dash-spinner" className='dash-loader'>
+            <div id="home-spinner" className='home-loader'>
                 <div class="custom-loader"></div>
             </div>
 
@@ -12,4 +12,4 @@ const DashSpinner = () => {
     )
 
 }
-export default DashSpinner; 
+export default HomeSpinner; 

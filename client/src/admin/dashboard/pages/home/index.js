@@ -44,7 +44,7 @@ const DashboardHome = () => {
             console.log({ error })
             toast.error("currently can't get your orders")
         }
-        setLoading(false)
+        
 
     }
 
@@ -95,7 +95,7 @@ const DashboardHome = () => {
     }
 
     const getTotalSales = async () => {
-        setLoading(true)
+     
         try {
             const getTotalRef = collection(db, 'orders')
             const q = query(getTotalRef, where("payment_status", "==", 'success'))

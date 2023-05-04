@@ -1,16 +1,85 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
-.dash-spinner{
+/* loader styles */
+#home-spinner{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    background: #ffffff;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-}
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: #f3f3f3;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
 
+  #home-spinner.home-loader {
+    opacity: 1;
+  }
+
+  #home-spinner .custom-loader {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    animation: s4 4s infinite;
+  }
+  #home-spinner .custom-loader::before,
+  #home-spinner .custom-loader::after {    
+    content:"";
+    grid-area: 1/1;
+    border:8px solid;
+    border-radius: 50%;
+    border-color:#bf953f #bf953f #0000 #0000;
+    mix-blend-mode: darken;
+    animation: s4 1s infinite linear;
+  }
+  #home-spinner .custom-loader::after {
+    border-color:#0000 #0000 #E4E4ED #E4E4ED;
+    animation-direction: reverse;
+  }
+  
+  @keyframes s4{ 
+    100%{transform: rotate(1turn)}
+  }
+  
+
+
+
+  #main-body #dash-spinner{
+    position: relative;
+    top: 80px;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  #main-body #dash-spinner.dash-loader {
+    opacity: 1;
+  }
+
+  #dash-spinner .custom-loader {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: 
+      radial-gradient(farthest-side,#bf953f 94%,#0000) top/8px 8px no-repeat,
+      conic-gradient(#0000 30%,#bf953f);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation:s3 1s infinite linear;
+  }
+  
+  @keyframes s3{ 
+    100%{transform: rotate(1turn)}
+  }
+
+  /* top header styles starts here */
 .top-header{
     position: sticky;
   top: 0;
