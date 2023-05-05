@@ -10,6 +10,7 @@ import HeaderNav from "../components/header";
 import PageLoading from "../components/loading";
 import { toast } from "react-toastify";
 import { useCart } from "../components/cart-context";
+import { formatPrice, formatSymbol } from "../components/format-price";
 
 const ProductDetails = () => {
 
@@ -77,7 +78,7 @@ const ProductDetails = () => {
 
     //Fetch Product Catgory
     const fetchCategory = async (prod_cat) => {
- 
+
         try {
             const docRef = doc(db, 'categories', prod_cat)
             const docSnap = await getDoc(docRef);
@@ -96,7 +97,7 @@ const ProductDetails = () => {
 
     }
 
- 
+
     //Fetch Product Details
     const fetchProductDetails = async () => {
 
@@ -146,21 +147,18 @@ const ProductDetails = () => {
         setLoading(false);
     }
 
-
     useEffect(() => {
         if (isMounted) {
 
             fetchProductDetails().then()
             fetchProducts().then()
-            
-
         }
         return () => {
             isMounted.current = false
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted, params.prod_id])
- 
+
 
 
 
@@ -188,7 +186,7 @@ const ProductDetails = () => {
                                                         <div onClick={() => { setMainImage(product.imgUrls[0]) }} className={`img-thumb ${mainImage === product.imgUrls[0] ? 'active' : ''}`}>
                                                             <img src={product.imgUrls[0] ? product.imgUrls[0] : product.imgUrls[0]} alt="prod thumbnail" className="img-fluid" />
                                                         </div>
- 
+
                                                         {product.imgUrls[1] ? (
                                                             <div onClick={() => { setMainImage(product.imgUrls[1]) }}
                                                                 className={`img-thumb ${mainImage === product.imgUrls[1] ? 'active' : ''}`}>
@@ -220,19 +218,16 @@ const ProductDetails = () => {
                                         <div className="details-sect-info">
                                             <p className="prod-name">{product.productName}</p>
                                             {product.discountOffer ? (
-                                                <p className="prod-price"> &#8358; {product.productDiscountPrice.toString()
-                                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                <p className="prod-price"> {formatSymbol()}{formatPrice(product.productDiscountPrice)}
                                                     <span className="discount-price">
-                                                        &#8358; {product.productPrice.toString()
-                                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                        {formatSymbol()}{formatPrice(product.productPrice)}
                                                     </span>
                                                 </p>
 
                                             )
                                                 :
                                                 (
-                                                    <p className="prod-price"> &#8358; {product.productPrice.toString()
-                                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                                                    <p className="prod-price"> {formatSymbol()}{formatPrice(product.productPrice)}</p>
                                                 )}
                                             <p className="prod-stock">
                                                 {product.productStocks > 0 ? ('In stock') : ('Out of stock')}
@@ -301,7 +296,7 @@ const ProductDetails = () => {
                             </div>
 
                             <hr />
-                            <RelatedProducts  products={products} />
+                            <RelatedProducts products={products} />
                         </div>
                         <FooterNav />
 

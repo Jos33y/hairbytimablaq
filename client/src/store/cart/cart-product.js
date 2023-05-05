@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { formatSymbol, formatPrice } from "../components/format-price";
 
 const CartProducts = ({ cartItem, onDelete, onUpdateCartItemQuantity }) => {
 
@@ -27,7 +28,7 @@ const CartProducts = ({ cartItem, onDelete, onUpdateCartItemQuantity }) => {
                     </div>
                     <div className="cart-product-details">
                         <p className="prod-name">{cartItem.productName} </p>
-                        <p className="prod-price">&#8358;{cartItem.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} </p>
+                        <p className="prod-price">{formatSymbol()}{formatPrice(cartItem.productPrice)} </p>
                         <div className="prod-quantity">
                             <div className="form-group">
                                 <button onClick={handleDecrement} className="btn btn-sm btn-outline"> <i className="fa-solid fa-minus"></i> </button>
@@ -39,8 +40,7 @@ const CartProducts = ({ cartItem, onDelete, onUpdateCartItemQuantity }) => {
 
                 </div>
                 <div className="cart-price">
-                    <p className="cart-total-price"> &#8358;{(cartItem.productPrice * quantity).toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} </p>
+                    <p className="cart-total-price"> {formatSymbol()}{formatPrice(cartItem.productPrice * quantity)} </p>
                     <p onClick={onDelete} className="remove"> <i className="fa-solid fa-xmark"></i>  Remove</p>
                 </div>
             </div>

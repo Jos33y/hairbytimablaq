@@ -10,6 +10,7 @@ import PageLoading from "../components/loading";
 import { toast } from "react-toastify";
 import { useCart } from "../components/cart-context";
 import CartProducts from "./cart-product";
+import { formatPrice, formatSymbol } from "../components/format-price";
 
 
 const ShopCart = () => {
@@ -109,7 +110,7 @@ const ShopCart = () => {
             setDisabled(true);
         }
         setLoading(false)
-        //turn it into js
+        //turn it into js 
     }
 
     useEffect(() => {
@@ -180,15 +181,13 @@ const ShopCart = () => {
                                                 <div className="order-summary-table">
                                                     <div className="order-summary-list">
                                                         <p className="sub-total">Subtotal</p>
-                                                        <p className="sub-total">&#8358;{(itemsPrice).toFixed(2).toString()
-                                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                                                        <p className="sub-total">{formatSymbol()}{formatPrice(itemsPrice)}</p>
                                                     </div>
 
                                                     <hr />
                                                     <div className="order-summary-list">
                                                         <p className="total">Total</p>
-                                                        <p className="total">&#8358;{(itemsPrice).toFixed(2).toString()
-                                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                                                        <p className="total">{formatSymbol()}{formatPrice(itemsPrice)}</p>
                                                     </div>
 
                                                     <div className="order-button">

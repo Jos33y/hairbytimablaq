@@ -504,7 +504,7 @@ margin: 10px 0;
     font-size: 17px;
     color: #5d5d5d;
     font-weight: 600;
-}
+} 
 .payment-list {
     padding: 10px 20px 30px;
 }
@@ -535,6 +535,9 @@ margin: 10px 0;
     font-size: 14px;
     font-weight: 500;
     color: #424242;
+}
+.payment-list-box .payment-list-details .name.rate{
+    text-transform: capitalize;
 }
 
 .payment-list-box .date{

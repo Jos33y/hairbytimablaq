@@ -1,7 +1,11 @@
+import he from 'he';
 
-const formatPrice = (price) => {
-    return price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
+const localRate = JSON.parse(localStorage.getItem("rate"));
 
+export const formatPrice = (price) => {
+  return Number(price / localRate.rateAmount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
-export default formatPrice;
+export const formatSymbol = () => {
+  return he.decode(localRate.rateSymbol);
+};

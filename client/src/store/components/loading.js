@@ -5,7 +5,7 @@ const PageLoading = () => {
     return(
         <>
             <div id="page-spinner" className='loading'>
-            <div class="custom-loader"></div>
+            <div className="custom-loader"></div>
                
             </div>
 

@@ -5,7 +5,7 @@ const DashSpinner = () => {
     return(
         <>
             <div id="dash-spinner" className='dash-loader'>
-                <div class="custom-loader"></div>
+                <div className="custom-loader"></div>
             </div>
 
         </>

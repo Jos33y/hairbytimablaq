@@ -21,7 +21,7 @@ const Shop = () => {
     const [categories, setCategories] = useState([]) 
     const [catValue, setCatValue] = useState('all');
     const [loading, setLoading] = useState(true)
-    const [prodLoading, setProdLoading] = useState(false)
+    const [prodLoading, setProdLoading] = useState(false) 
 
 
     //Fetch Product

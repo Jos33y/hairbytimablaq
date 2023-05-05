@@ -5,7 +5,7 @@ export const CartContext = createContext([]);
 export const CartProvider = ({ children }) => {
     const isMounted = useRef()
     const [cart, setCart] = useState([]);
-
+ 
     useEffect(() => {
         if (isMounted) {
             let localCart = localStorage.getItem("cart");

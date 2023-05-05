@@ -6,12 +6,12 @@ import {
     getDocs,
     limit,
     orderBy,
-    query, 
+    query,
     serverTimestamp, setDoc,
     updateDoc
 } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
-import { v4 as uuidv4 } from "uuid"; 
+import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -32,22 +32,24 @@ const PaymentAccount = () => {
         accountName: '',
         accountNumber: '',
         bankName: '',
+        accountType: 'bank transfer',
         timeStamp: '',
     })
 
     const MySwal = withReactContent(Swal)
-    const { accountName, accountNumber, bankName } = paymentData;
+    const { accountName, accountNumber, bankName, accountType } = paymentData;
 
 
     const handleFormContainer = (container_name) => {
 
-        if (container_name === 'form-container') { 
+        if (container_name === 'form-container') {
             setFormContainer(true);
             setUpdatePayment(false);
             setPaymentData((prevState) => ({
                 ...prevState,
                 accountName: '',
                 accountNumber: '',
+                accountType: 'bank transfer',
                 bankName: '',
             }))
 
@@ -87,7 +89,8 @@ const PaymentAccount = () => {
                         accountName: '',
                         accountNumber: '',
                         bankName: '',
-                    })) 
+                        accountType: 'bank transfer',
+                    }))
                 })
 
                 toast.success("bank account added");
@@ -318,6 +321,20 @@ const PaymentAccount = () => {
                                                             onKeyDown={handleAlphaKeyDown}
                                                             placeholder="First Bank Nigeria"
                                                             required={true} />
+                                                    </div>
+
+                                                    <div className="form-group">
+                                                        <label className='form-label'>Account Type </label>
+                                                        <select
+                                                            value={accountType}
+                                                            name='accountType'
+                                                            onChange={onChange}
+                                                            id='accountType'
+                                                            className='form-control'>
+                                                            <option disabled>-- Select account type--</option>
+                                                            <option value="bank transfer">Local Bank Transfer </option>
+                                                            <option value="international bank transfer">International Bank Transfer </option>
+                                                        </select>
                                                     </div>
 
 

@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import TimaBlaq from "../assets/images/timablaq.jpeg"; 
+import TimaBlaq from "../assets/images/timablaq.jpeg";
 
 const SideBar = ({ pageName, profileData }) => {
 
     const navigate = useNavigate()
     const auth = getAuth()
-    
+
 
     const darkMode = () => {
         console.log("Dark Mode Loading...")
@@ -35,7 +35,7 @@ const SideBar = ({ pageName, profileData }) => {
                             <div className="sidebar-admin-info">
                                 <p className="name">{profileData.fullName} </p>
                                 <p className="role">{profileData.adminRole} </p>
-                            </div> 
+                            </div>
                         </div>
 
                         <div className="sidebar-mini">
@@ -116,7 +116,7 @@ const SideBar = ({ pageName, profileData }) => {
                                         <i className="fa-solid fa-users-line"></i>
                                         <span className="sidebar-text">Customers </span>
                                     </Link>
-                                </li> 
+                                </li>
 
 
                                 {/* transactions menu */}
@@ -135,6 +135,7 @@ const SideBar = ({ pageName, profileData }) => {
                                     </Link>
                                 </li>
 
+
                                 {/* wallet menu */}
                                 <li className={`menu-item ${pageName === 'profile' ? 'active' : ''}`}>
                                     <Link to="/admin/dashboard/settings/profile" className="menu-link">
@@ -148,6 +149,14 @@ const SideBar = ({ pageName, profileData }) => {
                                     <Link to="/admin/dashboard/settings/account" className="menu-link">
                                         <i className="fa-solid fa-money-check"></i>
                                         <span className="sidebar-text">Payment Account </span>
+                                    </Link>
+                                </li>
+
+                                {/* wallet menu */}
+                                <li className={`menu-item ${pageName === 'rate' ? 'active' : ''}`}>
+                                    <Link to="/admin/dashboard/settings/rate" className="menu-link">
+                                        <i className="fa-solid fa-percent"></i>
+                                        <span className="sidebar-text">Rate Settings </span>
                                     </Link>
                                 </li>
 

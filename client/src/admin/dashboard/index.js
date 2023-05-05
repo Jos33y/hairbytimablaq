@@ -25,6 +25,7 @@ import PaymentAccount from "./pages/settings/payment-account";
 import AccountModerators from "./pages/settings/account-moderators";
 import StoreSettings from "./pages/settings";
 import HomeSpinner from "./components/home-spinner";
+import RateSettings from "./pages/settings/rate-settings";
 
 const AdminDashboard = () => {
 
@@ -122,6 +123,9 @@ const AdminDashboard = () => {
         }
         else if (params.settings_url === "account") {
             return <PaymentAccount userId={auth.currentUser.uid} />
+        }
+        else if (params.settings_url === "rate") {
+            return <RateSettings userId={auth.currentUser.uid} />
         }
 
     }

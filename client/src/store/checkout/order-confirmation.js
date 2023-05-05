@@ -8,7 +8,7 @@ import HeaderNav from '../components/header';
 import FooterNav from '../components/footer';
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 import PageLoading from "../components/loading";
-import formatPrice from "../components/format-price";
+import { formatPrice, formatSymbol } from "../components/format-price";
 
 
 const OrderConfirmation = () => {
@@ -149,29 +149,29 @@ const OrderConfirmation = () => {
                                                                 </div>
                                                                 <div className='c-prod-name'>
                                                                      <p className='prod-name'>{product.productName} </p>
-                                                                    <p className='prod-span'> <span className='prod-price'>&#8358;{formatPrice(Number(product.productPrice))} </span>    x  <span className='prod-price'> {product.qty} </span></p>
+                                                                    <p className='prod-span'> <span className='prod-price'>{formatSymbol()}{formatPrice(product.productPrice)} </span>    x  <span className='prod-price'> {product.qty} </span></p>
                                                                 </div>
                                                             </div>
                                                             <div className='c-prod-total'>
-                                                                <p className='prod-total'> &#8358;{formatPrice(Number(product.productPrice) * Number(product.qty))}  </p>
+                                                                <p className='prod-total'> {formatSymbol()}{formatPrice(Number(product.productPrice) * Number(product.qty))}  </p>
                                                             </div>
                                                         </div>
                                                     ))}
                                                     <hr />
                                                     <div className='c-shipping-total'>
                                                         <p className='light-text'>Subtotal</p>
-                                                        <p className='bold-text'> &#8358;{formatPrice(Number(orderData.order_total))} </p>
+                                                        <p className='bold-text'> {formatSymbol()}{formatPrice(orderData.order_total)} </p>
                                                     </div>
 
                                                     <div className='c-shipping-total'>
                                                         <p className='light-text'>Shipping</p>
-                                                        <p className='bold-text'>&#8358;{formatPrice(Number(deliveryData.deliveryPrice))} </p>
+                                                        <p className='bold-text'>{formatSymbol()}{formatPrice(deliveryData.deliveryPrice)} </p>
                                                     </div>
 
                                                     <hr />
                                                     <div className='c-shipping-total'>
                                                         <p className='light-text big-total'>Total</p>
-                                                        <p className='bold-text big-total'>&#8358;{formatPrice(Number(orderData.order_total) + Number(deliveryData.deliveryPrice))} </p>
+                                                        <p className='bold-text big-total'>{formatSymbol()}{formatPrice(Number(orderData.order_total) + Number(deliveryData.deliveryPrice))} </p>
                                                     </div>
                                                 </div>
 

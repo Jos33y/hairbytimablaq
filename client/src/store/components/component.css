@@ -160,23 +160,29 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
 }
 
 .top-bar .top-bar-side select {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #000000;
   height: 30px;
   width: 100px;
   background: transparent;
+  text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 0px;
-  padding: 0px;
+  padding: 5px 5px;
   margin-top: 0px;
+  font-family: "Poppins", sans-serif;
 }
 
 .top-bar .top-bar-side select:focus {
   box-shadow: none;
   outline: none;
 }
-
+.top-bar .top-bar-side select option{
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px;
+}
 .top-bar .top-bar-side p {
   font-size: 13px;
   font-weight: 600;

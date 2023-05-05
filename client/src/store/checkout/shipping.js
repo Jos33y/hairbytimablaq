@@ -403,7 +403,7 @@ const CheckOutShipping = () => {
                                                                     className='form-control'>
                                                                     <option value="null">-- Select Payment Method--</option>
                                                                     <option value="bank transfer"> Bank Transfer </option>
-                                                                </select>
+                                                                </select> 
                                                             </div>
                                                         </div>
 

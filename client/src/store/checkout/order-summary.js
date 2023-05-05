@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase.config";
-import formatPrice from "../components/format-price";
+import {formatPrice, formatSymbol } from "../components/format-price";
 
 const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
 
@@ -76,9 +76,9 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
                                         <p className="prod-qty">X {cart.qty}</p>
                                     </div>
 
-                                </div>
+                                </div> 
                                 <div className="prod-prices">
-                                    <p className="price">&#8358;{formatPrice((cart.productPrice * cart.qty))}</p>
+                                    <p className="price">{formatSymbol()}{formatPrice(Number(cart.productPrice) * Number(cart.qty))}</p>
                                 </div>
                             </div>
                         ))}
@@ -89,13 +89,13 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
                     <div className="order-summary-table">
                         <div className="order-summary-list">
                             <p className="sub-total">Subtotal</p>
-                            <p className="sub-total">&#8358;{(formatPrice(itemsPrice))}</p>
+                            <p className="sub-total">{formatSymbol()}{(formatPrice(itemsPrice))}</p>
                         </div>
                         <hr />
                         <div className="order-summary-list">
                             <p className="sub-total">Shipping</p>
                             {shippingPrice ? (
-                                <p className="sub-total"> &#8358;{formatPrice(Number(shippingPrice))} </p>
+                                <p className="sub-total"> {formatSymbol()}{formatPrice(shippingPrice)} </p>
                             ) : (
                                 <p className="sub-total">Yet to be calculated</p>
                             )}
@@ -105,7 +105,7 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
                         <hr />
                         <div className="order-summary-list">
                             <p className="total">Total</p>
-                            <p className="total">&#8358;{shippingPrice ?
+                            <p className="total">{formatSymbol()}{shippingPrice ?
                                 formatPrice(Number(shippingPrice) + Number(itemsPrice)) :
                                 formatPrice(itemsPrice)}</p>
                         </div>

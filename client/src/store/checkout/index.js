@@ -11,7 +11,7 @@ import FooterNav from '../components/footer';
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { toast } from 'react-toastify';
-import formatPrice from "../components/format-price";
+import { formatPrice, formatSymbol } from "../components/format-price";
 
 
 const CheckOut = () => {
@@ -302,7 +302,7 @@ const CheckOut = () => {
                                                     {deliveries.map((delivery) => (
                                                         <option key={delivery.id}
                                                             value={delivery.data.delivery_id}>
-                                                            {delivery.data.deliveryLocation} - &#8358;{formatPrice(Number(delivery.data.deliveryPrice))}
+                                                            {delivery.data.deliveryLocation} - {formatSymbol()}{formatPrice(delivery.data.deliveryPrice)}
                                                         </option>
                                                     ))}
                                                 </select>
@@ -334,7 +334,7 @@ const CheckOut = () => {
                                                             value={contactPhone}
                                                             onChange={setContactPhone}
                                                             placeholder="220 700000000"
-                                                            defaultCountry="GM" />
+                                                            defaultCountry="NG" />
                                                     </div>
                                                 </div>
 

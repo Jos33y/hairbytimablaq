@@ -10,7 +10,7 @@ import HeaderNav from '../components/header';
 import FooterNav from '../components/footer';
 import CheckOutOrderSummary from './order-summary';
 import PageLoading from "../components/loading";
-import formatPrice from "../components/format-price";
+import { formatPrice, formatSymbol } from "../components/format-price";
 import { toast } from "react-toastify";
 import { useCart } from "../components/cart-context";
 
@@ -366,7 +366,7 @@ const CheckOutPayment = () => {
                                                 <hr />
                                                 <div className='checkout-info'>
                                                     <p className='title'>Deliver Method</p>
-                                                    <p className='sub-title'>  {deliveryData.deliveryLocation} - &#8358;{formatPrice(Number(deliveryData.deliveryPrice))} </p>
+                                                    <p className='sub-title'>  {deliveryData.deliveryLocation} - {formatSymbol()}{formatPrice(deliveryData.deliveryPrice)} </p>
                                                 </div>
                                                 <hr />
                                                 <div className='return-info'>
@@ -382,17 +382,17 @@ const CheckOutPayment = () => {
                                             <div className='checkout-order-info'>
                                                 <div className='order-info'>
                                                     <p className='title'>Sub total</p>
-                                                    <p className='sub-title'> &#8358;{(formatPrice(itemsPrice))}</p>
+                                                    <p className='sub-title'> {formatSymbol()}{(formatPrice(itemsPrice))}</p>
                                                 </div>
                                                 <hr />
                                                 <div className='order-info'>
                                                     <p className='title'>Shipping</p>
-                                                    <p className='sub-title'>&#8358;{formatPrice(Number(deliveryData.deliveryPrice))}</p>
+                                                    <p className='sub-title'>{formatSymbol()}{formatPrice(Number(deliveryData.deliveryPrice))}</p>
                                                 </div>
                                                 <hr />
                                                 <div className='order-info'>
                                                     <p className='title total'>Total</p>
-                                                    <p className='sub-title total'>  &#8358;{formatPrice(Number(deliveryData.deliveryPrice) + Number(itemsPrice))}</p>
+                                                    <p className='sub-title total'>  {formatSymbol()}{formatPrice(Number(deliveryData.deliveryPrice) + Number(itemsPrice))}</p>
                                                 </div>
 
                                             </div>
@@ -415,7 +415,7 @@ const CheckOutPayment = () => {
                                                     <p>{accountData ? accountData.accountName : ''}</p>
                                                     <p>{accountData ? accountData.accountNumber : ''} </p>
                                                     <p>{accountData ? accountData.bankName : ''}</p>
-                                                    <p className='amount'> &#8358;{formatPrice(Number(deliveryData.deliveryPrice) + Number(itemsPrice))}</p>
+                                                    <p className='amount'> {formatSymbol()}{formatPrice(Number(deliveryData.deliveryPrice) + Number(itemsPrice))}</p>
                                                 </div>
                                             </div>
 

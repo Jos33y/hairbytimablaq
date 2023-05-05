@@ -5,7 +5,7 @@ const HomeSpinner = () => {
     return(
         <>
             <div id="home-spinner" className='home-loader'>
-                <div class="custom-loader"></div>
+                <div className="custom-loader"></div>
             </div>
 
         </>

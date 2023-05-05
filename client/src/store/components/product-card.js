@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./component.css";
+import { formatPrice, formatSymbol } from "./format-price";
 
 const ProductCard = ({ product, prod_id }) => {
 
@@ -16,7 +17,7 @@ const ProductCard = ({ product, prod_id }) => {
                     <div className="product-img">
                         <img src={product.imgUrls[0]} alt="product-img" className="img-fluid" />
                     </div>
-                    <div className="product-desc"> 
+                    <div className="product-desc">  
                         <div className="desc-text">
                             <p className="title">{product.productName.length <= 50 ?
                                 (`${product.productName}`) : (`${product.productName.slice(0, 50)}...`)}
@@ -24,16 +25,13 @@ const ProductCard = ({ product, prod_id }) => {
 
                             {product.discountOffer ? (
                             <p className="price">
-                                &#8358;{product.productDiscountPrice.toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                {formatSymbol()}{formatPrice(product.productDiscountPrice)}
                                 <span className="discount-price">
-                              &#8358;{product.productPrice.toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                              {formatSymbol()}{formatPrice(product.productPrice)}
                                 </span>
                             </p>
                         ) : (
-                            <p className="price">&#8358;{product.productPrice.toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                            <p className="price">{formatSymbol()}{formatPrice(product.productPrice)}</p>
                         )}
                         
                         </div>

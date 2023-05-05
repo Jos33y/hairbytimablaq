@@ -1,14 +1,93 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./component.css";
+import { collection, getDocs, query, limit, doc, getDoc, orderBy } from "firebase/firestore";
+import { db } from "../../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 import { useCart } from "./cart-context";
+import he from 'he';
 
 const HeaderNav = () => {
     const navigate = useNavigate();
-    
-    const [cart] = useCart();
 
+    const isMounted = useRef()
+    const [cart] = useCart();
+    const [rateCurrency, setRateCurrency] = useState('');
+    const [rateInfo, setRateInfo] = useState([]);
+
+
+    const fetchRates = async () => {
+        try {
+            // const auth = getAuth()
+            const rateRef = collection(db, 'exchange_rates')
+            const q = query(rateRef, orderBy('timeStamp', 'asc'), limit(10))
+            const querySnap = await getDocs(q)
+
+            let rateInfo = [];
+
+            querySnap.forEach((doc) => {
+                return rateInfo.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            setRateInfo(rateInfo)
+
+            const localRate = JSON.parse(localStorage.getItem("rate"));
+            //load persisted cart into state if it exists
+            if (localRate) {
+                setRateCurrency(localRate.rate_id)
+            } else {
+                getRateDetails(rateInfo[0].id)
+            }
+            // console.log("rate info: ", rateInfo[0].id)
+
+        }
+        catch (error) {
+
+            console.log({ error })
+        }
+
+    }
+
+    const onChange = (e) => {
+
+        if (e.target.id) {
+           getRateDetails(e.target.value);
+           setRateCurrency(e.target.value);
+        }
+
+    }
+
+    const getRateDetails = async (rate_id) => {
+        
+        try {
+            const rateRef = doc(db, 'exchange_rates', rate_id)
+            const rateSnap = await getDoc(rateRef)
+
+            if (rateSnap.exists()) {
+                localStorage.setItem('rate', JSON.stringify(rateSnap.data()));
+                setRateCurrency(rateSnap.data().id);
+                window.location.reload();
+                // console.log("rate data", rateSnap.data())
+            }
+        }
+        catch (error) {
+            console.log({ error })
+        }
+       
+    }
+    useEffect(() => {
+
+        if (isMounted) {
+
+            fetchRates().then();
+        }
+        return () => {
+            isMounted.current = false
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted])
 
     return (
         <>
@@ -20,13 +99,16 @@ const HeaderNav = () => {
                     </div>
                     <div className="col-md-3">
                         <div className="top-bar-side">
-                            <select className="form-control" id="currencry">
-                                <option value="1">USD $</option>
-                                <option value="2">GMD D</option>
-                                <option selected value="3">NGN &#8358;</option>
-                            </select>
+                        {rateInfo && rateInfo.length > 0 ? (
+                            <select value={rateCurrency} onChange={onChange} className="form-control" id="rateCurrency">
+                                {rateInfo.map((rate) => (
+                                    <option key={rate.id} value={rate.data.rate_id}>
+                                        {rate.data.rateCurrency} { he.decode(rate.data.rateSymbol)} 
+                                    </option>
+                                ))}
+                            </select>) : ('')}
                             <p
-                                onClick={() => { 
+                                onClick={() => {
                                     navigate("/track");
                                 }}
                             >
@@ -34,7 +116,7 @@ const HeaderNav = () => {
                             </p>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <div className="Header-nav">
                 <nav className="navbar navbar-expand-lg navbar-dark">
@@ -99,7 +181,7 @@ const HeaderNav = () => {
                                 }}
                             >
                                 <i className="fa-solid fa-cart-shopping"></i>
-                                <span className="cart-number">({ cart.length > 0 ? ( cart.length ) : '0' })</span>
+                                <span className="cart-number">({cart.length > 0 ? (cart.length) : '0'})</span>
                             </p>
                         </form>
                     </div>

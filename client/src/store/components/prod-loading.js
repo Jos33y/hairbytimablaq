@@ -5,7 +5,7 @@ const ProductLoading = () => {
     return(
         <>
             <div id="prod-spinner" className='prod-loading'>
-            <div class="custom-loader"></div>
+            <div className="custom-loader"></div>
             </div>
 
         </>
