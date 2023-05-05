@@ -8,7 +8,6 @@ const router = express.Router();
 const path = require('path');
 const cors = require('cors');
 const PORT = process.env.PORT || 3001;
-const API_KEY = process.env.REACT_APP_TERMI_API_KEY;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));

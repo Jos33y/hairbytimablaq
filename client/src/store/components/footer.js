@@ -4,6 +4,7 @@ import { db } from "../../firebase.config";
 import "./component.css";
 import { Link } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import GoToTop from "./go-to-top";
 
 const FooterNav = () => {
@@ -20,7 +21,7 @@ const FooterNav = () => {
 
             if (storeSnap.exists()) {
                 setStoreData(storeSnap.data())
-            }
+            } 
         }
         catch (error) {
             console.log({ error })
@@ -102,6 +103,10 @@ const FooterNav = () => {
                     <p> Copyright <i className="fa-regular fa-copyright"></i> 2023  <span className="name">hairbytimablaq </span> | Designed by <Link to="https://instagram.com/" className="name-link"> boy_programmer </Link>  </p>
                 </div>
             </div>
+            <TawkMessengerReact
+                propertyId="6455022bad80445890eb4e30"
+                widgetId="1gvm10utt"/>
+                
             <GoToTop />
         </>
     );
