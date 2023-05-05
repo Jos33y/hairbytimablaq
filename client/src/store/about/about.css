@@ -5,7 +5,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-.about-section {
+.about-section { 
     margin-top: 3%;
     padding: 20px 50px;
 }
@@ -41,4 +41,55 @@
 .about-section .about-img .img-fluid{
     width: 450px;
     object-fit: cover;
+}
+
+
+@media only screen and (max-width: 900px) {
+
+    .about-container {
+        margin-bottom: 50px;
+    }
+    
+    .about-section { 
+        margin-top: 25px;
+        padding: 20px 20px;
+    }
+    .about-section .about-section-details{
+        margin-top: 5px;
+        margin-right: 0;
+    }
+    .about-section .about-section-details .title{
+        font-size: 25px;
+    
+    }
+    
+    .about-section .about-section-details .about-story{
+        margin-top: 15px;
+    }
+    
+    .about-section .about-section-details .about-story p.p-tag{
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 20px;
+    }
+    
+    .about-section .about-img{
+        margin-top: 0px;
+        margin-left: 0;
+    }
+    
+    .about-section .about-img .img-fluid{
+        width: 450px;
+        object-fit: cover;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 767px) {
+ 
+}
+
+@media only screen and (max-width: 575px) {
+
 }

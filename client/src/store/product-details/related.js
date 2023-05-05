@@ -10,8 +10,8 @@ const RelatedProducts = ({ products }) => {
                 <div className="related-prod-list">
                     {products && products.length > 0 ? (
                         <div className="row">
-                            {products.map((product) => (
-                                <div key={product.id} className="col-lg-3 col-md-4 col-6">
+                            {products.slice(0, 4).map((product) => (
+                                <div key={product.id} className="col-lg-3 col-md-4 col-sm-4 col-6">
                                     <ProductCard product={product.data} prod_id={product.id} />
                                 </div>
                             ))}

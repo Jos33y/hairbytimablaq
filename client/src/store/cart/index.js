@@ -137,7 +137,7 @@ const ShopCart = () => {
 
                             <div className="cart-section">
                                 <div className="row">
-                                    <div className="col-md-8">
+                                    <div className="col-lg-8 col-md-12">
 
                                         <div className="cart-box">
                                             {cart && cart.length > 0 ?
@@ -154,7 +154,7 @@ const ShopCart = () => {
                                                         <hr />
                                                         <h3> Cart is Empty </h3>
                                                         <hr />
-                                                    </div>)}
+                                                    </div>)} 
                                             <hr />
                                             <div className="cart-buttons">
                                                 <button onClick={continueShopping} className="btn btn-md btn-primary"> Continue Shopping</button>
@@ -164,7 +164,7 @@ const ShopCart = () => {
                                         </div>
                                     </div>
 
-                                    <div className="col-md-4">
+                                    <div className="col-lg-4 col-md-7 col-sm-9 col-12">
                                         <div className="order-container">
                                             <div className="coupon-container">
                                                 <div className="form-group">

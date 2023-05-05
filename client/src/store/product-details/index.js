@@ -154,7 +154,7 @@ const ProductDetails = () => {
             fetchProducts().then()
         }
         return () => {
-            isMounted.current = false
+            isMounted.current = false 
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted, params.prod_id])
@@ -177,10 +177,10 @@ const ProductDetails = () => {
                             {/* product details section */}
                             <div className="details-section">
                                 <div className="row">
-                                    <div className="col-md-7">
+                                    <div className="col-lg-7 col-md-6">
                                         <div className="product-images">
                                             <div className="row">
-                                                <div className="col-2">
+                                                <div className="col-lg-2 col-md-12 col-sm-2 col-12">
 
                                                     <div className="prod-img-list">
                                                         <div onClick={() => { setMainImage(product.imgUrls[0]) }} className={`img-thumb ${mainImage === product.imgUrls[0] ? 'active' : ''}`}>
@@ -205,7 +205,7 @@ const ProductDetails = () => {
                                                     </div>
 
                                                 </div>
-                                                <div className="col-10">
+                                                <div className="col-lg-10 col-md-12 col-sm-10">
                                                     <div className="prod-main-img">
                                                         {/* link to enlarge image on click => https://stackblitz.com/edit/lightgallery-react?file=index.tsx */}
                                                         <img src={`${mainImage}`} alt="prod main img" />
@@ -214,7 +214,7 @@ const ProductDetails = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-5">
+                                    <div className="col-lg-5 col-md-6 col-sm-8 col-12">
                                         <div className="details-sect-info">
                                             <p className="prod-name">{product.productName}</p>
                                             {product.discountOffer ? (

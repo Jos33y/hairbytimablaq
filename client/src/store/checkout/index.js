@@ -325,10 +325,17 @@ const CheckOut = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(() => { 
         if (isMounted) {
             fetchRate();
             fetchDeliveries().then();
+            let localCart = localStorage.getItem("cart");
+            localCart = JSON.parse(localCart);
+            if (localCart) {
+                
+            } else {
+                (navigate('/cart'));
+            } 
         }
         return () => {
             isMounted.current = false;

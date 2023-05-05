@@ -17,7 +17,7 @@ const LatestOrders = ({ orders }) => {
                                     </div>
                                 ))}
 
-                            </div>
+                            </div> 
 
                         ) : (
                             <div className="empty-box">

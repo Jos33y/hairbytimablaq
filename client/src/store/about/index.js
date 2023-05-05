@@ -9,14 +9,14 @@ import FooterNav from "../components/footer";
 
 const AboutUs = () => {
     return (
-        <>
+        <> 
             <HeaderNav />
             <div className="about-container">
                 <BreadCrumb title="about" breadImg={AboutImg} />
 
                 <div className="about-section">
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-lg-6 col-md-6">
                             <div className="about-section-details">
                                 <p className="title">Our Story </p>
 
@@ -49,7 +49,7 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-lg-6 col-md-6">
                             <div className="about-img">
                                 <img src={MainImg} alt="about us" className="img-fluid" />
                             </div>

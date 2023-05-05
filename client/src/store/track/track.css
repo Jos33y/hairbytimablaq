@@ -73,3 +73,107 @@ https://astylers.com/shopina/dark-yellow/demo/ - also check that for mobile resp
     -webkit-box-shadow: 0px 0px 3px 1px rgba(87, 87, 87, 0.75);
     -moz-box-shadow: 0px 0px 3px 1px rgba(87, 87, 87, 0.75);
 }
+
+
+@media only screen and (max-width: 900px) {
+
+
+    .track-container {
+        margin-bottom: 40px;
+    }
+
+    .track-section {
+        margin-top: 25px;
+        padding: 20px 20px;
+    }
+
+    .track-section .track-form {
+        margin-top: 10px;
+    }
+
+    .track-section .track-form .track-note {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .track-section .track-form .form-group {
+        margin: 20px 30px;
+    }
+
+    .track-section .track-form .form-group label {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .track-section .track-form .form-group input {
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .track-section .track-form .form-group input::placeholder {
+        font-size: 13px;
+    }
+
+
+
+    .track-section .track-form .form-group .btn {
+        margin-top: 10px;
+        font-size: 15px;
+        padding: 10px 40px;
+        width: 50%;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 767px) {}
+
+@media only screen and (max-width: 575px) {
+
+
+    .track-container {
+        margin-bottom: 40px;
+    }
+
+    .track-section {
+        margin-top: 25px;
+        padding: 20px 10px;
+    }
+
+    .track-section .track-form {
+        margin-top: 10px;
+    }
+
+    .track-section .track-form .track-note {
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+
+    .track-section .track-form .form-group {
+        margin: 20px 10px;
+    }
+
+    .track-section .track-form .form-group label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .track-section .track-form .form-group input {
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .track-section .track-form .form-group input::placeholder {
+        font-size: 13px;
+    }
+
+    .track-section .track-form .form-group .btn {
+        margin-top: 10px;
+        font-size: 15px;
+        padding: 10px 40px;
+        width: 70%;
+
+    }
+
+}
