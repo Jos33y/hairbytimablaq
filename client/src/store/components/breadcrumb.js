@@ -7,12 +7,12 @@ const BreadCrumb = ({title, breadImg}) => {
 
             <div className="bread-header">
                 <div className="row justify-content-center">
-                    <div className="col-lg-5">
+                    <div className="col-lg-5 col-md-5 col-sm-5 col-5">
                         <div className="header-img">
                             <img src={breadImg} alt="header-img" className="img-fluid" />
                         </div>
-                    </div>
-                    <div className="col-lg-7">
+                    </div> 
+                    <div className="col-lg-7 col-md-7 col-sm-7 col-7">
                         <div className="bread-width">
                             <div className="bread-header-text">
                                 <h4> {title}  </h4>

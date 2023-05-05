@@ -93,11 +93,11 @@ const HeaderNav = () => {
         <>
             <div className="top-bar">
                 <div className="row">
-                    <div className="col-md-4"></div>
-                    <div className="col-md-5">
+                    <div className="col-lg-3 col-md-2 col-sm-2 col-0"></div>
+                    <div className="col-lg-5 col-md-5 col-sm-5 col-12">
                         <p className="tag-line"> Life is short make every hair flip count</p>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-lg-3 col-md-5 col-sm-5 col-12">
                         <div className="top-bar-side">
                         {rateInfo && rateInfo.length > 0 ? (
                             <select value={rateCurrency} onChange={onChange} className="form-control" id="rateCurrency">
@@ -105,7 +105,7 @@ const HeaderNav = () => {
                                     <option key={rate.id} value={rate.data.rate_id}>
                                         {rate.data.rateCurrency} { he.decode(rate.data.rateSymbol)} 
                                     </option>
-                                ))}
+                                ))} 
                             </select>) : ('')}
                             <p
                                 onClick={() => {

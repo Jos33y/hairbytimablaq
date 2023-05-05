@@ -47,7 +47,7 @@ const FooterNav = () => {
             <div className="Footer-nav">
                 <div className="row">
                     {/* column section */}
-                    <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                         <div className="footer-lists">
                             <ul>
                                 <li> <Link className="footer-link" to="/">Home </Link></li>
@@ -60,7 +60,7 @@ const FooterNav = () => {
                     </div>
 
                     {/* column section */}
-                    <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                         <div className="footer-lists">
                             <ul>
                                 <li> <Link className="footer-link" to="/track">Track Order </Link></li>
@@ -72,7 +72,7 @@ const FooterNav = () => {
                     </div>
 
                     {/* column section */}
-                    <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                         <div className="social-lists">
                             <h5> Follow us</h5>
                             <ul className="social-icons">
@@ -83,9 +83,8 @@ const FooterNav = () => {
 
                     </div>
 
-
                     {/* column section */}
-                    <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                         <div className="footer-about">
                             <div className="footer-img">
                                 <img src={TimaBlaq} alt="footer logo" className="img-fluid" />
@@ -97,7 +96,7 @@ const FooterNav = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <hr />
                 <div className="footer-copy">
                     <p> Copyright <i className="fa-regular fa-copyright"></i> 2023  <span className="name">hairbytimablaq </span> | Designed by <Link to="https://instagram.com/" className="name-link"> boy_programmer </Link>  </p>

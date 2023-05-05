@@ -5,10 +5,10 @@ import TimaBlaq from "../assets/images/timablaq.jpeg";
 const TestimonySection = () => {
   return (
     <>
-      <div className="Testimony-container">
+      <div className="Testimony-container"> 
         <div className="row">
           <h3> A positive Experience in many ways.</h3>
-          <div className="col-md-4">
+          <div className="col-lg-4 col-md-4 col-sm-6 col-12">
             <div className="testimony-box">
               <div className="testimony-image">
                 <img src={TimaBlaq} alt="" className="img-responsive" />
@@ -34,7 +34,7 @@ const TestimonySection = () => {
             </div>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-lg-4 col-md-4 col-sm-6 col-12">
             <div className="testimony-box">
               <div className="testimony-image">
                 <img src={TimaBlaq} alt="" className="img-responsive" />
@@ -59,7 +59,7 @@ const TestimonySection = () => {
             </div>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-lg-4 col-md-4 col-sm-6 col-12">
             <div className="testimony-box">
               <div className="testimony-image">
                 <img src={TimaBlaq} alt="" className="img-responsive" />

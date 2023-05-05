@@ -5,7 +5,6 @@ import AdminLogin from './admin/auth';
 import AdminRegister from './admin/auth/register';
 import AdminDashboard from './admin/dashboard';
 import PrivateRoute from './components/private-route';
-
 import './App.css';
 import ErrorPage from './store/error/error';
 import Shop from './store/shop';

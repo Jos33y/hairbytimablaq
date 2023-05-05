@@ -5,11 +5,12 @@
     font-family: "Poppins", sans-serif;
 }
 
-.contact-section{
+.contact-section {
     margin-top: 3%;
     padding: 20px 50px;
 }
-.contact-section h3.title{
+
+.contact-section h3.title {
     font-size: 30px;
     font-weight: 500;
     text-align: center;
@@ -17,7 +18,7 @@
     text-transform: capitalize;
 }
 
-.contact-section .contact-info .contact-info-text{
+.contact-section .contact-info .contact-info-text {
     display: flex;
     flex: auto;
     flex-direction: row;
@@ -27,34 +28,37 @@
     margin-bottom: 5%;
 }
 
-.contact-section .contact-info .contact-info-text .contact-icon .fa-solid{
+.contact-section .contact-info .contact-info-text .contact-icon .fa-solid {
     font-size: 25px;
     color: #D1B000;
 }
-.contact-section .contact-info .contact-info-text p.contact-desc{
+
+.contact-section .contact-info .contact-info-text p.contact-desc {
     font-weight: 400;
     font-size: 14px;
     color: #797979;
 }
 
-.contact-section .contact-form{
+.contact-section .contact-form {
     margin-top: 2%;
 }
-.contact-section .contact-form .contact-form-content{
+
+.contact-section .contact-form .contact-form-content {
     margin-top: 30px;
 }
-.contact-section .contact-form .contact-form-content .form-group{
+
+.contact-section .contact-form .contact-form-content .form-group {
     margin: 20px 10px;
 }
 
-.contact-section .contact-form .contact-form-content .form-group label{
+.contact-section .contact-form .contact-form-content .form-group label {
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 8px;
     color: #333333;
 }
 
-.contact-section .contact-form .contact-form-content .form-group input{
+.contact-section .contact-form .contact-form-content .form-group input {
     font-size: 15px;
     color: #333333;
     border-radius: 1px;
@@ -62,23 +66,24 @@
     border: 1px solid #b6b6b6;
 }
 
-.contact-section .contact-form .contact-form-content .form-group textarea{
+.contact-section .contact-form .contact-form-content .form-group textarea {
     font-size: 15px;
     color: #333333;
     border-radius: 1px;
     border: 1px solid #b6b6b6;
 }
-.contact-section .contact-form .contact-form-content .form-group input:focus{
- outline: none;
- box-shadow: none;   
+
+.contact-section .contact-form .contact-form-content .form-group input:focus {
+    outline: none;
+    box-shadow: none;
 }
 
-.contact-section .contact-form .contact-form-content .form-group textarea:focus{
+.contact-section .contact-form .contact-form-content .form-group textarea:focus {
     outline: none;
-    box-shadow: none;   
-   }
+    box-shadow: none;
+}
 
-   .contact-section .contact-form .contact-form-content .form-group .btn{
+.contact-section .contact-form .contact-form-content .form-group .btn {
     margin-top: 20px;
     font-size: 16px;
     font-weight: 700;
@@ -89,4 +94,223 @@
     border: 1px solid #D1B000;
     text-transform: uppercase;
     letter-spacing: 2px;
-   }
+}
+
+
+@media only screen and (max-width: 900px) {
+
+    .contact-container {
+        margin-bottom: 50px;
+    }
+
+    .contact-section {
+        margin-top: 25px;
+        padding: 20px 30px;
+    }
+
+    .contact-section h3.title {
+        font-size: 25px;
+        font-weight: 500;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .contact-section .contact-info .contact-info-text {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+
+    .contact-section .contact-info .contact-info-text .contact-icon .fa-solid {
+        font-size: 22px;
+    }
+
+    .contact-section .contact-info .contact-info-text p.contact-desc {
+        font-size: 14px;
+    }
+
+    .contact-section .contact-form {
+        margin-top: 20px;
+    }
+
+    .contact-section .contact-form .contact-form-content {
+        margin-top: 30px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group {
+        margin: 20px 10px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group input {
+        font-size: 15px;
+        border-radius: 1px;
+        height: 48px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group textarea {
+        font-size: 15px;
+    }
+
+
+    .contact-section .contact-form .contact-form-content .form-group .btn {
+        margin-top: 20px;
+        font-size: 16px;
+        padding: 10px 40px;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    .contact-container {
+        margin-bottom: 50px;
+    }
+
+    .contact-section {
+        margin-top: 25px;
+        padding: 20px 20px;
+    }
+
+    .contact-section h3.title {
+        font-size: 22px;
+        font-weight: 500;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .contact-section .contact-info .contact-info-text {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+
+    .contact-section .contact-info .contact-info-text .contact-icon .fa-solid {
+        font-size: 20px;
+    }
+
+    .contact-section .contact-info .contact-info-text p.contact-desc {
+        font-size: 14px;
+    }
+
+    .contact-section .contact-form {
+        margin-top: 20px;
+    }
+
+    .contact-section .contact-form .contact-form-content {
+        margin-top: 30px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group {
+        margin: 20px 10px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group label {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group input {
+        font-size: 14px;
+        border-radius: 1px;
+        height: 45px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group textarea {
+        font-size: 15px;
+    }
+
+
+    .contact-section .contact-form .contact-form-content .form-group .btn {
+        margin-top: 20px;
+        font-size: 14px;
+        padding: 10px 40px;
+    }
+
+}
+
+@media only screen and (max-width: 575px) {
+
+
+    .contact-container {
+        margin-bottom: 50px;
+    }
+
+    .contact-section {
+        margin-top: 25px;
+        padding: 20px 10px;
+    }
+
+    .contact-section h3.title {
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .contact-section .contact-info .contact-info-text {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+
+    .contact-section .contact-info .contact-info-text .contact-icon .fa-solid {
+        font-size: 20px;
+    }
+
+    .contact-section .contact-info .contact-info-text p.contact-desc {
+        font-size: 14px;
+    }
+
+    .contact-section .contact-form {
+        margin-top: 10px;
+    }
+
+    .contact-section .contact-form .contact-form-content {
+        margin-top: 20px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group {
+        margin: 20px 10px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group input {
+        font-size: 14px;
+        border-radius: 1px;
+        height: 45px;
+    }
+
+    .contact-section .contact-form .contact-form-content .form-group textarea {
+        font-size: 15px;
+    }
+
+
+    .contact-section .contact-form .contact-form-content .form-group .btn {
+        margin-top: 20px;
+        font-size: 14px;
+        padding: 10px 40px;
+    }
+
+}

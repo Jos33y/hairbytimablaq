@@ -9,7 +9,7 @@ import SubscribeForm from "../components/subscribe";
 import FooterNav from "../components/footer";
 
 
-const ContactUs = () => {
+const ContactUs = () => { 
 
     const store_unique_id = 'hair-by-timablaq';
     const isMounted = useRef()
@@ -52,7 +52,7 @@ const ContactUs = () => {
 
                 <div className="contact-section">
                     <div className="row justify-content-center">
-                        <div className="col-md-10">
+                        <div className="col-lg-10 col-md-12">
                             <div className="contact-info">
                                 <h3 className="title"> Get in touch</h3>
                                 <div className="contact-info-text">
@@ -76,7 +76,7 @@ const ContactUs = () => {
                     </div>
 
                     <div className="row justify-content-center">
-                        <div className="col-md-7">
+                        <div className="col-lg-7 col-md-10 col-sm-12">
                             <div className="contact-form">
                                 <h3 className="title"> Send Us an Email</h3>
                                 <div className="contact-form-content">

@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .shop-container {
-    margin-bottom: 5%; 
+    margin-bottom: 5%;
     font-family: "Poppins", sans-serif;
 }
 
 
-.shop-section{
+.shop-section {
     padding: 20px 50px;
 }
 
-.shop-section .shop-actions{
+.shop-section .shop-actions {
     display: flex;
     flex: auto;
     flex-direction: row;
@@ -18,14 +18,14 @@
     padding: 30px 20px;
 }
 
-.shop-section .shop-actions .shop-one p{
+.shop-section .shop-actions .shop-one p {
     margin-top: 20px;
     font-size: 14px;
     color: #575757;
     font-weight: 500;
 }
 
-.shop-section .shop-actions .shop-one .form-group select{
+.shop-section .shop-actions .shop-one .form-group select {
     padding: 10px 20px;
     font-size: 15px;
     font-weight: 500;
@@ -35,7 +35,115 @@
     border-radius: 1px;
 }
 
-.shop-section .shop-actions .shop-one .form-group select:focus{
+.shop-section .shop-actions .shop-one .form-group select:focus {
     outline: none;
     box-shadow: none;
+}
+
+
+@media only screen and (max-width: 900px) {
+
+    .shop-container {
+        margin-bottom: 50px;
+    }
+
+    .shop-section {
+        padding: 20px 20px;
+    }
+
+    .shop-section .shop-actions {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 10px;
+    }
+
+    .shop-section .shop-actions .shop-one p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .shop-section .shop-actions .shop-one .form-group select {
+        padding: 10px 20px;
+        font-size: 14px;
+        width: 250px;
+        border-radius: 1px;
+    }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    .shop-container {
+        margin-bottom: 50px;
+    }
+
+    .shop-section {
+        padding: 20px 10px;
+    }
+
+    .shop-section .product-shop .col-6 {
+        padding: 8px;
+    }
+
+    .shop-section .shop-actions {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 10px;
+    }
+
+    .shop-section .shop-actions .shop-one p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .shop-section .shop-actions .shop-one .form-group select {
+        padding: 10px 20px;
+        font-size: 14px;
+        width: 250px;
+        border-radius: 1px;
+    }
+
+
+}
+
+@media only screen and (max-width: 575px) {
+
+
+    .shop-container {
+        margin-bottom: 50px;
+    }
+
+    .shop-section {
+        padding: 20px 10px;
+    }
+
+    .shop-section .product-shop .col-6 {
+        padding: 6px;
+    }
+
+    .shop-section .shop-actions {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 10px;
+    }
+
+    .shop-section .shop-actions .shop-one p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .shop-section .shop-actions .shop-one .form-group select {
+        padding: 10px 20px;
+        font-size: 13px;
+        width: 100%;
+        border-radius: 1px;
+    }
 }

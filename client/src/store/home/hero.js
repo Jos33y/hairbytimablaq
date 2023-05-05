@@ -12,7 +12,7 @@ const HomeHero = () => {
                         <div className="hero-content">
                             <p className="tag-one">In store and Online</p>
                             <h3 className="tag-two">Store Launch</h3>
-                            <p className="tag-three">10% sale of everything </p>
+                            {/* <p className="tag-three">10% sale of everything </p> */}
                             <button onClick={() => {navigate('/shop')}} className="btn btn-md btn-primary">Shop Now</button>
                         </div>
                     </div>

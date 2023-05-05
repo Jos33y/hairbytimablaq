@@ -20,13 +20,13 @@ const HomeCategories = ({ categories }) => {
                 <div className="row">
 
                     {categories.map((category) => (
-                        <div key={category.id} className="col-lg-3 col-md-4 col-6">
+                        <div key={category.id} className="col-lg-3 col-md-3 col-sm-4 col-6">
                             <div className="categories-box">
                                 <div className="categories-img">
                                     <img src={category.data.categoryImage ? category.data.categoryImage || category.data.categoryImage[0] : CatImgOne} alt="category" className="img-fluid" />
                                 </div>
                                 <div className="categories-title">
-                                    <button onClick={() => { goToShop(category.data.category_id) }} className="btn btn-md btn-secondary"> {category.data.categoryName} </button>
+                                    <button onClick={() => { goToShop(category.data.category_id) }} className="btn btn-md btn-secondary"> {`${category.data.categoryName.slice(0,12)}`} </button>
                                 </div>
                             </div>
                         </div>
