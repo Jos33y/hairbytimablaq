@@ -183,10 +183,10 @@ const ProductDetailsPage = () => {
                                                     <p className="prod-name">{product.productName}</p>
 
                                                     {product.discountOffer ? (
-                                                        <p className="prod-price"> &#8358; {product.productDiscountPrice.toString()
+                                                        <p className="prod-price"> &#393; {product.productDiscountPrice.toString()
                                                             .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                                             <span className="discount-price">
-                                                                &#8358; {product.productPrice.toString()
+                                                                &#393; {product.productPrice.toString()
                                                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                                             </span>
                                                         </p>
@@ -194,7 +194,7 @@ const ProductDetailsPage = () => {
                                                     )
                                                         :
                                                         (
-                                                            <p className="prod-price"> &#8358; {product.productPrice.toString()
+                                                            <p className="prod-price"> &#393; {product.productPrice.toString()
                                                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
                                                         )}
 

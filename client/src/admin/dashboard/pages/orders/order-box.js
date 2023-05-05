@@ -82,7 +82,7 @@ const OrderBox = ({ order, order_id }) => {
                 </div>
 
                 <div className="order-list-actions">
-                    <p className="price"> &#8358;{formatPrice(order.order_total)} </p>
+                    <p className="price"> &#393;{formatPrice(order.order_total)} </p>
                     <p className="not-button"><button className={`btn btn-md ${order.delivery_status}`}>{getDeliveryStatus()}</button></p>
                     <p className="not-button"><button className={`btn btn-md ${order.payment_status}`}>{getPaymentStatus()} </button></p>
                     <p className="is-button"> <button onClick={orderDetails} className="btn btn-md btn-primary">Check order </button> </p>

@@ -143,7 +143,7 @@ const HeaderNav = () => {
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
                                 <Link to="/" className="nav-link">
-                                    Home <span className="sr-only">(current)</span>
+                                    Home
                                 </Link>
                             </li>
                             <li className="nav-item">

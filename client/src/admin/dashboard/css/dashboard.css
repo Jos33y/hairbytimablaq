@@ -98,7 +98,7 @@
 }
 
 .dashboard-box .dashboard-card .dashboard-text .sub-title.revenue{
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: normal; 
     font-weight: 600;
     padding-bottom: 5px;
@@ -1234,8 +1234,8 @@ margin: 10px 0;
 }
 
 .wallet-box .wallet-balance .balance{
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     color:#f2f3f5;
     
 }

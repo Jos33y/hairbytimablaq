@@ -288,7 +288,7 @@ const DeliveryPage = () => {
                                                         <label className="form-label">Delivery Fee </label>
                                                         <input type="text"
                                                             className="form-control"
-                                                            placeholder="2000 in GMD"
+                                                            placeholder="2000 in &#393;"
                                                             id="deliveryPrice"
                                                             value={deliveryPrice}
                                                             onChange={onChange}
@@ -323,7 +323,7 @@ const DeliveryPage = () => {
                                                                     <div className="cat-list-info">
                                                                         <div className="cat-list-details">
                                                                             <p className="location">{delivery.data.deliveryLocation}  </p>
-                                                                            <p className="fee"> &#8358; {delivery.data.deliveryPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} </p> 
+                                                                            <p className="fee"> &#393; {delivery.data.deliveryPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} </p> 
                                                                         </div>
 
                                                                     </div>

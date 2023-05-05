@@ -166,7 +166,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Confirmed Balance </p>
-                                                            <p className="balance">&#8358;{confirmedBalance ? formatPrice(confirmedBalance) : '0'}</p>
+                                                            <p className="balance">&#393; {confirmedBalance ? formatPrice(confirmedBalance) : '0'}</p>
 
                                                         </div>
 
@@ -180,7 +180,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Not Confirmed Balance </p>
-                                                            <p className="balance">&#8358;{notConfirmedBalance ? formatPrice(notConfirmedBalance) : '0'}</p>
+                                                            <p className="balance">&#393; {notConfirmedBalance ? formatPrice(notConfirmedBalance) : '0'}</p>
 
                                                         </div>
 
@@ -195,7 +195,7 @@ const WalletPage = () => {
                                                         </div>
                                                         <div className="wallet-balance">
                                                             <p className="title">Inavlid Balance </p>
-                                                            <p className="balance">&#8358;{invalidedBalance ? formatPrice(invalidedBalance) : '0'}</p>
+                                                            <p className="balance">&#393; {invalidedBalance ? formatPrice(invalidedBalance) : '0'}</p>
 
                                                         </div>
 

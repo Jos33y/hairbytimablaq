@@ -148,7 +148,7 @@ const DashboardHome = () => {
                                             <div className="dashboard-card">
                                                 <div className="dashboard-text">
                                                     <p className="title">Revenue</p>
-                                                    <p className="sub-title revenue"> &#8358;{totalSales ? formatPrice(totalSales) : '0'}</p>
+                                                    <p className="sub-title revenue"> &#393;{totalSales ? formatPrice(totalSales) : '0'}</p>
                                                 </div>
                                                 <div className="dashboard-icon gold-one">
                                                     <i className="fa-solid fa-file-invoice-dollar"></i>

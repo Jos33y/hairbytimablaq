@@ -42,7 +42,7 @@ const TransactionBox = ({ transaction, transaction_id }) => {
                 </div>
 
                 <div className="order-list-actions">
-                    <p className="price"> &#8358; {formatPrice(transaction.amountPaid)}  </p>
+                    <p className="price"> &#393; {formatPrice(transaction.amountPaid)}  </p>
                     <p className="not-button"><button className={`btn btn-md ${transaction.paymentStatus}`}>{getPaymentStatus()} </button></p>
                     <p className="is-button"> <button onClick={editProduct} className="btn btn-md btn-primary">Check trans </button> </p>
                 </div>

@@ -7,7 +7,6 @@ const HomeSpinner = () => {
             <div id="home-spinner" className='home-loader'>
                 <div className="custom-loader"></div>
             </div>
-
         </>
     )
 

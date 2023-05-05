@@ -528,13 +528,14 @@
 
 .checkout-table .checkout-order-info .order-info p.sub-title {
     font-size: 13px;
-    font-weight: 400;
-    color: #7b7b7b;
+    font-weight: 500;
+    color: #525252;
     text-align: left;
 }
 
 .checkout-table .checkout-order-info .order-info p.total {
     font-size: 18px;
+    font-weight: 600;
 }
 
 

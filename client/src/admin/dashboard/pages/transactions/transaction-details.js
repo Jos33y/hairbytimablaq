@@ -17,7 +17,8 @@ const TransactionDetailsPage = () => {
     const [loading, setLoading] = useState(true)
     const [transactionData, setTransactionData] = useState([])
     const [paymentStatus, setPaymentStatus] = useState("");
-    const [contactEmail, setContactEmail] = useState("");
+    const [contactEmail, setContactEmail] = useState(null);
+    const [contactPhone, setContactPhone] = useState(null);
 
 
 
@@ -91,8 +92,12 @@ const TransactionDetailsPage = () => {
                     await updateDoc(paymentDataRef, updatePayment)
                     const orderDataRef = doc(db, 'orders', `${transactionData.orderId}`)
                     await updateDoc(orderDataRef, updateOrder)
-                    if(paymentStatus === 'success') {
-                        sendConfirmationEmail();
+                    if (paymentStatus === 'success') {
+                        if (contactEmail !== null) {
+                            sendConfirmationEmail();
+                        } else {
+                            sendConfirmationSms();
+                        }
                     }
                     Swal.fire(
                         'Updated!',
@@ -109,6 +114,33 @@ const TransactionDetailsPage = () => {
             console.log({ error })
         }
         setIsDisbaled(false)
+    }
+
+    const sendConfirmationSms = async () => {
+
+        try {
+            const url = '/order-confirmed-sms';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    phone_number: contactPhone,
+                    order_id: transactionData.orderId,
+                }),
+            };
+
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.code === 'ok') {
+                    }
+                })
+
+        } catch (error) {
+
+            console.log({ error })
+        }
+
     }
 
 
@@ -152,6 +184,10 @@ const TransactionDetailsPage = () => {
 
                 if (customerSnap.data().contact_mode === 'email') {
                     setContactEmail(customerSnap.data().contact_info)
+                    setContactPhone(null)
+                } else {
+                    setContactPhone(customerSnap.data().contact_info)
+                    setContactEmail(null)
                 }
             }
             else {
@@ -243,7 +279,7 @@ const TransactionDetailsPage = () => {
                                                                 <p className="info-title">Account Paid From</p>
                                                                 <p className="info-text">{`${transactionData.customerName}`}</p>
                                                                 <p className="info-text">{`${transactionData.customerBank}`}</p>
-                                                                <p className="info-text">Amount: <span className="amount-paid">&#8358;{formatPrice(Number(transactionData.amountPaid))} </span> </p>
+                                                                <p className="info-text">Amount: <span className="amount-paid">&#393;{formatPrice(Number(transactionData.amountPaid))} </span> </p>
                                                                 <p className="info-text">Trans Status: <span className={`status ${transactionData.paymentStatus}`}> {getPaymentStatus()} </span> </p>
                                                             </div>
                                                         </div>
@@ -273,7 +309,7 @@ const TransactionDetailsPage = () => {
                                                             <div className="info-box-inner info-box-img">
                                                                 <p className="info-title">Payment Receipt</p>
                                                                 <div className="receipt-img">
-                                                                    <img src={transactionData.paymentReceipt ? (`${transactionData.paymentReceipt}`) : ('https://placehold.jp/70x70.png')} alt="receipt" className="img-fluid" />
+                                                                    <img src={transactionData.paymentReceipt ? (`${transactionData.paymentReceipt}`) : ('https://placehold.jp/70x70.png')} alt="receipt here" className="img-fluid" />
                                                                 </div>
 
                                                                 <Link to={`${transactionData.paymentReceipt}`} target="_blank" className="btn btn-md btn-primary">View receipt</Link>

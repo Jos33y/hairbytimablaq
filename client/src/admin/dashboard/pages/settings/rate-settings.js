@@ -37,7 +37,7 @@ const RateSettings = () => {
         timeStamp: '',
     })
 
-    // GMD &#393;
+    // &#393; &#393;
 
     const MySwal = withReactContent(Swal)
     const { rateCurrency, rateAmount, currencyName } = rateData;

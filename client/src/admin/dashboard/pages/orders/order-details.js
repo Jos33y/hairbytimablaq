@@ -21,6 +21,7 @@ const OrderDetailsPage = () => {
     const [paymentData, setPaymentData] = useState("")
     const [orderStatus, setOrderStatus] = useState("");
     const [contactEmail, setContactEmail] = useState("");
+    const [contactPhone, setContactPhone] = useState("");
 
 
     const fetchOrderDetails = async () => {
@@ -59,6 +60,8 @@ const OrderDetailsPage = () => {
             setCustomerData(shippingSnap.data())
             if (shippingSnap.data().contact_mode === 'email') {
                 setContactEmail(shippingSnap.data().contact_info)
+            } else {
+                setContactPhone(shippingSnap.data().contact_info)
             }
         }
         else {
@@ -159,9 +162,19 @@ const OrderDetailsPage = () => {
                             const orderDataRef = doc(db, 'orders', `${location.state.order_id}`)
                             await updateDoc(orderDataRef, updateOrder)
                             if (orderStatus === 'processing') {
-                                sendDeliveryEmail();
+                                if (customerData.contact_mode === 'email') {
+                                    sendShippedEmail();
+                                } else {
+                                    sendShippedSms();
+                                }
+
                             } else if (orderStatus === 'success') {
-                                orderDeliveredEmail();
+                                if (customerData.contact_mode === 'email') {
+                                    orderDeliveredEmail();
+                                } else {
+                                    orderDeliveredSms();
+                                }
+
                             }
                             Swal.fire(
                                 'Updated!',
@@ -190,8 +203,61 @@ const OrderDetailsPage = () => {
         setIsDisbaled(false)
     }
 
+    const sendShippedSms = async () => {
 
-    const sendDeliveryEmail = async () => {
+        try {
+            const url = '/order-shipped-sms';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    phone_number: contactPhone,
+                    order_id: location.state.order_id,
+                }),
+            };
+
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.code === 'ok') {
+                    }
+                })
+
+        } catch (error) {
+
+            console.log({ error })
+        }
+
+    }
+
+    const orderDeliveredSms = async () => {
+
+        try {
+            const url = '/order-delivered-sms';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    phone_number: contactPhone,
+                    order_id: location.state.order_id,
+                }),
+            };
+
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.code === 'ok') {
+                    }
+                })
+
+        } catch (error) {
+
+            console.log({ error })
+        }
+
+    }
+
+    const sendShippedEmail = async () => {
 
         fetch('/order-shipped', {
             method: 'POST',
@@ -367,12 +433,12 @@ const OrderDetailsPage = () => {
                                                                 </div>
                                                                 <div className="prod-ordered-details">
                                                                     <p className="prod-name"> {product.productName}</p>
-                                                                    <p className="prod-price"> &#8358;{formatPrice(Number(product.productPrice))}  x {product.qty}</p>
+                                                                    <p className="prod-price"> &#393;{formatPrice(Number(product.productPrice))}  x {product.qty}</p>
                                                                 </div>
                                                             </div>
 
                                                             <div className="prod-ordered-two">
-                                                                <p className="total-price"> &#8358;{formatPrice(Number(product.productPrice) * Number(product.qty))}</p>
+                                                                <p className="total-price"> &#393;{formatPrice(Number(product.productPrice) * Number(product.qty))}</p>
                                                             </div>
                                                         </div>
                                                     </>
@@ -382,18 +448,18 @@ const OrderDetailsPage = () => {
                                                 <hr />
                                                 <div className="shipping-info">
                                                     <p className="light-text">Sub total: </p>
-                                                    <p className="bold-text">&#8358;{formatPrice(orderData.order_total)} </p>
+                                                    <p className="bold-text">&#393;{formatPrice(orderData.order_total)} </p>
                                                 </div>
                                                 <div className="shipping-info">
                                                     <p className="light-text">Shipping cost: </p>
-                                                    <p className="bold-text">&#8358;{formatPrice(Number(deliveryData.deliveryPrice))} </p>
+                                                    <p className="bold-text">&#393;{formatPrice(Number(deliveryData.deliveryPrice))} </p>
                                                 </div>
 
                                                 <hr />
 
                                                 <div className="shipping-info">
                                                     <p className="light-text big-total">Total: </p>
-                                                    <p className="bold-text big-total">&#8358;{formatPrice(Number(orderData.order_total) + Number(deliveryData.deliveryPrice))}  </p>
+                                                    <p className="bold-text big-total">&#393;{formatPrice(Number(orderData.order_total) + Number(deliveryData.deliveryPrice))}  </p>
                                                 </div>
                                             </div>
 

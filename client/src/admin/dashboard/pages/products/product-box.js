@@ -26,14 +26,14 @@ const ProductBox = ({ product, id, onDelete }) => {
                         <p onClick={productDetails} className="name">{product.productName}</p>
                         {product.discountOffer ? (
                             <p className="price">
-                                &#8358;{product.productDiscountPrice.toString()
+                                &#393;{product.productDiscountPrice.toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                <span className="discount-price">&#8358;{product.productPrice.toString()
+                                <span className="discount-price">&#393;{product.productPrice.toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} </span>
                             </p>
                         ) : (
                             <p className="price">
-                                &#8358;{product.productPrice.toString()
+                                &#393;{product.productPrice.toString()
                                     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                             </p>
                         )}

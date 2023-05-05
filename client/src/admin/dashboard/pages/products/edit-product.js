@@ -343,11 +343,11 @@ const EditProductPage = () => {
                                                             </select>
                                                         </div>
                                                         <div className="col-md-4">
-                                                            <label htmlFor="product-price" className="form-label">Product Price (&#8358;)  </label>
+                                                            <label htmlFor="product-price" className="form-label">Product Price (&#393;)  </label>
                                                             <input type="text"
                                                                 id="productPrice"
                                                                 className="form-control"
-                                                                placeholder="10000 in GMD"
+                                                                placeholder="10000 in &#393;"
                                                                 value={productPrice}
                                                                 onChange={onChange}
                                                                 onKeyDown={handleNumKeyDown}
@@ -356,14 +356,14 @@ const EditProductPage = () => {
 
                                                         {discountOffer && (
                                                             <div className="col-md-4">
-                                                                <label htmlFor="product-discount-price" className="form-label">Discount Price (&#8358;)  </label>
+                                                                <label htmlFor="product-discount-price" className="form-label">Discount Price (&#393;)  </label>
 
                                                                 <input type="text"
                                                                     id="productDiscountPrice"
                                                                     value={productDiscountPrice}
                                                                     onChange={onChange}
                                                                     onKeyDown={handleNumKeyDown}
-                                                                    placeholder="5000 in GMD"
+                                                                    placeholder="5000 in &#393;"
                                                                     className="form-control" />
                                                             </div>
                                                         )}

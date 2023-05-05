@@ -27,10 +27,9 @@ const CheckOutPayment = () => {
     const [loading, setLoading] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false)
     const [contactEmail, setContactEmail] = useState("");
-    // eslint-disable-next-line
-    const [contactPhone, setContactPhone] = useState();
+    const [contactPhone, setContactPhone] = useState("");
     const [customerId, setCustomerId] = useState("")
-    const [paymentMethod, setPaymentMethod] = useState("bank transfer")
+    const [paymentMethod, setPaymentMethod] = useState("")
     const [accountData, setAccountData] = useState(null)
     const [orderId, setOrderId] = useState(null)
     const [shippingMethod, setShippingMethod] = useState("");
@@ -81,7 +80,7 @@ const CheckOutPayment = () => {
                     return
                 })
                 receiptUrl = paymentReceiptUrl;
-                // console.log('image new', `${imgUrl}`);
+                // console.log('image new', `${receiptUrl}`);
 
                 let gen_payment_id = `trans-${rand_id}`
                 let payment_id = gen_payment_id.toLowerCase();
@@ -95,7 +94,6 @@ const CheckOutPayment = () => {
                 paymentDataCopy.paymentMethod = paymentMethod;
                 paymentDataCopy.orderId = orderId;
                 paymentDataCopy.timeStamp = serverTimestamp();
-
                 const paymemtRef = doc(db, 'transactions', payment_id)
                 await setDoc(paymemtRef, paymentDataCopy).then(() => {
                     updateOrder(payment_id);
@@ -152,16 +150,52 @@ const CheckOutPayment = () => {
     }
 
     const updateOrder = async (payment_id) => {
+
         const orderCopy = {}
         orderCopy.payment_id = payment_id;
         orderCopy.timeStamp = serverTimestamp();
         const orderRef = doc(db, 'orders', `${orderId}`)
         await updateDoc(orderRef, orderCopy).then(() => {
-            sendConfirmationEmail(payment_id);
+            if (shippingData.contact_mode === 'email') {
+                sendConfirmationEmail(payment_id);
+            } else {
+                sendConfirmationSms(payment_id);
+            }
         })
     }
 
+    const sendConfirmationSms = async (payment_id) => {
+        try {
+            const url = '/order-placed-sms';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    phone_number: contactPhone,
+                    order_id: orderId,
+                }),
+            };
 
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.code === 'ok') {
+                        toast.success('Order complete');
+                        clearCart()
+                        navigate('/checkout/confirmation', { state: { order_id: orderId, payment_id: payment_id, customer_id: customerId, delivery_method: shippingMethod } })
+
+                    } else {
+                        toast.error('unable send sms')
+                    }
+
+                    // console.log(json)
+                })
+
+        } catch (error) {
+            toast.error('unable to send')
+            console.log({ error })
+        }
+    }
 
     const sendConfirmationEmail = async (payment_id) => {
 
@@ -179,7 +213,7 @@ const CheckOutPayment = () => {
                 if (response.ok) {
                     toast.success('Order complete');
                     clearCart()
-                    navigate('/checkout/confirmation',  { state: { order_id: orderId, payment_id: payment_id, customer_id: customerId, delivery_method: shippingMethod } })
+                    navigate('/checkout/confirmation', { state: { order_id: orderId, payment_id: payment_id, customer_id: customerId, delivery_method: shippingMethod } })
                 }
             })
             .catch((error) => {
@@ -200,7 +234,7 @@ const CheckOutPayment = () => {
             setCart([]);
         }
     }
-    
+
     const fetchCustomers = async () => {
 
         setLoading(true)
@@ -209,7 +243,7 @@ const CheckOutPayment = () => {
         const customerSnap = await getDoc(customersRef)
 
         if (customerSnap.exists()) {
- 
+
             if (customerSnap.data().shipping_id) {
                 const shippingRef = doc(db, 'customers', location.state.customer_id, 'shipping', `${customerSnap.data().shipping_id}`)
                 const shippingSnap = await getDoc(shippingRef)
@@ -250,10 +284,9 @@ const CheckOutPayment = () => {
     const fetchAccount = async () => {
         try {
 
-
             const accountRef = collection(db, 'payment_accounts')
             let q;
-            q = query(accountRef, where("accountType", "==", `${paymentMethod}`))
+            q = query(accountRef, where("accountType", "==", `${location.state.payment_method}`))
 
             const querySnap = await getDocs(q)
             let accountData = []

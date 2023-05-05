@@ -9,7 +9,6 @@ import CheckOutOrderSummary from './order-summary';
 import HeaderNav from '../components/header';
 import FooterNav from '../components/footer';
 import PageLoading from "../components/loading";
-import { toast } from 'react-toastify';
 
 const CheckOutShipping = () => {
 
@@ -95,8 +94,9 @@ const CheckOutShipping = () => {
         }
         catch (error) {
             console.log({ error })
+            setLoading(false);
         }
-        setLoading(false);
+       
         setIsDisabled(false);
 
     }
@@ -115,7 +115,7 @@ const CheckOutShipping = () => {
             orderCopy.order_id = orderId;
             const orderRef = doc(db, 'orders', orderId)
             await updateDoc(orderRef, orderCopy).then(() => {
-                toast.success("order placed successfully")
+                
                 navigate('/checkout/payment', { state: { customer_id: customerId, order_id: orderId, delivery_method: shippingMethod, payment_method: paymentMethod } })
                
             })
@@ -128,7 +128,7 @@ const CheckOutShipping = () => {
 
             const orderRef = doc(db, 'orders', order_id)
             await setDoc(orderRef, orderCopy).then(() => {
-                toast.success("order placed successfully")
+               
                 navigate('/checkout/payment', { state: { customer_id: customerId, order_id: order_id, delivery_method: shippingMethod, payment_method: paymentMethod } })
                 
             })
@@ -155,7 +155,7 @@ const CheckOutShipping = () => {
                 }
 
             } else {
-                console.log("profile data", customerSnap.data())
+                // console.log("profile data", customerSnap.data())
                 setShippingData((prevState) => ({
                     ...prevState,
                     contact_info: customerSnap.data().contact_info,
@@ -181,7 +181,7 @@ const CheckOutShipping = () => {
 
         if (e.target.id === 'order_note') {
             setOrderNote(e.target.value);
-        } else if (e.target.id === 'payment_method') {
+        } else if (e.target.id === 'paymentMethod') {
             setPaymentMethod(e.target.value);
         }
         else {
@@ -270,7 +270,6 @@ const CheckOutShipping = () => {
                                                     </div>
                                                 </div>
 
-
                                                 {/* check out form content here */}
                                                 <div className='checkout-form-content'>
                                                     <p className='form-title'>Shipping Information</p>
@@ -290,7 +289,6 @@ const CheckOutShipping = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-
 
                                                     {/* row for form group */}
                                                     <div className='row'>
@@ -334,7 +332,6 @@ const CheckOutShipping = () => {
                                                         </div>
                                                     </div>
 
-
                                                     {/* row for form group */}
                                                     <div className='row'>
                                                         <div className='col-md-6'>
@@ -365,9 +362,6 @@ const CheckOutShipping = () => {
 
                                                     </div>
 
-
-
-
                                                     {/* row for form group */}
                                                     <div className='row'>
                                                         <div className='col-md-10'>
@@ -387,7 +381,6 @@ const CheckOutShipping = () => {
 
                                                 </div>
 
-
                                                 {/* check out form content here */}
                                                 <div className='checkout-form-content'>
                                                     <p className='form-title'>Payment Method</p>
@@ -397,12 +390,14 @@ const CheckOutShipping = () => {
                                                             <div className='form-group'>
                                                                 <label className='form-label'>Select Payment Method <span className='required'><i className="fa-solid fa-star-of-life"></i></span> </label>
                                                                 <select
-                                                                    defaultValue={paymentMethod}
-                                                                    name='payment_method'
-                                                                    id='payment_method'
+                                                                    value={paymentMethod}
+                                                                    onChange={onChange}
+                                                                    name='paymentMethod'
+                                                                    id='paymentMethod'
                                                                     className='form-control'>
                                                                     <option value="null">-- Select Payment Method--</option>
                                                                     <option value="bank transfer"> Bank Transfer </option>
+                                                                    <option value="international bank transfer">International Bank Transfer </option>
                                                                 </select> 
                                                             </div>
                                                         </div>
@@ -410,9 +405,6 @@ const CheckOutShipping = () => {
 
                                                     </div>
                                                 </div>
-
-
-
                                             </div>
                                         </div>
 

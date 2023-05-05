@@ -370,7 +370,7 @@ const AddProductPage = () => {
                                                             </select>
                                                         </div>
                                                         <div className="col-md-4">
-                                                            <label htmlFor="product-price" className="form-label">Product Price (&#8358;)  </label>
+                                                            <label htmlFor="product-price" className="form-label">Product Price (GMD)  </label>
                                                             <input type="text"
                                                                 id="productPrice"
                                                                 className="form-control"
@@ -383,7 +383,7 @@ const AddProductPage = () => {
 
                                                         {discountOffer && (
                                                             <div className="col-md-4">
-                                                                <label htmlFor="product-discount-price" className="form-label">Discount Price (&#8358;)  </label>
+                                                                <label htmlFor="product-discount-price" className="form-label">Discount Price (GMD)  </label>
 
                                                                 <input type="text"
                                                                     id="productDiscountPrice"

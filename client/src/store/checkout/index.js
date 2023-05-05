@@ -28,8 +28,8 @@ const CheckOut = () => {
     const [isCode, setCode] = useState('');
     const [isCodeSent, setIsCodeSent] = useState(false);
     const [getCode, setGetCode] = useState('');
-    // eslint-disable-next-line
     const [getPinId, setPinId] = useState('');
+    const [rateData, setRateData] = useState('GM');
 
 
     const onContactChange = (contact_status) => {
@@ -48,13 +48,19 @@ const CheckOut = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         setIsDisabled(true)
 
 
         if (isCodeSent) {
 
             if (isActive) {
-                navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
+
+                let contact_mode = 'phone';
+                let contact_info = contactPhone;
+                verifyCode(contact_mode, contact_info);
+
+                // navigate('/checkout/shipping', { state: { contact_mode: 'phone', contact_info: contactPhone, delivery_method: shippingMethod } })
 
             } else {
                 if (`${isCode}` === `${getCode}`) {
@@ -138,32 +144,78 @@ const CheckOut = () => {
 
     }
 
-    const sendSms = async () => {
+    const verifyCode = async (contact_mode, contact_info) => {
 
-        fetch('/send-code-phone', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                phone_number: contactPhone,
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
+        try {
+            const url = '/verify-code';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    pin_id: getPinId,
+                    pin: isCode,
+                }),
+            };
 
-                    toast.success('Code sent successfully');
-                    setIsCodeSent(true)
-                } else {
-                    toast.error('something went wrong')
-                }
-                console.log(response);
-                console.log("pin ID", response.pinId)
-                console.log("pin ID", response.smsStatus)
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.verified === true) {
+                        toast.success('verification successful');
+                        createCustomer(contact_mode, contact_info);
+                    } else if (json.verified === false) {
+                        toast.error('invalid code')
+                    } else {
+                        toast.error('unable to verify phone number')
+                    }
+
+                    // console.log(json)
+                })
+
+        } catch (error) {
+            toast.error('unable to verify phone')
+            console.log({ error })
+        }
 
     }
+
+    const sendSms = async () => {
+
+        try {
+            const url = '/send-code-phone';
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    phone_number: contactPhone,
+                }),
+            };
+
+            await fetch(url, options)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.status === 200) {
+
+                        if (json.smsStatus === "Message Sent") {
+                            toast.success('Code sent successfully');
+                            setIsCodeSent(true)
+                            setPinId(json.pinId)
+                            // console.log("pin ID", json.pinId)
+                        }
+                    } else {
+                        toast.error('something went wrong')
+                    }
+
+                    // console.log(json)
+                })
+
+        } catch (error) {
+            toast.error('something went wrong')
+            console.log({ error })
+        }
+    }
+
+
 
     const sendEmail = async (theCode) => {
 
@@ -259,10 +311,23 @@ const CheckOut = () => {
         setShippingMethod(e.target.value);
     }
 
+    const fetchRate = () => {
 
+        const localRate = JSON.parse(localStorage.getItem("rate"));
+        if (localRate) {
+            if (localRate.rateCurrency === 'gmd') {
+                setRateData('GM');
+            } else if (localRate.rateCurrency === 'ngn') {
+                setRateData('NG');
+            } else if (localRate.rateCurrency === 'usd') {
+                setRateData('US');
+            }
+        }
+    }
 
     useEffect(() => {
         if (isMounted) {
+            fetchRate();
             fetchDeliveries().then();
         }
         return () => {
@@ -334,7 +399,7 @@ const CheckOut = () => {
                                                             value={contactPhone}
                                                             onChange={setContactPhone}
                                                             placeholder="220 700000000"
-                                                            defaultCountry="NG" />
+                                                            defaultCountry={rateData} />
                                                     </div>
                                                 </div>
 
@@ -379,7 +444,6 @@ const CheckOut = () => {
                                             </div>
                                             <div className='col-md-6'>
                                                 <div className='form-button'>
-
                                                     <button disabled={isDisabled} className='btn btn-primary btn-submit'> {isCodeSent ? ('Continue to Shipping') : ('Send Code')} </button>
                                                 </div>
                                             </div>
