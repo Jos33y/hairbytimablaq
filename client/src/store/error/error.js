@@ -7,7 +7,7 @@ import "./error.css";
 
 const ErrorPage = () => {
     return(
-        <>
+        <> 
         <HeaderNav />
         
         <div className="error-container">

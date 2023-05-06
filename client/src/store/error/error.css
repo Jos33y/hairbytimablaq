@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.error-container{
-    padding: 50px; 
+.error-container {
+    padding: 50px;
     text-align: center;
     margin-top: 8%;
     font-family: "Poppins", sans-serif;
 }
 
-.error-container  h1{
+.error-container h1 {
     font-size: 150px;
     font-weight: 600;
     color: #404040;
@@ -15,21 +15,46 @@
 
 
 
-.error-container  h4{
+.error-container h4 {
     font-size: 30px;
     font-weight: 500;
     color: #2c2c2c;
 }
 
 
-.error-container  p{
+.error-container p {
     margin-top: 20px;
     font-size: 18px;
     font-weight: 400;
     color: #727272;
 }
 
-.error-container  p .error-link{
+.error-container p .error-link {
     font-weight: 500;
     color: #DAB44E;
+}
+
+
+@media only screen and (max-width: 900px) {
+
+    .error-container {
+        padding: 50px;
+        margin-top: 50px;
+    }
+
+    .error-container h1 {
+        font-size: 120px;
+        font-weight: 600;
+    }
+
+
+    .error-container h4 {
+        font-size: 25px;
+    }
+
+
+    .error-container p {
+        margin-top: 20px;
+        font-size: 16px;
+    }
 }
