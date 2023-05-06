@@ -337,7 +337,7 @@ const CheckOut = () => {
                 (navigate('/cart'));
             } 
         }
-        return () => {
+        return () => { 
             isMounted.current = false;
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -348,10 +348,10 @@ const CheckOut = () => {
             <HeaderNav />
             <div className="checkout-container">
                 <CheckoutBreadCrumb page="checkout" />
-
+ 
                 <div className='checkout-section'>
                     <div className='row'>
-                        <div className='col-md-7'>
+                        <div className='col-lg-7 col-md-12 col-sm-12 col-12'>
                             <div className='checkout-form'>
 
                                 {/* check out form content here */}
@@ -461,7 +461,7 @@ const CheckOut = () => {
                             </div>
                         </div>
 
-                        <div className='col-md-5'>
+                        <div className='col-lg-5 col-md-7 col-sm-10 col-12'>
                             <CheckOutOrderSummary />
 
                             <div className='form-buttons'>

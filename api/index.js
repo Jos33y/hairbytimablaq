@@ -28,7 +28,7 @@ app.get("/*", function (_, res) {
             }
         }
     );
-});
+}); 
 
 
 // BELOW ARE PHONE NUMBER FUNCIONS
@@ -39,7 +39,7 @@ router.post('/send-code-phone', async (req, res) => {
         api_key: "tits",
         message_type: 'NUMERIC',
         to: req.body.phone_number,
-        from: 'HairbyTimaB',
+        from: 'fastbeep',
         channel: 'generic',
         pin_attempts: 10,
         pin_time_to_live: 30,
@@ -55,7 +55,7 @@ router.post('/send-code-phone', async (req, res) => {
             console.log(response.data.smsStatus);
         })
         .catch(error => {
-            console.log(error.response.status);
+            console.log(error.response);
             res.json(error.response.status);
         });
 });
@@ -184,7 +184,7 @@ router.post('/send-code-email', async (req, res) => {
         port: 2525,
         auth: {
             user: "support@hairbytimablaq.com",
-            pass: "BE7BB8AA3222B7E25C81666CB32F01882134",
+            pass: "tits",
         },
     });
 
@@ -226,8 +226,8 @@ router.post('/order-placed', async (req, res) => {
         host: "smtp.elasticemail.com",
         port: 2525,
         auth: {
-            user: process.env.REACT_router_ELASTIC_EMAIL_USERNAME,
-            pass: process.env.REACT_router_ELASTIC_EMAIL_PASSWORD,
+            user: "support@hairbytimablaq.com",
+            pass: "tits",
         },
     });
 
@@ -268,7 +268,7 @@ router.post('/order-confirmed', async (req, res) => {
         port: 2525,
         auth: {
             user: "support@hairbytimablaq.com",
-            pass: "BE7BB8AA3222B7E25C81666CB32F01882134",
+            pass: "tits",
         },
     });
 
@@ -309,7 +309,7 @@ router.post('/order-shipped', async (req, res) => {
         port: 2525,
         auth: {
             user: "support@hairbytimablaq.com",
-            pass: "BE7BB8AA3222B7E25C81666CB32F01882134",
+            pass: "tits",
         },
     });
 
@@ -350,7 +350,7 @@ router.post('/order-delivered', async (req, res) => {
         port: 2525,
         auth: {
             user: "support@hairbytimablaq.com",
-            pass: "BE7BB8AA3222B7E25C81666CB32F01882134",
+            pass: "tits",
         },
     });
 
@@ -394,7 +394,7 @@ router.post('/new-moderator', async (req, res) => {
         port: 2525,
         auth: {
             user: "support@hairbytimablaq.com",
-            pass: "BE7BB8AA3222B7E25C81666CB32F01882134",
+            pass: "tits",
         },
     });
 

@@ -12,7 +12,7 @@ import { formatPrice, formatSymbol } from "../components/format-price";
 
 
 const OrderConfirmation = () => {
-
+ 
     const isMounted = useRef()
     const location = useLocation();
     // eslint-disable-next-line
@@ -124,7 +124,7 @@ const OrderConfirmation = () => {
 
                             <div className='checkout-section'>
                                 <div className='row justify-content-center'>
-                                    <div className='col-md-7'>
+                                    <div className='col-lg-7 col-md-10 col-sm-12'>
                                         <div className='print-order-box'>
                                             <div className='store-logo'>
                                                 <img src={TimaBlaq} alt='store logo here' className='img-fluid' />
@@ -193,7 +193,7 @@ const OrderConfirmation = () => {
                                                 <div className='customer-info'>
                                                     <h5 className='title'>Customer Information </h5>
                                                     <div className='row'>
-                                                        <div className='col-lg-6'>
+                                                        <div className='col-lg-6 col-md-6 col-sm-6'>
                                                             <div className='info-box'>
                                                                 <h6 className='heading'>Contact Information</h6>
                                                                 <p className='sub-heading'>{`${customerData.last_name} ${customerData.first_name}`} </p>
@@ -202,7 +202,7 @@ const OrderConfirmation = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className='col-lg-6 col-md-6'>
+                                                        <div className='col-lg-6 col-md-6 col-sm-6'>
                                                             <div className='info-box'>
                                                                 <h6 className='heading'>Payment Method</h6>
                                                                 <p className='sub-heading payment'>{paymentData ? (paymentData.paymentMethod) : ('')} </p>
@@ -212,7 +212,7 @@ const OrderConfirmation = () => {
                                                     </div>
 
                                                     <div className='row'>
-                                                        <div className='col-lg-6 col-md-6'>
+                                                        <div className='col-lg-6 col-md-6 col-sm-6'>
                                                             <div className='info-box'>
                                                                 <h6 className='heading'>Shipping Address</h6>
                                                                 <p className='sub-heading'>{customerData.delivery_address} </p>
@@ -221,7 +221,7 @@ const OrderConfirmation = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className='col-lg-6 col-md-6'>
+                                                        <div className='col-lg-6 col-md-6 col-sm-6'>
                                                             <div className='info-box'>
                                                                 <h6 className='heading'>Shipping Method</h6>
                                                                 <p className='sub-heading'>{deliveryData ? (deliveryData.deliveryLocation) : ('')} </p>

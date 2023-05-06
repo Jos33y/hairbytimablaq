@@ -49,7 +49,6 @@ const CheckOutOrderSummary = ({ shippingMethod, paymentPage }) => {
         <>
             <div className="order-container">
 
-
                 {!paymentPage && (
                     <div className="coupon-container">
                         <div className="form-group">

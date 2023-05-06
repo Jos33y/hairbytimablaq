@@ -149,14 +149,12 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
 
 .top-bar {
   padding: 10px 10px 5px;
-  background: linear-gradient(
-    to right,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
+  background: linear-gradient(to right,
+      #bf953f,
+      #fcf6ba,
+      #b38728,
+      #fbf5b7,
+      #aa771c);
   border-bottom: 1px solid #000000;
   color: #000000;
   font-family: "Lato", sans-serif;
@@ -208,6 +206,10 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
   margin-bottom: 0px;
   padding-bottom: 0px;
   cursor: pointer;
+}
+
+.top-bar .cart-top-bar {
+  display: none;
 }
 
 .top-bar .top-bar-side p .fa-solid {
@@ -730,6 +732,11 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     cursor: pointer;
   }
 
+  .top-bar .cart-top-bar {
+    display: inline-block;
+    margin-left: 30px;
+  }
+
   .top-bar .top-bar-side p .fa-solid {
     margin-left: 5px;
   }
@@ -844,11 +851,7 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     padding-bottom: 0px;
   }
 
-  .Testimony-container
-    .testimony-box
-    .testimony-text
-    .testifier
-    .testifier-link {
+  .Testimony-container .testimony-box .testimony-text .testifier .testifier-link {
     text-decoration: none;
     font-size: 20px;
   }
@@ -1078,6 +1081,38 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
 }
 
 @media only screen and (max-width: 767px) {
+
+  .top-bar .tag-line {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .top-bar .top-bar-side {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+  }
+
+  .top-bar .top-bar-side select {
+    font-size: 13px;
+
+    height: 30px;
+    width: 80px;
+  }
+
+  .top-bar .top-bar-side p {
+    font-size: 13px;
+  }
+
+  .top-bar .cart-top-bar {
+    display: inline-block;
+    margin-left: 30px;
+  }
+
+  .top-bar .top-bar-side p .fa-solid {
+    margin-left: 5px;
+  }
+
   .Header-nav .navbar .navbar-nav .nav-item .nav-link {
     font-size: 15px;
   }
@@ -1140,11 +1175,7 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     padding-bottom: 0px;
   }
 
-  .Testimony-container
-    .testimony-box
-    .testimony-text
-    .testifier
-    .testifier-link {
+  .Testimony-container .testimony-box .testimony-text .testifier .testifier-link {
     text-decoration: none;
     font-size: 20px;
   }
@@ -1226,6 +1257,14 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
 }
 
 @media only screen and (max-width: 575px) {
+
+
+  .top-bar .cart-top-bar {
+    display: inline-block;
+    margin-right: 30px;
+  }
+
+
   .top-bar .tag-line {
     font-size: 13px;
     font-weight: 600;
@@ -1359,11 +1398,7 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     padding-bottom: 0px;
   }
 
-  .Testimony-container
-    .testimony-box
-    .testimony-text
-    .testifier
-    .testifier-link {
+  .Testimony-container .testimony-box .testimony-text .testifier .testifier-link {
     text-decoration: none;
     font-size: 18px;
   }
@@ -1456,7 +1491,7 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
   }
 
   .product-card .product-img {
-    height: 170px;
+    height: 250px;
   }
 
   .product-card .product-img .img-fluid {
@@ -1550,4 +1585,13 @@ gold-gradients-one: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7
     margin-bottom: 0;
     padding-bottom: 0;
   }
+}
+
+
+@media only screen and (max-width: 430px) {
+
+  .product-card .product-img {
+    height: 210px;
+  }
+
 }

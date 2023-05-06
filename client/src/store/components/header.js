@@ -93,11 +93,11 @@ const HeaderNav = () => {
         <>
             <div className="top-bar">
                 <div className="row">
-                    <div className="col-lg-3 col-md-2 col-sm-2 col-0"></div>
+                    <div className="col-lg-3 col-md-2 col-sm-0 col-0"></div>
                     <div className="col-lg-5 col-md-5 col-sm-5 col-12">
                         <p className="tag-line"> Life is short make every hair flip count</p>
                     </div>
-                    <div className="col-lg-3 col-md-5 col-sm-5 col-12">
+                    <div className="col-lg-3 col-md-5 col-sm-7 col-12">
                         <div className="top-bar-side">
                         {rateInfo && rateInfo.length > 0 ? (
                             <select value={rateCurrency} onChange={onChange} className="form-control" id="rateCurrency">
@@ -113,6 +113,15 @@ const HeaderNav = () => {
                                 }}
                             >
                                 Track order <i className="fa-solid fa-truck-fast"></i>
+                            </p>
+
+                            <p className="cart-top-bar"
+                                onClick={() => {
+                                    navigate("/cart");
+                                }}
+                            >
+                                <i className="fa-solid fa-cart-shopping"></i>
+                                <span className="cart-number">({cart.length > 0 ? (cart.length) : '0'})</span>
                             </p>
                         </div>
                     </div>

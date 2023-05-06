@@ -374,7 +374,7 @@ const CheckOutPayment = () => {
 
                             <div className='checkout-section'>
                                 <div className='row'>
-                                    <div className='col-md-7'>
+                                    <div className='col-lg-7 col-md-12 col-sm-12 col-12'>
                                         <div className='checkout-table'>
                                             <div className='checkout-table-info'>
                                                 <div className='checkout-info'>
@@ -506,7 +506,7 @@ const CheckOutPayment = () => {
 
                                     </div>
 
-                                    <div className='col-md-5'>
+                                    <div className='col-lg-5 col-md-7 col-sm-10 col-12'>
                                         <CheckOutOrderSummary shippingMethod={location.state.delivery_method} paymentPage={true} />
                                     </div>
 
