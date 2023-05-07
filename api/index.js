@@ -39,7 +39,7 @@ router.post('/send-code-phone', async (req, res) => {
         api_key: "tits",
         message_type: 'NUMERIC',
         to: req.body.phone_number,
-        from: 'fastbeep',
+        from: 'HairbyTimaB',
         channel: 'generic',
         pin_attempts: 10,
         pin_time_to_live: 30,
@@ -195,7 +195,10 @@ router.post('/send-code-email', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,
@@ -238,7 +241,10 @@ router.post('/order-placed', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,
@@ -279,7 +285,10 @@ router.post('/order-confirmed', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,
@@ -320,7 +329,10 @@ router.post('/order-shipped', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,
@@ -362,7 +374,10 @@ router.post('/order-delivered', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,
@@ -407,7 +422,10 @@ router.post('/new-moderator', async (req, res) => {
 
     // Define the email message
     let message = {
-        from: from,
+        from: {
+            name: 'HairbyTimaBlaq',
+            address: from
+          },
         to: to,
         subject: subject,
         html: html,

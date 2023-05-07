@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TimaBlaq from "../assets/images/timablaq.jpeg";
 import { useCart } from "./cart-context";
 import he from 'he';
+import axios from 'axios';
 
 const HeaderNav = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const HeaderNav = () => {
 
 
     const fetchRates = async () => {
+
         try {
             // const auth = getAuth()
             const rateRef = collection(db, 'exchange_rates')
@@ -38,8 +40,23 @@ const HeaderNav = () => {
             if (localRate) {
                 setRateCurrency(localRate.rate_id)
             } else {
-                getRateDetails(rateInfo[0].id)
+
+                const response = await axios.get('https://ipapi.co/json/');
+                const countryCode = response.data.country_code;
+                if (countryCode === 'NG') {
+                    getRateDetails(rateInfo[2].id)
+
+                } else if (countryCode === 'GM') {
+                    getRateDetails(rateInfo[0].id)
+
+                } else if (countryCode === 'US') {
+                    getRateDetails(rateInfo[1].id)
+
+                } else {
+                    getRateDetails(rateInfo[1].id)
+                }
             }
+
             // console.log("rate info: ", rateInfo[0].id)
 
         }
@@ -53,14 +70,14 @@ const HeaderNav = () => {
     const onChange = (e) => {
 
         if (e.target.id) {
-           getRateDetails(e.target.value);
-           setRateCurrency(e.target.value);
+            getRateDetails(e.target.value);
+            setRateCurrency(e.target.value);
+            
         }
 
     }
 
     const getRateDetails = async (rate_id) => {
-        
         try {
             const rateRef = doc(db, 'exchange_rates', rate_id)
             const rateSnap = await getDoc(rateRef)
@@ -75,7 +92,7 @@ const HeaderNav = () => {
         catch (error) {
             console.log({ error })
         }
-       
+
     }
     useEffect(() => {
 
@@ -99,14 +116,14 @@ const HeaderNav = () => {
                     </div>
                     <div className="col-lg-3 col-md-5 col-sm-7 col-12">
                         <div className="top-bar-side">
-                        {rateInfo && rateInfo.length > 0 ? (
-                            <select value={rateCurrency} onChange={onChange} className="form-control" id="rateCurrency">
-                                {rateInfo.map((rate) => (
-                                    <option key={rate.id} value={rate.data.rate_id}>
-                                        {rate.data.rateCurrency} { he.decode(rate.data.rateSymbol)} 
-                                    </option>
-                                ))} 
-                            </select>) : ('')}
+                            {rateInfo && rateInfo.length > 0 ? (
+                                <select value={rateCurrency} onChange={onChange} className="form-control" id="rateCurrency">
+                                    {rateInfo.map((rate) => (
+                                        <option key={rate.id} value={rate.data.rate_id}>
+                                            {rate.data.rateCurrency} {he.decode(rate.data.rateSymbol)}
+                                        </option>
+                                    ))}
+                                </select>) : ('')}
                             <p
                                 onClick={() => {
                                     navigate("/track");
